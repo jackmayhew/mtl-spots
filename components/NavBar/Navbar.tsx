@@ -21,6 +21,7 @@ function NavBar() {
     document.querySelector("body").classList.remove("lock");
   };
 
+  
   return (
     <header className="header js-header">
       <div className="header__center center">
@@ -66,7 +67,7 @@ function NavBar() {
                 Find
               </a>
             </Link>
-            <Link href="/map">
+            {/* <Link href="/map">
               <a
                 className={
                   router.asPath === "/map"
@@ -76,7 +77,7 @@ function NavBar() {
               >
                 Map
               </a>
-            </Link>
+            </Link> */}
             <Link href="/upload">
               <a
                 className={

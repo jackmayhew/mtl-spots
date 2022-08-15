@@ -14,6 +14,12 @@ const UserDrop = () => {
 
   useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
 
+  const [language, setLanguage] = useState("english");
+  
+  const languageHandle = (e) => {
+    setLanguage(e.target.id)
+  }
+
   const router = useRouter();
 
   return (
@@ -74,7 +80,7 @@ const UserDrop = () => {
           <div className="header__menu"></div>
         </div>
         <div className="header__btns">
-          <Link href="/spots">
+          {/* <Link href="/spots">
             <a className="button button-small header__button" onClick={toggle}>
               Find Spots
             </a>
@@ -83,7 +89,22 @@ const UserDrop = () => {
             <a className="button button-small header__button" onClick={toggle}>
               Share Spots
             </a>
-          </Link>
+          </Link> */}
+
+<div className="header__body js-header-body language__body slat">
+        <div className="header__list">
+          <a className={language === "english" ? "header__box active" : "header__box"} id="english" onClick={languageHandle}>
+            <div className="header__category">English</div>
+            <div className="header__country">United States</div>
+          </a>
+          <a className={language === "french" ? "header__box active" : "header__box"} id="french" onClick={languageHandle}>
+            <div className="header__category">Français</div>
+            <div className="header__country">Canada</div>
+          </a>
+        </div>
+      </div>
+      
+          {/* <div className="header__body js-header-body language__body slat"><div className="header__list"><a className="header__box active" id="english"><div className="header__category">English</div><div className="header__country">United States</div></a><a className="header__box" id="french"><div className="header__category">Français</div><div className="header__country">Canada</div></a></div></div> */}
         </div>
       </div>
     </div>

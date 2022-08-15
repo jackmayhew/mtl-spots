@@ -338,7 +338,7 @@ export async function getServerSideProps({ query }) {
   query.page == 0 || query.page == undefined ? (query.page = 1) : (query.page = query.page);
   const res = await fetch(`${server}/api/spots/${category}?page=${query.page}`);
   const data = await res.json();
-  console.log(data)
+  // console.log(data)
   return {
     props: {
       spots: data.data,

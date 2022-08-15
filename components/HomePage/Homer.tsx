@@ -50,7 +50,7 @@ function Homer({spots}) {
 
 
               <Link href="/map">
-                <a className="button">
+                <a className="button map__cta">
                   <h3>Map</h3>
                   <div className="location__icon">
                     <FiMap />

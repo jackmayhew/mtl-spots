@@ -3742,7 +3742,7 @@ html.dark .header__item_notification .header__body {
   .header__item_user .header__body {
     top: 100%;
     // left: 16px;
-    right: 16px;
+    right: 12px;
     width: 50%;
   }
 }
@@ -7113,6 +7113,15 @@ html.dark .hosts__avatar {
   }
 }
 
+.slat {
+  top: unset !important;
+  right: unset !important;
+  left: unset !important;
+  position: relative !important;
+  padding: 0 !important;
+  width: 100% !important;
+  box-shadow: none !important;
+}
 .hosts .slick-slide {
   margin: 0 16px;
   opacity: 0;
@@ -7784,7 +7793,10 @@ html.dark .location__input::placeholder {
     padding: 24px 12px;
   }
   .button {
-    width: 31.5%;
+    width: 48%;
+}
+.map__cta {
+  display: none;
 }
 .button h3 {
   margin-right: 5px;
