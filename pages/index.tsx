@@ -11,13 +11,13 @@ function Home({ spots }) {
   );
 }
 
-// Home.getInitialProps = async () => {
-//   const res = await fetch(`${server}/api/home`);
-//   const data = await res.json();
-//   return {
-//     spots: data.data,
-//   };
-// };
+Home.getInitialProps = async () => {
+  const res = await fetch(`${server}/api/home`);
+  const data = await res.json();
+  return {
+    spots: data.data,
+  };
+};
 
 
 // Home.getInitialProps = async () => {

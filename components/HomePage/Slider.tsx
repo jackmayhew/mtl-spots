@@ -21,18 +21,15 @@ function HomeSlider({ spots }) {
 
   const [popular, setPopular] = useState([]);
 
-  useEffect(() => {
-    getPopular();
-    
-  }, []);
+  // useEffect(() => {
+  //   getPopular();
+  // }, []);
 
-
-//   const res = await fetch(`${server}/api/home`);
 
   const getPopular = async () => {
     const api = await fetch(`${server}/api/home`);
     const data = await api.json();
-    setPopular(data.data);
+    setPopular(data);
   };
 
   return (
@@ -110,7 +107,7 @@ function HomeSlider({ spots }) {
             >
               
 
-              {popular.map((spot) => (
+              {spots.map((spot) => (
                   <SwiperSlide key={spot._id}>
                     <Link href={`/spots/${spot.category}/${spot._id}`}>
                     <a className="card">
@@ -147,6 +144,7 @@ function HomeSlider({ spots }) {
                     </Link>
                   </SwiperSlide>
                 ))}
+
             </Swiper>
           </div>
         </div>
