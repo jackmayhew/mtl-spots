@@ -86,7 +86,7 @@ function HomeSlider({ spots }) {
                 },
               }}
             >
-                {spots.map((spot) => (
+                {/* {spots.map((spot) => (
                   <SwiperSlide key={spot._id}>
                     <Link href={`/spots/${spot.category}/${spot._id}`}>
                     <a className="card">
@@ -122,7 +122,7 @@ function HomeSlider({ spots }) {
                     </a>
                     </Link>
                   </SwiperSlide>
-                ))}
+                ))} */}
             </Swiper>
           </div>
         </div>
