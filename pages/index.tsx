@@ -22,12 +22,12 @@ function Home({ spots }) {
 export default Home;
 
 
-export const getStaticProps = async ()  => {
-  const res = await fetch(`${server}/api/home`);
-  const data = await res.json();
-  return {
-  props: { 
-    spots: data.data
-  }
-}
-}
+// export const getStaticProps = async ()  => {
+//   const res = await fetch(`${server}/api/home`);
+//   const data = await res.json();
+//   return {
+//   props: { 
+//     spots: data.data
+//   }
+// }
+// }
