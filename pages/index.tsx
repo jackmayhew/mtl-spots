@@ -11,7 +11,7 @@ function Home({ spots }) {
   );
 }
 
-// Home.getStaticProps  = async () => {
+// Home.getInitialProps = async () => {
 //   const res = await fetch(`${server}/api/home`);
 //   const data = await res.json();
 //   return {
@@ -19,15 +19,30 @@ function Home({ spots }) {
 //   };
 // };
 
-export default Home;
 
-
-// export const getStaticProps = async ()  => {
+// Home.getInitialProps = async () => {
 //   const res = await fetch(`${server}/api/home`);
 //   const data = await res.json();
 //   return {
-//   props: { 
-//     spots: data.data
-//   }
-// }
-// }
+//     spots: data.data,
+//   };
+// };
+
+export async function getServerSideProps(context) {
+
+  const res = await fetch(`${server}/api/home`);
+  const data = await res.json();
+  return {
+    props: {
+      spots: data.data
+    }
+    
+  };
+
+  // return {
+  //   props: {}, // will be passed to the page component as props
+  // }
+}
+
+
+export default Home;
