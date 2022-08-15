@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import Pagination from "../../components/Pagination";
+import {server} from '../../utils/domain'
 
 function Category({ spots, count, page }) {
   const router = useRouter();
@@ -315,20 +316,36 @@ function Category({ spots, count, page }) {
   );
 }
 
-Category.getInitialProps = async ({ query }) => {
+// Category.getInitialProps = async ({ query }) => {
+//   const { category } = query;
+//   query.page == 0 ? (query.page = 1) : (query.page = query.page);
+//   const res = await fetch(
+//     `http://localhost:3000/api/spots/${category}?page=${query.page}`
+//   );
+//   const data = await res.json();
+//   // console.log(data)
+//   // return { spots: data.data };
+//   return {
+//     spots: data.data,
+//     count: data.count,
+//     page: query.page,
+//   };
+// };
+
+
+export async function getServerSideProps({ query }) {
   const { category } = query;
-  query.page == 0 ? (query.page = 1) : (query.page = query.page);
-  const res = await fetch(
-    `http://localhost:3000/api/spots/${category}?page=${query.page}`
-  );
+  query.page == 0 || query.page == undefined ? (query.page = 1) : (query.page = query.page);
+  const res = await fetch(`${server}/api/spots/${category}?page=${query.page}`);
   const data = await res.json();
   console.log(data)
-  // return { spots: data.data };
   return {
-    spots: data.data,
-    count: data.count,
-    page: query.page,
+    props: {
+      spots: data.data,
+      count: data.count,
+      page: query.page,
+    }
   };
-};
+}
 
 export default Category;

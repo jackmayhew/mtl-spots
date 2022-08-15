@@ -2,22 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { Tabs, TabList, Tab } from "@chakra-ui/react";
 import Link from "next/link";
 import Pagination from "./Pagination";
-import { FiSearch, FiMap } from "react-icons/fi";
 
-import { Input, InputGroup, InputLeftElement, Stack, InputRightElement } from '@chakra-ui/react';
-
-function Categoru({spots, count, page, }) {
+function Categoru({ spots, count, page }) {
   const [mapView, setMapView] = useState(false);
-
 
   const [dropDown, setDropDown] = useState(false);
   const [dropDownValue, setDropDownValue] = useState("");
 
   return (
     <div className="outer__inner">
-
-
-
       {/* page */}
       <div className="section catalog">
         <div className="sorting">
@@ -102,19 +95,84 @@ function Categoru({spots, count, page, }) {
                 </Tabs>
               </div>
 
-                <div className="sorting__select">
-                  <div className={dropDown === true ? "nice-select select open" : "nice-select select"} onClick={() => {setDropDown(!dropDown)}} >
-                    <span className="current">{dropDownValue || "Browse By"}</span>
-                      <ul className="list">
-                      <Link scroll={false} href={`/spots?category=stairs`}><li onClick={() => setDropDownValue('Stairs')} className={dropDownValue === "Stairs" ? "option selected focus" : "option"}><a>Stairs</a></li></Link>
-                      <Link scroll={false} href={`/spots?category=rails`}><li onClick={() => setDropDownValue('Rails')} className={dropDownValue === "Rails" ? "option selected focus" : "option"}><a>Rails</a></li></Link>
-                      <Link scroll={false} href={`/spots?category=ledges`}><li onClick={() => setDropDownValue('Ledges')} className={dropDownValue === "Ledges" ? "option selected focus" : "option"}><a>Ledges</a></li></Link>
-                      <Link scroll={false} href={`/spots?category=gaps`}><li onClick={() => setDropDownValue('Gaps')} className={dropDownValue === "Gaps" ? "option selected focus" : "option"}><a>Gaps</a></li></Link>
-                      <Link scroll={false} href={`/spots?category=other`}><li onClick={() => setDropDownValue('Other')} className={dropDownValue === "Other" ? "option selected focus" : "option"}><a>Other</a></li></Link>
-                    </ul>
-                  </div>
+              <div className="sorting__select">
+                <div
+                  className={
+                    dropDown === true
+                      ? "nice-select select open"
+                      : "nice-select select"
+                  }
+                  onClick={() => {
+                    setDropDown(!dropDown);
+                  }}
+                >
+                  <span className="current">
+                    {dropDownValue || "Browse By"}
+                  </span>
+                  <ul className="list">
+                    <Link scroll={false} href={`/spots?category=stairs`}>
+                      <li
+                        onClick={() => setDropDownValue("Stairs")}
+                        className={
+                          dropDownValue === "Stairs"
+                            ? "option selected focus"
+                            : "option"
+                        }
+                      >
+                        <a>Stairs</a>
+                      </li>
+                    </Link>
+                    <Link scroll={false} href={`/spots?category=rails`}>
+                      <li
+                        onClick={() => setDropDownValue("Rails")}
+                        className={
+                          dropDownValue === "Rails"
+                            ? "option selected focus"
+                            : "option"
+                        }
+                      >
+                        <a>Rails</a>
+                      </li>
+                    </Link>
+                    <Link scroll={false} href={`/spots?category=ledges`}>
+                      <li
+                        onClick={() => setDropDownValue("Ledges")}
+                        className={
+                          dropDownValue === "Ledges"
+                            ? "option selected focus"
+                            : "option"
+                        }
+                      >
+                        <a>Ledges</a>
+                      </li>
+                    </Link>
+                    <Link scroll={false} href={`/spots?category=gaps`}>
+                      <li
+                        onClick={() => setDropDownValue("Gaps")}
+                        className={
+                          dropDownValue === "Gaps"
+                            ? "option selected focus"
+                            : "option"
+                        }
+                      >
+                        <a>Gaps</a>
+                      </li>
+                    </Link>
+                    <Link scroll={false} href={`/spots?category=other`}>
+                      <li
+                        onClick={() => setDropDownValue("Other")}
+                        className={
+                          dropDownValue === "Other"
+                            ? "option selected focus"
+                            : "option"
+                        }
+                      >
+                        <a>Other</a>
+                      </li>
+                    </Link>
+                  </ul>
                 </div>
-
+              </div>
             </div>
           </div>
         </div>
@@ -170,9 +228,8 @@ function Categoru({spots, count, page, }) {
 
 export default Categoru;
 
-
-
-{/* <div className="catalog__list">
+{
+  /* <div className="catalog__list">
 {spots.map((spot) => (
   <a className="card" href="stays-product.html" key={spot._id}>
     <div className="card__preview">
@@ -209,4 +266,5 @@ export default Categoru;
 </div>
 <div className="catalog__btns">
 <Pagination count={count} page={page} spotCategory="" />
-</div> */}
+</div> */
+}

@@ -11,15 +11,6 @@ function Home({ spots }) {
   );
 }
 
-Home.getInitialProps = async () => {
-  const res = await fetch(`${server}/api/home`);
-  const data = await res.json();
-  return {
-    spots: data.data,
-  };
-};
-
-
 // Home.getInitialProps = async () => {
 //   const res = await fetch(`${server}/api/home`);
 //   const data = await res.json();
@@ -28,16 +19,16 @@ Home.getInitialProps = async () => {
 //   };
 // };
 
-// export async function getServerSideProps(context) {
-//   const res = await fetch(`${server}/api/home`);
-//   const data = await res.json();
-//   return {
-//     props: {
-//       spots: data.data
-//     }
-    
-//   };
-// }
+
+export async function getServerSideProps() {
+  const res = await fetch(`${server}/api/home`);
+  const data = await res.json();
+  return {
+    props: {
+      spots: data.data
+    }
+  };
+}
 
 
 export default Home;

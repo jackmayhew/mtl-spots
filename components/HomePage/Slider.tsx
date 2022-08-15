@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import Link from "next/link";
-import {server} from '../../utils/domain'
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -17,20 +16,6 @@ function HomeSlider({ spots }) {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
 
-  //  console.log(spots)
-
-  const [popular, setPopular] = useState([]);
-
-  // useEffect(() => {
-  //   getPopular();
-  // }, []);
-
-
-  const getPopular = async () => {
-    const api = await fetch(`${server}/api/home`);
-    const data = await api.json();
-    setPopular(data);
-  };
 
   return (
     <div className="section browse">

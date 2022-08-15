@@ -4,8 +4,8 @@ import {server} from '../../utils/domain'
 
 function All({ spots, count, page }) {
   return (
-    // <Categoru spots={spots} count={count} page={page} />
-    <h1>spots</h1>
+    <Categoru spots={spots} count={count} page={page} />
+
   );
 }
 
@@ -19,5 +19,18 @@ function All({ spots, count, page }) {
 //     page: query.page,
 //   };
 // };
+
+export async function getServerSideProps({ query }) {
+  query.page == 0 || query.page == undefined ? (query.page = 1) : (query.page = query.page);
+  const res = await fetch(`${server}/api/spots?page=${query.page}`);
+  const data = await res.json();
+  return {
+    props: {
+    spots: data.data,
+    count: data.count,
+    page: query.page
+    }
+  };
+}
 
 export default All;
