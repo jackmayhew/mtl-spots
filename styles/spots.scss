@@ -3353,17 +3353,22 @@ html.dark .status-gray {
 
 .header__center {
   padding: 0 40px;
+  display: flex;
+  align-items: center;  
 }
+
+
 
 @media only screen and (max-width: 767px) {
   .header {
     padding: 24px 0 24px;
   }
+  .header__center {
+    padding: 0 15px;
+
+  }
 }
-.header__center {
-  display: flex;
-  align-items: center;
-}
+
 .header__logo {
   margin-right: 40px;
 }
@@ -4789,7 +4794,7 @@ html.dark .panel__controls .panel__button.active {
 // }
 @media only screen and (max-width: 767px) {
   .main__center {
-    padding: 0 8px;
+    padding: 0 15px;
   }
 }
 

@@ -20,6 +20,7 @@ function Homer({spots}) {
               autoPlay
               loop
               muted
+              playsInline
             ></video>
           </div>
           <div className="panel panel_stays-category">
