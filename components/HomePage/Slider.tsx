@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import Link from "next/link";
+import {server} from '../../utils/domain'
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -16,7 +17,23 @@ function HomeSlider({ spots }) {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
 
-//  console.log(spots)
+  //  console.log(spots)
+
+  const [popular, setPopular] = useState([]);
+
+  useEffect(() => {
+    getPopular();
+    
+  }, []);
+
+
+//   const res = await fetch(`${server}/api/home`);
+
+  const getPopular = async () => {
+    const api = await fetch(`${server}/api/home`);
+    const data = await api.json();
+    setPopular(data.data);
+  };
 
   return (
     <div className="section browse">
@@ -29,7 +46,9 @@ function HomeSlider({ spots }) {
 
               <div className="slider_nav desktop__arrows">
                 <div
-                  onClick={() => {navigationNextRef.current.className = 'slider_arrow'}}
+                  onClick={() => {
+                    navigationNextRef.current.className = "slider_arrow";
+                  }}
                   ref={navigationPrevRef}
                   className={
                     swiperIndex === 0
@@ -42,7 +61,7 @@ function HomeSlider({ spots }) {
                 <div
                   ref={navigationNextRef}
                   // className={
-                  //   swiperIndex === swiperIndexMax - what  
+                  //   swiperIndex === swiperIndexMax - what
                   //   // swiperIndex === swiperIndexMax - amount being shown
                   //     ? "slider_arrow hover_disabled"
                   //     : "slider_arrow"
@@ -58,7 +77,10 @@ function HomeSlider({ spots }) {
           </div>
           <div className="browse__wrapper">
             <Swiper
-              onReachEnd={() => {navigationNextRef.current.className = 'slider_arrow hover_disabled'}}
+              onReachEnd={() => {
+                navigationNextRef.current.className =
+                  "slider_arrow hover_disabled";
+              }}
               onSwiper={setSwiperRef}
               onSlideChange={(swiper) => setSwiperIndex(swiper.activeIndex)}
               speed={500}
@@ -86,7 +108,9 @@ function HomeSlider({ spots }) {
                 },
               }}
             >
-                {/* {spots.map((spot) => (
+              
+
+              {popular.map((spot) => (
                   <SwiperSlide key={spot._id}>
                     <Link href={`/spots/${spot.category}/${spot._id}`}>
                     <a className="card">
@@ -122,7 +146,7 @@ function HomeSlider({ spots }) {
                     </a>
                     </Link>
                   </SwiperSlide>
-                ))} */}
+                ))}
             </Swiper>
           </div>
         </div>
