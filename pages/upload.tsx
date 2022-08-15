@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 import { useRouter } from "next/router";
 import { Stack, Button, ButtonGroup } from "@chakra-ui/react";
+import {server} from '../utils/domain'
 
 function upload() {
   const [form, setForm] = useState({ title: "", category: "", location: "" });
@@ -25,7 +26,7 @@ function upload() {
 
   const createNote = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/spots/upload", {
+      const res = await fetch(`${server}/api/spots/upload`, {
         method: "POST",
         headers: {
           Accept: "application/json",

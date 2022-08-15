@@ -3,7 +3,7 @@
 // import SliderComp from "../components/Slider";
 // import Sj from "../components/HomeCTA";
 import Homer from "../components/HomePage/Homer"
-
+import {server} from '../utils/domain'
 
 function Home({ spots }) {
   return (
@@ -12,7 +12,7 @@ function Home({ spots }) {
 }
 
 Home.getInitialProps = async () => {
-  const res = await fetch(`http://localhost:3000/api/home`);
+  const res = await fetch(`${server}/api/home`);
   const data = await res.json();
   return {
     spots: data.data,
