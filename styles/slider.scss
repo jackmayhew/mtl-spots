@@ -1,0 +1,140 @@
+.swiper {
+  width: 100%;
+  height: auto !important;
+}
+
+// .swiper_container{
+//   border: solid;
+// }
+
+.swiper-slide {
+  // text-align: center;
+  // font-size: 18px;
+  // background: #fff;
+  // border: solid;
+  // display: -webkit-box;
+  // display: -ms-flexbox;
+  // display: -webkit-flex;
+  // display: flex;
+  // -webkit-box-pack: center;
+  // -ms-flex-pack: center;
+  // -webkit-justify-content: center;
+  // justify-content: center;
+  // -webkit-box-align: center;
+  // -ms-flex-align: center;
+  // -webkit-align-items: center;
+  // align-items: center;
+  visibility: visible;
+}
+
+.swiper-slide img {
+  // display: block;
+  // width: 100%;
+  // height: 100%;
+  object-fit: cover;
+  
+}
+
+.swiper {
+  width: 100%;
+  height: 300px;
+  margin: 20px auto;
+}
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+.slider_nav {
+  display: flex;
+  justify-content: center;
+
+  .slider_arrow {
+    // margin-right: 1em;
+    // font-size: 1.5em;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transition: all .2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: inset 0 0 0 2px #EDF2F7;
+    }
+
+  }
+}
+
+.hover_disabled {
+  box-shadow: inset 0 0 0 2px #edf2f700 !important;
+  cursor: initial !important;
+}
+
+
+
+
+@media only screen and (max-width: 1024px) {
+  .hero_img {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  // .swiper_container{
+  //   width: 640px;
+  // }
+  // .swiper {
+  //   overflow: visible !important;
+  // }
+}
+
+
+.desktop__arrows {
+  display: flex;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .desktop__arrows {
+    // display: none;
+    font-size: 1.75em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .swiper_container {
+    width: 100%;
+  }
+}
+
+.recent_title {
+  background: linear-gradient(to right, #39a5e8, #4196cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.recent_sub_title {
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 474px) {
+  .recent_title {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .recent_title {
+    font-size: 1.5rem !important;
+  }
+}

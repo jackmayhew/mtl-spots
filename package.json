@@ -1,0 +1,38 @@
+{
+  "name": "skate",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.0",
+    "@chakra-ui/react": "^1.8.8",
+    "@choc-ui/chakra-autocomplete": "^4.22.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "framer-motion": "^6.3.11",
+    "isomorphic-unfetch": "^3.1.0",
+    "mongoose": "^6.3.4",
+    "next": "12.1.6",
+    "next-themes": "^0.2.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-icons": "^4.4.0",
+    "react-onclickoutside": "^6.12.2",
+    "react-slick": "^0.29.0",
+    "remove-trailing-slash": "^0.1.1",
+    "sass": "^1.52.1",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^8.2.2",
+    "use-local-storage": "^2.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.48",
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6"
+  }
+}
