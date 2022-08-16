@@ -3,6 +3,7 @@ import listenForOutsideClick from "../../utils/Listen";
 import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { FiUpload } from "react-icons/fi";
 
 const SpotsDrop = () => {
   // toggle menu
@@ -16,17 +17,18 @@ const SpotsDrop = () => {
   const router = useRouter();
 
   return (
+    <div className="find__share__wrap">
     <div
       ref={menuRef}
       className={
         isOpen
-          ? "header__item header__item_dropdown js-header-item active"
-          : "header__item header__item_dropdown js-header-item"
+          ? "header__item header__item_dropdown js-header-item spot__upload active"
+          : "header__item header__item_dropdown js-header-item spot__upload"
       }
     >
-      <button className="header__head js-header-head" onClick={toggle}>
-        Find Spots
-        <IoIosArrowDown className="icon icon-arrow-down" />
+      <button className="header__head js-header-head active" onClick={toggle}>
+       <span className={router.asPath.includes("/spots") ? "spots__drop__active" : ""}>Find Spots
+        <IoIosArrowDown className="icon icon-arrow-down" /></span> 
       </button>
 
       <div className="header__body desktop__nav">
@@ -90,24 +92,23 @@ const SpotsDrop = () => {
         </div>
       </div>
 
-      {/* <div className="header__body mobile__nav">
-        <div className="header__menu">
-          <Link href="/spots">
-            <a  onClick={() => setMenuState(!menuState)}
-              className={
-                router.asPath === "/spots"
-                  ? "header__link active"
-                  : "header__link"
-              }
-              // onClick={handleActive}
-            >
-              All Spots
-            </a>
-          </Link>
-        </div>
-      </div> */}
 
+    </div>
+    <div className="header__item header__item_language upload__link" >
       
+<Link href="/upload">
+      <a 
+      className={
+        router.asPath === "/upload"
+          ? "header__head upload__active"
+          : "header__head"
+      }
+      onClick={() => {setIsOpen(false)}}>
+        Share Spots
+        <FiUpload className="icon icon-globe share__icon" />
+      </a>
+</Link>
+    </div> 
     </div>
   );
 };

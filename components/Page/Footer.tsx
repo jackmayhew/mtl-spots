@@ -1,5 +1,5 @@
 import React from "react";
-import ThemeChanger from "../HomePage/Theme";
+import ThemeChanger from "./Theme";
 import Link from "next/link";
 
 function Footer() {

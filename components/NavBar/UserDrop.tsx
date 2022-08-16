@@ -4,9 +4,9 @@ import Link from "next/link";
 import { FiUser, FiBookmark, FiAtSign } from "react-icons/fi";
 import { useRouter } from "next/router";
 
-import ThemeChanger from "../HomePage/Theme";
+import ThemeChanger from "../Page/Theme";
 
-const UserDrop = () => {
+const UserDrop = ({language, setLanguage, languageHandle}) => {
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +14,7 @@ const UserDrop = () => {
 
   useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
 
-  const [language, setLanguage] = useState("english");
-  
-  const languageHandle = (e) => {
-    setLanguage(e.target.id)
-  }
+
 
   const router = useRouter();
 
@@ -91,7 +87,7 @@ const UserDrop = () => {
             </a>
           </Link> */}
 
-<div className="header__body js-header-body language__body slat">
+      <div className="header__body js-header-body language__body slat">
         <div className="header__list">
           <a className={language === "english" ? "header__box active" : "header__box"} id="english" onClick={languageHandle}>
             <div className="header__category">English</div>

@@ -6,6 +6,7 @@ import UserDrop from "./UserDrop";
 import { useRouter } from "next/router";
 
 function NavBar() {
+
   const [mobileMenu, setMobileMenu] = useState(false);
   const router = useRouter();
 
@@ -21,7 +22,12 @@ function NavBar() {
     document.querySelector("body").classList.remove("lock");
   };
 
+  const [language, setLanguage] = useState("english");
   
+  const languageHandle = (e) => {
+    setLanguage(e.target.id)
+  }
+
   return (
     <header className="header js-header">
       <div className="header__center center">
@@ -67,17 +73,6 @@ function NavBar() {
                 Find
               </a>
             </Link>
-            {/* <Link href="/map">
-              <a
-                className={
-                  router.asPath === "/map"
-                    ? "header__item active mobile__nav"
-                    : "header__item mobile__nav"
-                }
-              >
-                Map
-              </a>
-            </Link> */}
             <Link href="/upload">
               <a
                 className={
@@ -113,10 +108,13 @@ function NavBar() {
             </Link>
           </div>
 
-          <LanguageDrop />
+          {/* <UploadLink /> */}
+          <LanguageDrop language={language} setLanguage={setLanguage} languageHandle={languageHandle}/>
+          
+
         </div>
 
-        <UserDrop />
+        <UserDrop language={language} setLanguage={setLanguage} languageHandle={languageHandle} />
 
         <button
           className={
@@ -126,6 +124,7 @@ function NavBar() {
           }
           onClick={() => handleMobileMenu()}
         ></button>
+
       </div>
     </header>
   );

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import listenForOutsideClick from "../../utils/Listen";
 import { FiGlobe } from "react-icons/fi";
 
-const LanguageDrop = () => {
+const LanguageDrop = ({language, setLanguage, languageHandle}) => {
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -10,11 +10,7 @@ const LanguageDrop = () => {
 
   useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
 
-  const [language, setLanguage] = useState("english");
-  
-  const languageHandle = (e) => {
-    setLanguage(e.target.id)
-  }
+
 
   return (
     <div
@@ -30,6 +26,8 @@ const LanguageDrop = () => {
         Language
       </button>
 
+      
+
       <div className="header__body js-header-body language__body" onClick={toggle}>
         <div className="header__list">
           <a className={language === "english" ? "header__box active" : "header__box"} id="english" onClick={languageHandle}>
@@ -42,7 +40,7 @@ const LanguageDrop = () => {
           </a>
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
 
