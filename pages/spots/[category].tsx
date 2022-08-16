@@ -36,7 +36,7 @@ function Category({ spots, count, page, query }) {
           />
         </div>
         <div className="main__center center">
-          <div className="panel panel_cars-category">
+          <div className="panel panel_cars-category category__panel">
             <div className="panel__background"></div>
             {/* <div className="panel__controls">
               <button className="button-stroke button-small panel__button active">
