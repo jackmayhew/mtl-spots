@@ -131,7 +131,7 @@ function Home({ spots }) {
                     </div>
                     <div className="description__btns">
                       <Link href="/share">
-                        <a className="button description__button cta__button">
+                        <a className="button-stroke description__button cta__button">
                           Find Spots
                         </a>
                       </Link>
