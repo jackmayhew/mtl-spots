@@ -31,11 +31,11 @@ function Category({ spots, count, page, query }) {
       <div className="section-mb80 main main_cars-category">
         <div className="main__bg">
           <img
-            src="https://ui8-fleet-html.herokuapp.com/img/content/bg-flight-1.jpg"
+            src="https://images.unsplash.com/photo-1593984663685-b91c7036cc0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
             alt="Main"
           />
         </div>
-        <div className="main__center center">
+        <div className="main__center center spots__page">
           <div className="panel panel_cars-category category__panel">
             <div className="panel__background"></div>
             {/* <div className="panel__controls">
