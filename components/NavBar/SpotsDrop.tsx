@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { FiUpload } from "react-icons/fi";
 
 const SpotsDrop = () => {
-  // toggle menu
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +14,10 @@ const SpotsDrop = () => {
 
   const router = useRouter();
 
+  const handle = () => {
+    toggle;
+    console.log('ahh')
+  }
   return (
     <div className="find__share__wrap">
       <div
@@ -25,7 +28,7 @@ const SpotsDrop = () => {
             : "header__item header__item_dropdown js-header-item spot__upload"
         }
       >
-        <button className="header__head js-header-head active" onClick={toggle}>
+        <button className="header__head js-header-head find__spots" onClick={toggle}>
           <span
             className={
               router.asPath.includes("/spots") ? "spots__drop__active" : ""
