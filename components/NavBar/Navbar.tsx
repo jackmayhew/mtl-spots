@@ -6,7 +6,6 @@ import UserDrop from "./UserDrop";
 import { useRouter } from "next/router";
 
 function NavBar() {
-
   const [mobileMenu, setMobileMenu] = useState(false);
   const router = useRouter();
 
@@ -23,10 +22,10 @@ function NavBar() {
   };
 
   const [language, setLanguage] = useState("english");
-  
+
   const languageHandle = (e) => {
-    setLanguage(e.target.id)
-  }
+    setLanguage(e.target.id);
+  };
 
   return (
     <header className="header js-header">
@@ -73,10 +72,10 @@ function NavBar() {
                 Find
               </a>
             </Link>
-            <Link href="/upload">
+            <Link href="/share">
               <a
                 className={
-                  router.asPath === "/upload"
+                  router.asPath === "/share"
                     ? "header__item active mobile__nav"
                     : "header__item mobile__nav"
                 }
@@ -109,12 +108,18 @@ function NavBar() {
           </div>
 
           {/* <UploadLink /> */}
-          <LanguageDrop language={language} setLanguage={setLanguage} languageHandle={languageHandle}/>
-          
-
+          <LanguageDrop
+            language={language}
+            setLanguage={setLanguage}
+            languageHandle={languageHandle}
+          />
         </div>
 
-        <UserDrop language={language} setLanguage={setLanguage} languageHandle={languageHandle} />
+        <UserDrop
+          language={language}
+          setLanguage={setLanguage}
+          languageHandle={languageHandle}
+        />
 
         <button
           className={
@@ -122,9 +127,9 @@ function NavBar() {
               ? "header__burger js-header-burger active"
               : "header__burger js-header-burger"
           }
+          aria-label="Mobile Menu"
           onClick={() => handleMobileMenu()}
         ></button>
-
       </div>
     </header>
   );

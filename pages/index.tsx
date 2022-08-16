@@ -9,7 +9,6 @@ function Home({ spots }) {
 
   return (
     <div className="outer__inner">
-
       <div className="section-mb80 main main_stays-category">
         <div className="main__center center">
           <div className="main__preview">
@@ -36,7 +35,7 @@ function Home({ spots }) {
                   </a>
                 </Link>
 
-                <Link href="/upload">
+                <Link href="/share">
                   <a className="button">
                     <h3>Share</h3>
                     <div className="location__icon">
@@ -131,7 +130,7 @@ function Home({ spots }) {
                       Start finding and sharing skate spots today
                     </div>
                     <div className="description__btns">
-                      <Link href="/upload">
+                      <Link href="/share">
                         <a className="button description__button cta__button">
                           Find Spots
                         </a>
@@ -159,7 +158,6 @@ function Home({ spots }) {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

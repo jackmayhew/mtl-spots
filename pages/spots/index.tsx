@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import fetch from "isomorphic-unfetch";
-import Categoru from "../../components/Spots";
 import {server} from '../../utils/domain'
-import { Tabs, TabList, Tab } from "@chakra-ui/react";
 import Link from "next/link";
-import Pagination from "../../components/Pagination";
-import { FiSearch, FiMap, FiShare } from "react-icons/fi";
+import Pagination from "../../components/Spots/Pagination";
+import { FiMap } from "react-icons/fi";
 
 function All({ spots, count, page }) {
-  const [mapView, setMapView] = useState(false);
 
   const [dropDown, setDropDown] = useState(false);
   const [dropDownValue, setDropDownValue] = useState("");
+
+  let results = spots.filter(x => x.category.includes("Stairs"));
+  console.log(results)
 
   return (
     <div className="outer__inner">
@@ -35,25 +35,19 @@ function All({ spots, count, page }) {
             </div> */}
             <div className="panel__body">
               <div className="panel__row">
-                <div className="location js-location location_small location_down">
+                {/* <div className="location js-location location_small location_down">
                   <div className="location__head js-location-head">
                     <div className="location__icon">
-                      {/* <svg className="icon icon-marker">
-                          <use xlink:href="#icon-marker"></use>
-                        </svg> */}
+
                     </div>
                     <input
                       className="location__input js-location-input"
                       type="text"
                       name="location"
                       placeholder="Pickup location"
-                      pwa2-uuid="EDITOR/input-E4D-B9A-961D4-632"
-                      pwa-fake-editor=""
                     />
                     <button className="location__clear js-location-clear">
-                      {/* <svg className="icon icon-close-circle">
-                          <use xlink:href="#icon-close-circle"></use>
-                        </svg> */}
+
                     </button>
                   </div>
                   <div className="location__body js-location-body">
@@ -75,7 +69,7 @@ function All({ spots, count, page }) {
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div
                   className="datepicker js-date-range datepicker_small datepicker_down"
                   data-format="ddd, MMM DD"
@@ -100,10 +94,12 @@ function All({ spots, count, page }) {
                         type="text"
                         placeholder="Check out"
                       />
+                      {/* <h3>check out</h3> */}
                       <div className="datepicker__icon">
                         {/* <svg className="icon icon-calendar">
                             <use xlink:href="#icon-calendar"></use>
                           </svg> */}
+                          <FiMap className="icon icon-globe share__icon" size={44} />
                       </div>
                     </div>
                   </div>
@@ -329,6 +325,7 @@ function All({ spots, count, page }) {
     </div>
   );
 }
+
 export async function getServerSideProps({ query }) {
   query.page == 0 || query.page == undefined ? (query.page = 1) : (query.page = query.page);
   const res = await fetch(`${server}/api/spots?page=${query.page}`);

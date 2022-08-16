@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Spots/Pagination";
 import { server } from "../../utils/domain";
 
 function Category({ spots, count, page, query }) {

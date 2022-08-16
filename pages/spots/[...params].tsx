@@ -1,21 +1,23 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
-import SpotsDrop from "../../components/NavBar/SpotsDrop";
+import { server } from "../../utils/domain";
 
 function All({ spot }) {
-
-  return <div>single spot</div>
-  // return <div>{spot.data.title}</div>
+  return <div>{spot.title}</div>;
 }
 
-// All.getInitialProps = async ({ query }) => {
-//   const spotID = query.params[1];
+export async function getServerSideProps({ query }) {
+  const spotID = query.params[1];
 
-//   const res = await fetch(`http://localhost:3000/api/spots/category/${spotID}`);
-//   const data = await res.json();
+  const res = await fetch(`${server}/api/spots/category/${spotID}`);
+  const data = await res.json();
 
-//   return { spot: data };
-// };
+  return {
+    props: {
+      spot: data.data,
+    },
+  };
+}
 
 export default All;

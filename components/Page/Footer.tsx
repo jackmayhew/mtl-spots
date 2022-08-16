@@ -29,7 +29,7 @@ function Footer() {
               <Link href="/spots">
                 <a className="footer__link">Spots</a>
               </Link>
-              <Link href="/upload">
+              <Link href="/share">
                 <a className="footer__link">Share</a>
               </Link>
               <Link href="/map">

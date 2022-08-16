@@ -17,15 +17,15 @@ const ThemeChanger = () => {
   return (
     <div className="swtich__wrap">
       {theme === "light" ? (
-        <a className="header__link switcher" onClick={() => setTheme("dark")}>
+        <div className="header__link switcher" onClick={() => setTheme("dark")}>
           <FiMoon size={24} className="icon icon-home" />
           Dark Mode
-        </a>
+        </div>
       ) : (
-        <a className="header__link switcher" onClick={() => setTheme("light")}>
+        <div className="header__link switcher" onClick={() => setTheme("light")}>
           <FiSun size={24} className="icon icon-home" />
           Light Mode
-        </a>
+        </div>
       )}
     </div>
   );
