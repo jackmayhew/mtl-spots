@@ -3545,6 +3545,8 @@ html.dark .header__item_user .user_icon:hover {
   height: 16px;
   margin-left: 8px;
 }
+
+html.dark .spots__drop__active
 .header__item_dropdown.active .header__head {
   color: #23262f;
 }
@@ -3555,6 +3557,10 @@ html.dark .header__item_user .user_icon:hover {
 }
 html.dark .header__item_dropdown.active .header__head {
   color: #e6e8ec;
+}
+html.dark .spots__drop__active,
+html.dark .upload__active {
+  color: #e6e8ec !important;
 }
 html.dark .header__item_dropdown.active .header__head .icon {
   fill: #e6e8ec;
