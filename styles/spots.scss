@@ -3584,7 +3584,7 @@ html.dark .header__item_dropdown.active .header__head .icon {
 //   fill: #23262f;
 // }
 html.dark .header__item_language.active .header__head,
-.header__item_user.active .header__head .user_icon  {
+html.dark .header__item_user.active .header__head .user_icon  {
   color: #e6e8ec;
 }
 // html.dark .header__item_language.active .header__head .icon {
@@ -3831,12 +3831,17 @@ html.dark .header__item_user .header__body {
 .header__item[href].active {
   color: #23262f;
 }
+
+.header__item[href] {
+  border-left: 2px solid transparent;
+}
+
 @media only screen and (max-width: 767px) {
   .header__item[href]:hover,
-  .header__item.active {
+  .header__item[href].active {
     background: none;
-    box-shadow: inset 2px 0 0 #3b71fe;
-    // border-left: 2px solid #3b71fe;
+    // box-shadow: inset 2px 0 0 #3b71fe;
+    border-left: 2px solid #3b71fe;
   }
 }
 html.dark .header__item[href]:hover,

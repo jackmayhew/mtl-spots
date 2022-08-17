@@ -148,7 +148,7 @@ function Home({ spots }) {
                   {/* <div className="testimonials__preview"><img src="https://cdn.dribbble.com/users/1358460/screenshots/14122916/media/3ef2a6f2eef409eb2b7e9e3fcef8928f.jpg?compress=1&resize=1600x1200&vertical=top" alt="Testimonials" /> */}
                   <div className="testimonials__preview">
                     <img
-                      src="https://i.pinimg.com/originals/c3/9c/7a/c39c7a00816a2bb0ca6f33b4fe69fc99.gif"
+                      src="https://robert.accettura.com/wp-content/uploads/2007/10/20071014_chimp_skateboard.jpg"
                       alt="Testimonials"
                     />
                   </div>
@@ -158,6 +158,7 @@ function Home({ spots }) {
           </div>
         </div>
       </div>
+
     </div>
   );
 }
