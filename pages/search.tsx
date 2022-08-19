@@ -1,25 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import fetch from "isomorphic-unfetch";
-import { server } from "../../utils/domain";
+import { server } from "../utils/domain";
 import Link from "next/link";
-import Pagination from "../../components/Spots/Pagination";
-import listenForOutsideClick from "../../utils/Listen";
-// import { useRouter } from "next/router";
-import { FiSearch } from "react-icons/fi";
+import SearchPagination from "../components/Spots/SearchPagination";
+import { FiSearch, FiArrowLeft } from "react-icons/fi";
 import { IoEnterOutline } from "react-icons/io5";
 
-function All({ initialSpots, initialCount, initialPage, initialCategory }) {
-  const menuRef = useRef(null);
-  const [listening, setListening] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-  useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
-
-  // const [spots, setSpots] = useState(initialSpots);
-  // const [count, setCount] = useState(initialCount);
-
-  // const router = useRouter();
-  const [query, setQuery] = useState(initialCategory);
+function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
+  const [searchTerm, setSearchTerm] = useState(initialTerm);
 
   const [search, setSearch] = useState(false);
 
@@ -30,15 +18,12 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
   const handleSearch = (e) => {
     let searchValue = e.target.value;
     /\S/.test(searchValue) ? setSearch(true) : setSearch(false);
+    setSearchTerm(e.target.value);
   };
 
   const handleSubmit = (e) => {
     search ? null : e.preventDefault();
   };
-
-  // const handleCount = async (e) => {
-  //   console.log("initialCount");
-  // };
 
   return (
     <div className="outer__inner">
@@ -58,110 +43,42 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                       <a className="breadcrumbs__link">Spots</a>
                     </Link>
                   </li>
+                  <li className="breadcrumbs__item">
+                    <a className="breadcrumbs__link">Search Results</a>
+                  </li>
+                  <li className="breadcrumbs__item">
+                    <Link href={`/search?term=${initialTerm}`}>
+                      <a className="breadcrumbs__link">
+                        {capitalizeFirstLetter(initialTerm)}
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div className="sorting__body">
                 <div className="sorting__box">
                   <h2 className="sorting__title h2">
-                    {initialCount} Spots Found
+                    {initialCount > 1 || initialCount === 0
+                      ? `${initialCount} Spots Found`
+                      : `${initialCount} Spot Found`}
                   </h2>
                   <div className="sorting__line">
                     <div className="sorting__details">
-                      {query === "All" || !query
-                        ? "Showing All Spots"
-                        : `Showing ${capitalizeFirstLetter(query)}`}
+                      Search Results: {capitalizeFirstLetter(initialTerm)}
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="sorting__foot spotspage__search">
-                <div
-                  className="sorting__select"
-                  ref={menuRef}
-                >
-                  <div
-                    className={
-                      isOpen ? "nice-select select open" : "nice-select select"
-                    }
-                    onClick={toggle}
-                  >
-                    <span className="current">
-                      {query ? capitalizeFirstLetter(query) : "Browse By"}
-                    </span>
-                    <ul className="list">
-                      <Link scroll={false} href={`/spots?category=`}>
-                        <li
-                          onClick={() => setQuery("All")}
-                          className={
-                            query === "All" ? "option selected focus" : "option"
-                          }
-                        >
-                          <a>All</a>
-                        </li>
-                      </Link>
-                      <Link scroll={false} href={`/spots?category=stairs`}>
-                        <li
-                          onClick={() => setQuery("stairs")}
-                          className={
-                            query === "stairs"
-                              ? "option selected focus"
-                              : "option"
-                          }
-                        >
-                          <a>Stairs</a>
-                        </li>
-                      </Link>
-                      <Link scroll={false} href={`/spots?category=rails`}>
-                        <li
-                          onClick={() => setQuery("rails")}
-                          className={
-                            query === "rails"
-                              ? "option selected focus"
-                              : "option"
-                          }
-                        >
-                          <a>Rails</a>
-                        </li>
-                      </Link>
-                      <Link scroll={false} href={`/spots?category=ledges`}>
-                        <li
-                          onClick={() => setQuery("ledges")}
-                          className={
-                            query === "ledges"
-                              ? "option selected focus"
-                              : "option"
-                          }
-                        >
-                          <a>Ledges</a>
-                        </li>
-                      </Link>
-                      <Link scroll={false} href={`/spots?category=gaps`}>
-                        <li
-                          onClick={() => setQuery("gaps")}
-                          className={
-                            query === "gaps"
-                              ? "option selected focus"
-                              : "option"
-                          }
-                        >
-                          <a>Gaps</a>
-                        </li>
-                      </Link>
-                      <Link scroll={false} href={`/spots?category=other`}>
-                        <li
-                          onClick={() => setQuery("other")}
-                          className={
-                            query === "other"
-                              ? "option selected focus"
-                              : "option"
-                          }
-                        >
-                          <a>Other</a>
-                        </li>
-                      </Link>
-                    </ul>
-                  </div>
-                </div>
+
+              <div className="sorting__foot searchbar__flex">
+                <Link href="/spots">
+                  <a className="button button__back">
+                    <div className="location__icon icon__back">
+                      <FiArrowLeft size={22} />
+                    </div>
+                    <h3>Back</h3>
+                  </a>
+                </Link>
 
                 <div className="location js-location location_small location_down active spots__search">
                   <div className="location__head js-location-head">
@@ -180,12 +97,16 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                             placeholder="Search..."
                             autoComplete="off"
                             onKeyUp={handleSearch}
+                            defaultValue={
+                              initialTerm !== "none" ? initialTerm : ""
+                            }
                           />
                         </div>
                         <button>
                           <IoEnterOutline
                             className={
-                              search
+                              (search && searchTerm !== "none") ||
+                              (searchTerm && searchTerm !== "none")
                                 ? "icon icon-globe share__icon submit__icon submit__icon__show"
                                 : "icon icon-globe share__icon submit__icon"
                             }
@@ -214,7 +135,6 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                           src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
                           alt="Entire serviced classy moutain house"
                         />
-                        {/* <div className="category card__category">superhost</div> */}
                       </div>
                       <div className="card__body">
                         <div className="card__line">
@@ -243,10 +163,10 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
 
               {initialSpots.length > 0 && (
                 <div className="catalog__btns">
-                  <Pagination
+                  <SearchPagination
                     count={initialCount}
                     page={initialPage}
-                    spotCategory={initialCategory}
+                    initialTerm={initialTerm}
                   />
                 </div>
               )}
@@ -258,7 +178,7 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
   );
 }
 
-export async function getServerSideProps({ req, query }) {
+export async function getServerSideProps({ query }) {
   query.page == 0 || query.page == undefined
     ? (query.page = 1)
     : (query.page = query.page);
@@ -267,8 +187,12 @@ export async function getServerSideProps({ req, query }) {
     ? (query.category = "")
     : (query.category = query.category);
 
+  query.term == "" || query.term == undefined
+    ? (query.term = "none")
+    : (query.term = query.term);
+
   const res = await fetch(
-    `${server}/api/spots?category=${query.category}&page=${query.page}`
+    `${server}/api/search?term=${query.term}&category=${query.category}&page=${query.page}`
   );
 
   const data = await res.json();
@@ -278,9 +202,10 @@ export async function getServerSideProps({ req, query }) {
       initialSpots: data.data,
       initialCount: data.count,
       initialPage: query.page,
-      initialCategory: query.category
+      initialCategory: query.category,
+      initialTerm: query.term,
     },
   };
 }
 
-export default All;
+export default Search;

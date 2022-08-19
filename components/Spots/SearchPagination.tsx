@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function Pagination({ count, page, spotCategory }) {
+function Pagination({ count, page, initialTerm }) {
   let pageIndex = parseInt(page);
   page === undefined ? (pageIndex = 1) : (pageIndex = parseInt(page));
 
@@ -11,7 +11,7 @@ function Pagination({ count, page, spotCategory }) {
   const lastPage = Math.ceil(count / 12);
 
   // if browsing by category, add to url
-  const path = `?category=${spotCategory}`;
+  const path = `?term=${initialTerm}`;
 
   return (
     <div className="pagination p1">
@@ -27,7 +27,7 @@ function Pagination({ count, page, spotCategory }) {
 
         {/* first */}
         {currentPage > 2 && (
-          <Link scroll={false} href={`/spots${path}&page=1`}>
+          <Link scroll={false} href={`/search${path}&page=1`}>
             <a
               onClick={() =>
                 window.scroll({ top: 0, left: 0, behavior: "smooth" })
@@ -40,7 +40,7 @@ function Pagination({ count, page, spotCategory }) {
 
         {/* prev */}
         {currentPage >= 2 && (
-          <Link scroll={false} href={`/spots${path}&page=${previousPage}`}>
+          <Link scroll={false} href={`/search${path}&page=${previousPage}`}>
             <a
               onClick={() =>
                 window.scroll({ top: 0, left: 0, behavior: "smooth" })
@@ -53,7 +53,7 @@ function Pagination({ count, page, spotCategory }) {
 
         {/* current */}
         {count >= 13 && (
-          <Link scroll={false} href={`/spots${path}&page=${currentPage}`}>
+          <Link scroll={false} href={`/search${path}&page=${currentPage}`}>
             <a
               className="is-active"
               onClick={() =>
@@ -67,7 +67,7 @@ function Pagination({ count, page, spotCategory }) {
 
         {/* next */}
         {hasNextPage && (
-          <Link scroll={false} href={`/spots${path}&page=${nextPage}`}>
+          <Link scroll={false} href={`/search${path}&page=${nextPage}`}>
             <a
               onClick={() =>
                 window.scroll({ top: 0, left: 0, behavior: "smooth" })
@@ -80,7 +80,7 @@ function Pagination({ count, page, spotCategory }) {
 
         {/* last */}
         {nextPage !== lastPage && currentPage !== lastPage && count > 13 && (
-          <Link scroll={false} href={`/spots${path}&page=${lastPage}`}>
+          <Link scroll={false} href={`/search${path}&page=${lastPage}`}>
             <a
               onClick={() =>
                 window.scroll({ top: 0, left: 0, behavior: "smooth" })

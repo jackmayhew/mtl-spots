@@ -69,7 +69,7 @@ function NavBar() {
                     : "header__item mobile__nav"
                 }
               >
-                Find
+                Spots
               </a>
             </Link>
             <Link href="/share">

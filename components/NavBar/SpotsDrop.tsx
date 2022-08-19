@@ -14,10 +14,7 @@ const SpotsDrop = () => {
 
   const router = useRouter();
 
-  const handle = () => {
-    toggle;
-    console.log('ahh')
-  }
+
   return (
     <div className="find__share__wrap">
       <div
@@ -42,9 +39,9 @@ const SpotsDrop = () => {
         <div className="header__body desktop__nav">
           <div className="header__menu" onClick={toggle}>
             <Link href="/spots">
-              <a
+              <a 
                 className={
-                  router.asPath === "/spots"
+                  router.asPath === "/spots" || router.asPath.includes("/spots?category=")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -56,7 +53,7 @@ const SpotsDrop = () => {
             <Link href="/spots/stairs">
               <a
                 className={
-                  router.asPath === "/spots/stairs"
+                  router.asPath.includes("/spots/stairs")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -67,7 +64,7 @@ const SpotsDrop = () => {
             <Link href="/spots/rails">
               <a
                 className={
-                  router.asPath === "/spots/rails"
+                  router.asPath.includes("/spots/rails")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -78,7 +75,7 @@ const SpotsDrop = () => {
             <Link href="/spots/ledges">
               <a
                 className={
-                  router.asPath === "/spots/ledges"
+                  router.asPath.includes("/spots/ledges")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -89,7 +86,7 @@ const SpotsDrop = () => {
             <Link href="/spots/gaps">
               <a
                 className={
-                  router.asPath === "/spots/gaps"
+                  router.asPath.includes("/spots/gaps")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -97,6 +94,17 @@ const SpotsDrop = () => {
                 Gaps
               </a>
             </Link>
+            {/* <Link href="/spots/other">
+              <a
+                className={
+                  router.asPath === "/spots/other"
+                    ? "header__link active"
+                    : "header__link"
+                }
+              >
+                Other
+              </a>
+            </Link> */}
           </div>
         </div>
       </div>
