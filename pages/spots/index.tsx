@@ -4,7 +4,6 @@ import { server } from "../../utils/domain";
 import Link from "next/link";
 import Pagination from "../../components/Spots/Pagination";
 import listenForOutsideClick from "../../utils/Listen";
-// import { useRouter } from "next/router";
 import { FiSearch } from "react-icons/fi";
 import { IoEnterOutline } from "react-icons/io5";
 
@@ -15,10 +14,6 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
   const toggle = () => setIsOpen(!isOpen);
   useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
 
-  // const [spots, setSpots] = useState(initialSpots);
-  // const [count, setCount] = useState(initialCount);
-
-  // const router = useRouter();
   const [query, setQuery] = useState(initialCategory);
 
   const [search, setSearch] = useState(false);
@@ -35,10 +30,6 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
   const handleSubmit = (e) => {
     search ? null : e.preventDefault();
   };
-
-  // const handleCount = async (e) => {
-  //   console.log("initialCount");
-  // };
 
   return (
     <div className="outer__inner">

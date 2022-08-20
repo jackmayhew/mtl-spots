@@ -1,9 +1,19 @@
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import { server } from "../../utils/domain";
-import { FiSearch, FiNavigation, FiMapPin, FiShare, FiSend, FiHeart, FiBookmark, FiMap, FiGrid } from "react-icons/fi";
-
-
+import {
+  FiSearch,
+  FiNavigation,
+  FiMapPin,
+  FiShare,
+  FiSend,
+  FiHeart,
+  FiBookmark,
+  FiMap,
+  FiGrid,
+  FiStar,
+  FiUpload,
+} from "react-icons/fi";
 
 function SingleSpot({ spot }) {
   return (
@@ -30,17 +40,16 @@ function SingleSpot({ spot }) {
               <li className="breadcrumbs__item">South Island</li>
             </ul>
           </div>
+
           <div className="product__head">
             <div className="product__box">
-              <h2 className="product__title h2">
-              {spot.title}
-              </h2>
+              <h2 className="product__title h2">{spot.title}</h2>
               <div className="product__line">
-                {/* <div className="product__rating">
-                  <FiGrid size={22} />
-                  <div className="product__number">{spot.category}</div>
+                <div className="product__rating">
+                  <FiStar color="#FFD266" />
+                  <div className="product__number">4.8</div>
                   <div className="product__reviews">(256 reviews)</div>
-                </div> */}
+                </div>
                 <div className="product__options">
                   {/* <div className="product__option">
                     <FiSearch size={22} />
@@ -53,11 +62,12 @@ function SingleSpot({ spot }) {
                 </div>
               </div>
             </div>
+
             <div className="actions js-actions">
               <div className="actions__list">
                 <div className="actions__item actions__item_map js-actions-item">
                   <button className="button-circle-stroke button-small actions__button js-actions-button">
-                    <FiMap size={22} color="#000000" />
+                    <FiMap size={22} className="icon" />
                   </button>
                   <div className="actions__body js-actions-body">
                     <iframe
@@ -70,9 +80,9 @@ function SingleSpot({ spot }) {
 
                 <div className="actions__item actions__item_share js-actions-item">
                   <button className="button-circle-stroke button-small actions__button js-actions-button">
-                    <FiShare size={22} color="#000000" />
+                    <FiShare size={22} className="icon" />
                   </button>
-                  
+
                   <div className="actions__body js-actions-body">
                     <div className="actions__title">
                       Share link to this page
@@ -97,77 +107,44 @@ function SingleSpot({ spot }) {
 
                 <div className="actions__item">
                   <button className="button-circle-stroke button-small actions__favorite js-actions-favorite">
-                    <FiBookmark size={22} color="#000000" />
+                    <FiBookmark size={22} className="icon" />
                   </button>
                 </div>
-
               </div>
             </div>
           </div>
+
           <div className="gallery">
             <div className="gallery__list gallery__list_stays">
               <div className="gallery__preview">
-                <a
-                  className="gallery__view"
-                  href="img/content/photo-1.1.jpg"
-                  data-fancybox="gallery"
-                  data-caption="Spectacular views of Queenstown"
-                >
-                  <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Gallery" />
-                </a>
-                <a
-                  className="button-white button-small gallery__button"
-                  href="full-photo-grid.html"
-                >
-                  <FiSearch size={22} />
-                  <span>Show all photos</span>
-                </a>
+                <img
+                  src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
+                  alt="Gallery"
+                />
               </div>
-              <a
-                className="gallery__preview"
-                href="img/content/photo-1.2.jpg"
-                data-fancybox="gallery"
-              >
-                <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Gallery" />
-              </a>
-              <a
-                className="gallery__preview"
-                href="img/content/photo-1.3.jpg"
-                data-fancybox="gallery"
-              >
-                <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Gallery" />
-              </a>
-              <a
-                className="gallery__preview"
-                href="img/content/photo-1.4.jpg"
-                data-fancybox="gallery"
-              >
-                <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Gallery" />
-              </a>
             </div>
           </div>
         </div>
       </div>
+
       <div className="section description">
         <div className="description__center center">
           <div className="description__wrapper">
             <h4 className="description__title h4">{spot.title}</h4>
-            <div className="description__profile">
-              <span>Hosted by</span>
-              <div className="description__avatar">
-                <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
-              </div>
-              <div className="description__name">Zoe Towne</div>
-            </div>
+            {/* <div className="description__profile">
+              <div className="description__name">Located In: Rosement</div>
+            </div> */}
             <div className="description__parameters">
               <div className="description__parameter">
-                <FiSearch size={22} />2 guests
+                <FiSearch size={22} className="icon" />
+                Category
               </div>
               <div className="description__parameter">
-                <FiSearch size={22} />1 bedroom
+                <FiSearch size={22} className="icon" />
+                Location
               </div>
               <div className="description__parameter">
-                <FiSearch size={22} />1 private bath
+                <FiSearch size={22} className="icon" />1 private bath
               </div>
             </div>
             <div className="description__content">
@@ -188,8 +165,8 @@ function SingleSpot({ spot }) {
                 &amp; city lights by night.
               </p>
             </div>
-            <div className="description__info">Amenities</div>
-            <div className="description__options">
+            {/* <div className="description__info">Amenities</div> */}
+            {/* <div className="description__options">
               <div className="description__option">
                 <FiSearch size={22} />
                 Free wifi 24/7
@@ -222,8 +199,8 @@ function SingleSpot({ spot }) {
                 <FiSearch size={22} />
                 Nearby city
               </div>
-            </div>
-            <div className="description__full">
+            </div> */}
+            {/* <div className="description__full">
               <div className="description__content description__content_hide">
                 <p>
                   Described by Queenstown House &amp; Garden magazine as having
@@ -240,30 +217,30 @@ function SingleSpot({ spot }) {
               <button className="button-stroke button-small description__button">
                 More detail
               </button>
-            </div>
+            </div> */}
           </div>
           <div className="receipt">
             <div className="receipt__head">
               <div className="receipt__details">
                 <div className="receipt__cost">
-                  <div className="receipt__old">$119</div>
-                  <div className="receipt__actual">$109</div>
-                  <div className="receipt__note">/night</div>
+                  {/* <div className="receipt__old">$119</div> */}
+                  <div className="receipt__actual">Add More Photos</div>
+                  {/* <div className="receipt__note">/night</div> */}
                 </div>
-                <div className="receipt__rating">
+                {/* <div className="receipt__rating">
                   <FiSearch size={22} />
                   <div className="receipt__number">4.8</div>
                   <div className="receipt__reviews">(256 reviews)</div>
-                </div>
+                </div> */}
               </div>
-              <div className="receipt__avatar">
+              {/* <div className="receipt__avatar">
                 <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
                 <div className="receipt__check">
                   <FiSearch size={22} />
                 </div>
-              </div>
+              </div> */}
             </div>
-            <div className="receipt__description receipt__description_flex">
+            {/* <div className="receipt__description receipt__description_flex">
               <div className="receipt__item">
                 <div className="receipt__icon">
                   <FiSearch size={22} />
@@ -289,6 +266,21 @@ function SingleSpot({ spot }) {
                 <div className="receipt__box">
                   <div className="receipt__category">Guest</div>
                   <div className="receipt__subtitle">2 guests</div>
+                </div>
+              </div>
+            </div> */}
+            <div className="upload__item">
+              {/* <div className="upload__category">Upload photos</div> */}
+              <div className="upload__note">
+                Drag or choose your file to upload
+              </div>
+              <div className="upload__file">
+                <input className="upload__input" type="file" />
+                <div className="upload__icon">
+                  <FiUpload />
+                </div>
+                <div className="upload__format">
+                  PNG, GIF, WEBP, MP4. Max 500Mb.
                 </div>
               </div>
             </div>
@@ -338,7 +330,10 @@ function SingleSpot({ spot }) {
             <div className="profile__head">
               <div className="profile__line">
                 <div className="profile__avatar">
-                  <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                  <img
+                    src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
+                    alt="Avatar"
+                  />
                   <div className="profile__check">
                     <FiSearch size={22} />
                   </div>
@@ -507,7 +502,10 @@ function SingleSpot({ spot }) {
             <div className="comment__list">
               <div className="comment__item">
                 <div className="comment__avatar">
-                  <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                  <img
+                    src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
+                    alt="Avatar"
+                  />
                 </div>
                 <div className="comment__details">
                   <div className="comment__top">
@@ -530,7 +528,10 @@ function SingleSpot({ spot }) {
               </div>
               <div className="comment__item">
                 <div className="comment__avatar">
-                  <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                  <img
+                    src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
+                    alt="Avatar"
+                  />
                 </div>
                 <div className="comment__details">
                   <div className="comment__top">
@@ -552,7 +553,10 @@ function SingleSpot({ spot }) {
               </div>
               <div className="comment__item">
                 <div className="comment__avatar">
-                  <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                  <img
+                    src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
+                    alt="Avatar"
+                  />
                 </div>
                 <div className="comment__details">
                   <div className="comment__top">

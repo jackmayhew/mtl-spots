@@ -1,5 +1,3 @@
-// import React, { useState, useEffect, useRef } from "react";
-// import { useRouter } from "next/router";
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import CategoryPagination from "../../components/Spots/CategoryPagination";
@@ -11,7 +9,6 @@ function Category({
   initialPage,
   initialCategory,
 }) {
-  // const router = useRouter();
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
