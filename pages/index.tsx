@@ -1,4 +1,4 @@
-import HomeSlider from "../components/HomePage/Slider";
+import HomeSlider from "../components/Sliders/Slider";
 import { FiSearch, FiMap, FiShare } from "react-icons/fi";
 import Link from "next/link";
 import { server } from "../utils/domain";
@@ -57,7 +57,7 @@ function Home({ spots }) {
         </div>
       </div>
 
-      <HomeSlider spots={spots} />
+      <HomeSlider spots={spots} category="" />
 
       <div className="section work">
         <div className="work__center center">

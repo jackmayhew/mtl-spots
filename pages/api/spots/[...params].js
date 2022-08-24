@@ -15,7 +15,12 @@ export default async (req, res) => {
         if (!spot) {
           res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: spot });
+        const related = await Spot.find({
+          category: new RegExp(spot.category, "i"),
+        })
+          .sort({ _id: -1 })
+          .limit(7);
+        res.status(200).json({ success: true, data: spot, related: related });
       } catch (error) {
         res.status(400).json({ success: false });
       }

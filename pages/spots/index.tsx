@@ -152,6 +152,7 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                       </Link>
                     </ul>
                   </div>
+
                 </div>
 
                 <div className="location js-location location_small location_down active spots__search">
