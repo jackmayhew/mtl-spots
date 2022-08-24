@@ -27,8 +27,8 @@ function upload() {
 
   const [fileName, setFileName] = useState("");
   const [title, setTitle] = useState("Title Preview");
-  const [bust, setBust] = useState("Low");
-  const [category, setCategory] = useState("Category");
+  const [bust, setBust] = useState("");
+  const [category, setCategory] = useState("");
   const [googleMaps, setGoogleMaps] = useState("");
 
 
@@ -177,7 +177,7 @@ function upload() {
                               onClick={toggle2}
                             >
                               <span className="current">
-                                {category ? category : "Select..."}
+                                {category ? category : ""}
                               </span>
                               
                               <ul className="list">
@@ -241,7 +241,7 @@ function upload() {
                               onClick={toggle}
                             >
                               <span className="current">
-                                {bust ? bust : "Select..."}
+                                {bust ? bust : ""}
                               </span>
                               <ul className="list">
 
@@ -331,7 +331,7 @@ function upload() {
                   </div>
                   <div className="card__options">
                     <div className="card__option">
-                      {category}
+                      {category ? category : "Category"}
                     </div>
                     {/* <div className="card__option">
                       Breakfast included
