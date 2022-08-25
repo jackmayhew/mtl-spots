@@ -1,22 +1,30 @@
-import { useState } from 'react';
-import { useS3Upload } from 'next-s3-upload';
+import { useState } from "react";
+import { useS3Upload } from "next-s3-upload";
 
-export default function UploadTest() {
+export default function UploadPage() {
   let [imageUrl, setImageUrl] = useState();
-  let { FileInput, openFileDialog, uploadToS3 } = useS3Upload();
+  let { uploadToS3 } = useS3Upload();
+  let [file, setFile] = useState();
 
-  let handleFileChange = async file => {
-    let { url } = await uploadToS3(file);
-    setImageUrl(url);
+
+  let handleFileChange = async event => {
+    setFile(event.target.files[0])
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let { url } = await uploadToS3(file);
+    setImageUrl(url);
+
+  }
   return (
     <div>
-      <FileInput onChange={handleFileChange} />
+    <form action="" method="post" onSubmit={handleSubmit}>
+      <input type="file" onChange={handleFileChange} />
+      {imageUrl && <img src={imageUrl} />}    
+      <button type="submit">submit</button>
+    </form>
 
-      <button onClick={openFileDialog}>Upload file</button>
-
-      {imageUrl && <img src={imageUrl} />}
     </div>
   );
 }

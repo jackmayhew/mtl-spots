@@ -19,7 +19,6 @@ function HomeSlider({ spots, category }) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  console.log(spots.length);
   return (
     <div className="section browse">
       {spots.length >= 1 ? (
