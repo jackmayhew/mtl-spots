@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { GrLocationPin } from "react-icons/gr";
+// require('dotenv').config()
+
 
 function Marker({ lat, lng }) {
   return (
@@ -10,6 +12,11 @@ function Marker({ lat, lng }) {
   );
 }
 
+// const name = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API || 'world';
+
+// console.log(name)
+
+console.log(process.env.MONGO_URI)
 function SimpleMap() {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
@@ -59,7 +66,7 @@ function SimpleMap() {
     
     <div style={{ height: "100%", width: "100%" }} className="googleMap">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyCK4CFCZkbvdwhkDGRI8IlBfq1KoCTAwoA" }}
+        bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API }}        
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         onClick={(ev) => {
