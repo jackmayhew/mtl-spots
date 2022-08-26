@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/spots/[...params].tsx", "models/Spot.js", "pages/api/spots/index.js", "pages/api/spots/[category].js", "pages/api/spots/[...params].js", "pages/api/home/index.js", "pages/api/spots/share/index.js", "pages/uploads.js", "pages/share.js", "pages/share.js", "pages/uploads.js"  ],
+, "pages/spots/[...params].tsx", "models/Spot.js", "pages/api/spots/index.js", "pages/api/spots/[category].js", "pages/api/spots/[...params].js", "pages/api/home/index.js", "pages/api/spots/share/index.js", "pages/uploads.js", "pages/share.tsx", "pages/share.tsx", "pages/uploads.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -112,7 +112,7 @@ const SpotsDrop = () => {
         <Link href="/share">
           <a
             className={
-              router.asPath === "/share"
+              router.asPath.includes("/share")
                 ? "header__head upload__active"
                 : "header__head"
             }

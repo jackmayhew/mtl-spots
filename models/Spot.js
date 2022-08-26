@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const SpotSchema = new mongoose.Schema({
+  image: {
+    type: String,
+    required: true,
+  },
+
   title: {
     type: String,
     required: true,
@@ -23,17 +28,10 @@ const SpotSchema = new mongoose.Schema({
 
   ig: {
     type: String,
-    required: true,
   },
 
   description: {
     type: String,
-    required: true,
-  },
-
-  url: {
-    type: String,
-    required: true,
   },
 
   time: {
@@ -41,10 +39,5 @@ const SpotSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
-// time : { type : Date, default: Date.now }
-// location coodinates
-// bust level
-// ig
 
 module.exports = mongoose.models.Spot || mongoose.model("Spot", SpotSchema);

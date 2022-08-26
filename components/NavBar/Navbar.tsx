@@ -75,7 +75,7 @@ function NavBar() {
             <Link href="/share">
               <a
                 className={
-                  router.asPath === "/share"
+                  router.asPath.includes("/share")
                     ? "header__item active mobile__nav"
                     : "header__item mobile__nav"
                 }

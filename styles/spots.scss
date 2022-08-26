@@ -8647,8 +8647,8 @@ html.dark .sorting__location .sorting__button.active {
 }
 .sorting__map {
   position: absolute;
-  top: calc(100% + 16px);
-  right: 0;
+  // top: calc(100% + 16px);
+  // right: 0;
   z-index: 5;
   width: 640px;
   height: 480px;
@@ -8657,15 +8657,15 @@ html.dark .sorting__location .sorting__button.active {
   border-radius: 24px 0 24px 24px;
   border: 1px solid #e6e8ec;
   box-shadow: 0px 40px 64px -16px rgba(15, 15, 15, 0.1);
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible;
+  // opacity: 0;
   transition: all 0.4s;
 }
 .sorting__map.show {
   visibility: visible;
   opacity: 1;
 }
-.sorting__map iframe {
+.sorting__map .googleMap {
   width: 100%;
   height: 100%;
   border-radius: 21px 0 21px 21px;
@@ -8674,6 +8674,9 @@ html.dark .sorting__location .sorting__button.active {
   margin-bottom: 12px;
 }
 @media only screen and (max-width: 767px) {
+  .sorting__map {
+    width: 100%;
+  }
   .sorting__title {
     font-size: 32px;
   }
@@ -11798,6 +11801,13 @@ html.dark .radio__text {
   color: #fcfcfd;
 }
 
+.error {
+  font-size: 12px;
+  // line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .field__label {
   margin-bottom: 12px;
   font-size: 12px;
@@ -11811,6 +11821,9 @@ html.dark .radio__text {
   position: relative;
 }
 
+.field__textarea {
+  vertical-align: top;
+}
 .field__input,
 .field__textarea {
   width: 100%;

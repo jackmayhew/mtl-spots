@@ -15,7 +15,6 @@ export default function UploadPage() {
     e.preventDefault()
     let { url } = await uploadToS3(file);
     setImageUrl(url);
-
   }
   return (
     <div>

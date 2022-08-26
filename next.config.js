@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: false,
-  reactStrictMode: true,
+  reactStrictMode: false,
   i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US' 
