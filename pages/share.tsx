@@ -6,6 +6,8 @@ import { server } from "../utils/domain";
 import { FiUpload } from "react-icons/fi";
 import listenForOutsideClick from "../utils/Listen";
 import { useS3Upload } from "next-s3-upload";
+import Map from "../components/Maps/ShareMap";
+import { BsFillNutFill } from "react-icons/bs";
 
 export default function upload() {
   const menuRef = useRef(null);
@@ -22,6 +24,17 @@ export default function upload() {
     listenForOutsideClick(listening2, setListening2, menuRef2, setIsOpen2)
   );
 
+
+  const menuRef3 = useRef(null);
+  const [listening3, setListening3] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
+  const toggle3 = () => setIsOpen3(!isOpen3);
+  useEffect(
+    listenForOutsideClick(listening3, setListening3, menuRef3, setIsOpen3)
+  );
+
+
+
   const [fileName, setFileName] = useState("");
   const [filePreview, setFilePreview] = useState(null);
   const [category, setCategory] = useState("");
@@ -30,9 +43,18 @@ export default function upload() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({} as any);
 
+  // s3 upload
   let [imageUrl, setImageUrl] = useState("");
   let { uploadToS3 } = useS3Upload();
   let [file, setFile] = useState();
+
+
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
+  // RESET MAP DEFAULT PROPS ON SUBMIT
+  const [defaultLat, setDefaultLat] = useState(0);
+  const [defaultLong, setDefaultLong] = useState(0);
+  
 
   const [form, setForm] = useState({
     check: false,
@@ -45,7 +67,7 @@ export default function upload() {
     description: "",
   });
 
-  const createNote = async (url) => {
+  const createSpot = async (url) => {
     try {
       const res = await fetch(`${server}/api/spots/share`, {
         method: "POST",
@@ -53,9 +75,8 @@ export default function upload() {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ form, url }),
+        body: JSON.stringify({ form, url, lat, long }),
       });
-      console.log(url);
       // setIsSubmitting(false);
       // router.push("/share");
     } catch (error) {
@@ -88,8 +109,31 @@ export default function upload() {
     if (!errs.check) {
       let { url } = await uploadToS3(file);
       setImageUrl(url);
-      createNote(url);
+      createSpot(url);
       setIsSubmitting(true);
+
+      // reset form
+      setLat(null);
+      setLong(null);
+      setImageUrl("");
+      setFile(null);
+      setErrors({} as any)
+      setBust("");
+      setCategory("");
+      setFilePreview(null);
+      setFileName("");
+
+      setForm({
+        check: false,
+        image: "",
+        title: "",
+        category: "",
+        location: "",
+        bust: "",
+        ig: "",
+        description: "",
+      });
+
     }
   };
 
@@ -120,7 +164,7 @@ export default function upload() {
       err.check = true;
     }
 
-    if (!form.location) {
+    if (!lat && !long) {
       err.location = "Location required";
       err.check = true;
     }
@@ -172,6 +216,7 @@ export default function upload() {
             <div className="upload__form">
               <form onSubmit={handleSubmit}>
                 <div className="upload__list">
+                 
                   <div className="upload__item">
                     <div className="upload__category">Upload Photo</div>
                     <div className="upload__note">
@@ -203,6 +248,7 @@ export default function upload() {
                   <div className="upload__item">
                     <div className="upload__category">Spot Details</div>
                     <div className="upload__fieldset">
+                      
                       <div className="field">
                         <div className="field__label">title *</div>
                         <div className="field__wrap">
@@ -314,13 +360,20 @@ export default function upload() {
                         <div className="upload__col upload__col_w33 half__col">
                           <div className="field">
                             <div className="field__label">Location *</div>
-                            <div className="field__wrap">
-                              <input
-                                className="field__input"
-                                type="text"
-                                name="location"
-                                onChange={handleChange}
-                              />
+                            <div className="field__wrap" ref={menuRef3}>
+                              <div
+                                className={
+                                  isOpen3
+                                    ? "nice-select select open"
+                                    : "nice-select select"
+                                }
+                                onClick={toggle3}
+                              >
+                                  <span className="current">
+                                  {lat && long ? lat + ", " + long : ""}
+                                </span>
+                              </div>
+                              <Map show={isOpen3} lat={lat} setLat={setLat} long={long} setLong={setLong}  />
                               <div className="error">{errors.location}</div>
                             </div>
                           </div>

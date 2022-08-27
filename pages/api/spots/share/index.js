@@ -12,7 +12,7 @@ export default async (req, res) => {
           image: req.body.url,
           title: req.body.form.title,
           category: req.body.form.category,
-          location: req.body.form.location,
+          location: req.body.lat + ", " + req.body.long,
           bust: req.body.form.bust,
           ig: req.body.form.ig,
           description: req.body.form.description
