@@ -6,10 +6,7 @@ import emailjs from "@emailjs/browser";
 function contact() {
   const formRef = useRef();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
-
+  const [emailError, setEmailError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({} as any);
@@ -40,13 +37,12 @@ function contact() {
       )
       .then(
         (result) => {
-          console.log(result.text);
           setIsSubmitting(false);
           setIsSubmitted(true);
           window.scroll({ top: 0, left: 0, behavior: "smooth" });
         },
         (error) => {
-          console.log(error.text);
+          setEmailError(true);
         }
       );
   };
@@ -141,8 +137,12 @@ function contact() {
                 <div className="faq__col">
                   <div className="faq__box js-tabs-item">
                     <div className="upload__item">
-                      <div className="upload__category contact__form">
-                        Contact Form
+                      <div className="upload__category contact__form faq__stage">
+                        {isSubmitted
+                          ? "Email Sent. We'll Be In Touch Shortly!"
+                          : emailError
+                          ? "something went wrong. please try again or email us at bonjour@mtlspots.ca"
+                          : "Contact Form"}
                       </div>
                       <form ref={formRef} onSubmit={handleSubmit}>
                         <div className="upload__fieldset">
@@ -192,9 +192,10 @@ function contact() {
                               className="button upload__button live__button contact__button"
                               type="submit"
                             >
-                              {isSubmitting ? (
+                              {isSubmitting && !emailError ? (
                                 <div className="loader"></div>
                               ) : null}
+
                               {isSubmitting ? "Submitting..." : "Submit"}
                             </button>
                           </div>

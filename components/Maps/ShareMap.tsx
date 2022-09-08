@@ -5,7 +5,7 @@ import { GrLocationPin } from "react-icons/gr";
 function Marker({ lat, lng }) {
   return (
     <div>
-      <GrLocationPin size={44} />
+      <GrLocationPin className="map__marker" size={44} />
     </div>
   );
 }
