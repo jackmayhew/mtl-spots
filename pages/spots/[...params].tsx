@@ -20,7 +20,7 @@ import Map from "../../components/Maps/SpotMap";
 import { useState, useEffect, useRef } from "react";
 import listenForOutsideClick from "../../utils/Listen";
 
-import useCopyToClipboard from "../../components/copy";
+import useCopyToClipboard from "../../utils/copy";
 
 
 

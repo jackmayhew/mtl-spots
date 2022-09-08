@@ -6,6 +6,7 @@ import Pagination from "../../components/Spots/Pagination";
 import listenForOutsideClick from "../../utils/Listen";
 import { FiSearch } from "react-icons/fi";
 import { IoEnterOutline } from "react-icons/io5";
+import { motion } from 'framer-motion'
 
 function All({ initialSpots, initialCount, initialPage, initialCategory }) {
   const menuRef = useRef(null);
