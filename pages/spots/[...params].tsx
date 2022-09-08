@@ -173,7 +173,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
                 >
                   <button
                     className={
-                      savedSpot.includes(spot._id)
+                      savedSpot && savedSpot.includes(spot._id)
                         ? "button-circle-stroke button-small actions__button js-actions-button spot__saved"
                         : "button-circle-stroke button-small actions__button js-actions-button"
                     }
