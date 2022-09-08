@@ -12,40 +12,46 @@ function All({ initialSpots, initialPage }) {
   const [renderedSpots, setRenderedSpots] = useState([]);
 
   useEffect(() => {
-    // get ids from local storage
-    const array = localStorage
-      .getItem("savedList")
-      .split(",")
-      .filter(function (array) {
-        return array !== "";
-      });
+    if (localStorage.getItem("savedList")) {
+      // get ids from local storage
+      const array = localStorage
+        .getItem("savedList")
+        .split(",")
+        .filter(function (array) {
+          return array !== "";
+        });
 
-    // filter spots with saved ids from api query
-    let filteredSpots = initialSpots.filter((spot) => array.includes(spot._id));
-    setSpots(filteredSpots);
+      // filter spots with saved ids from api query
+      let filteredSpots = initialSpots.filter((spot) =>
+        array.includes(spot._id)
+      );
+      setSpots(filteredSpots);
 
-    // show spots onload
-    setRenderedSpots(
-      filteredSpots
-        // .filter((spot) => array.includes(spot._id))
-        .slice(parseInt(initialPage) * 12 - 12, parseInt(initialPage) * 12)
-    );
-
-    // pagination - show correct 12 spots per page on click
-    const handleRouteChange = (url) => {
-      let pageCount = parseInt(`${url}`.split("=").pop());
-
-      isNaN(pageCount) || pageCount === 0 ? (pageCount = 1) : (pageCount = pageCount);
-
+      // show spots onload
       setRenderedSpots(
         filteredSpots
           // .filter((spot) => array.includes(spot._id))
-          .slice(pageCount * 12 - 12, pageCount * 12)
+          .slice(parseInt(initialPage) * 12 - 12, parseInt(initialPage) * 12)
       );
-    };
 
-    router.events.on("routeChangeStart", handleRouteChange);
-    // routeChangeComplete
+      // pagination - show correct 12 spots per page on click
+      const handleRouteChange = (url) => {
+        let pageCount = parseInt(`${url}`.split("=").pop());
+
+        isNaN(pageCount) || pageCount === 0
+          ? (pageCount = 1)
+          : (pageCount = pageCount);
+
+        setRenderedSpots(
+          filteredSpots
+            // .filter((spot) => array.includes(spot._id))
+            .slice(pageCount * 12 - 12, pageCount * 12)
+        );
+      };
+
+      router.events.on("routeChangeStart", handleRouteChange);
+
+    }
   }, []);
 
   return (
