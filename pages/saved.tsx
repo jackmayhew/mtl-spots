@@ -89,6 +89,7 @@ function All({ initialSpots, initialPage }) {
 
           <div className="catalog__body">
             <div className="catalog__center center">
+            {initialSpots.length > 0 && (
               <div className="catalog__cards">
                 {renderedSpots.map((spot) => (
                   <Link
@@ -127,7 +128,7 @@ function All({ initialSpots, initialPage }) {
                   </Link>
                 ))}
               </div>
-
+              )}
               {initialSpots.length > 0 && (
                 <div className="catalog__btns">
                   <SavedPagination count={spots.length} page={initialPage} />
