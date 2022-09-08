@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from "react";
 import GoogleMapReact from "google-map-react";
 import { GrLocationPin } from "react-icons/gr";
-
+import { MdLocationPin} from 'react-icons/md'
 function Marker({ lat, lng }) {
   return (
-    <div>
-      <GrLocationPin size={44} />
+    <div className="map__marker">
+      <MdLocationPin size={32} className="map__marker"/>
     </div>
   );
 }
@@ -47,23 +47,14 @@ function getMapOptions(maps, id) {
   };
 }
 
-function SimpleMap({
-  lat,
-  setLat,
-  long,
-  setLong,
-  defaultLat,
-  defaultLong,
-  defaultZoom,
-  setDefaultZoom
-}) {
-
+function SimpleMap({location}) {
+  let cords = location.split(/[ ,]+/);
   const defaultProps = {
     center: {
-      lat: defaultLat,
-      lng: defaultLong,
+      lat: 45.540141,
+      lng: -73.635064,
     },
-    zoom: defaultZoom,
+    zoom: 9,
   };
 
   return (
@@ -71,55 +62,23 @@ function SimpleMap({
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API }}
         center={defaultProps.center}
-        zoom={defaultZoom}
-        onClick={(ev) => {
-          setLat(ev.lat);
-          setLong(ev.lng);
-        }}
+        zoom={defaultProps.zoom}
         options={getMapOptions}
-        >
-        <Marker lat={lat} lng={long} />
+      >
+        <Marker lat={cords[0]} lng={cords[1]} />
       </GoogleMapReact>
     </div>
   );
 }
 
-function Map({
-  show,
-  lat,
-  setLat,
-  long,
-  setLong,
-  defaultLat,
-  defaultLong,
-  defaultZoom,
-  setDefaultZoom
-}) {
+function Map({ location }) {
   return (
-    <div>
-      <div
-        className={
-          show
-            ? "sorting__map js-sorting-map show"
-            : "sorting__map js-sorting-map"
-        }
-      >
-        <SimpleMap
-          lat={lat}
-          setLat={setLat}
-          long={long}
-          setLong={setLong}
-          defaultLat={defaultLat}
-          defaultLong={defaultLong}
-          defaultZoom={defaultZoom}
-          setDefaultZoom={setDefaultZoom}
-        />
+    <div className="map__height">
+      <div className="sorting__map js-sorting-map show simple__map">
+        <SimpleMap location={location} />
       </div>
     </div>
   );
 }
 
 export default Map;
-
-
-

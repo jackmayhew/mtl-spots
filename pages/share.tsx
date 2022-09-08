@@ -3,11 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import fetch from "isomorphic-unfetch";
 import { useRouter } from "next/router";
 import { server } from "../utils/domain";
-import { FiUpload } from "react-icons/fi";
+import { FiUpload, FiX } from "react-icons/fi";
 import listenForOutsideClick from "../utils/Listen";
 import { useS3Upload } from "next-s3-upload";
 import Map from "../components/Maps/ShareMap";
-import { BsFillNutFill } from "react-icons/bs";
 
 export default function upload() {
   const menuRef = useRef(null);
@@ -24,7 +23,6 @@ export default function upload() {
     listenForOutsideClick(listening2, setListening2, menuRef2, setIsOpen2)
   );
 
-
   const menuRef3 = useRef(null);
   const [listening3, setListening3] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
@@ -33,14 +31,14 @@ export default function upload() {
     listenForOutsideClick(listening3, setListening3, menuRef3, setIsOpen3)
   );
 
-
-
   const [fileName, setFileName] = useState("");
   const [filePreview, setFilePreview] = useState(null);
+  const [fileSize, setFileSize] = useState(0);
   const [category, setCategory] = useState("");
   const [bust, setBust] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({} as any);
 
   // s3 upload
@@ -48,13 +46,16 @@ export default function upload() {
   let { uploadToS3 } = useS3Upload();
   let [file, setFile] = useState();
 
-
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
-  // RESET MAP DEFAULT PROPS ON SUBMIT
-  const [defaultLat, setDefaultLat] = useState(0);
-  const [defaultLong, setDefaultLong] = useState(0);
-  
+
+  // RESET MAP DEFAULTS ON SUBMIT
+  const [defaultLat, setDefaultLat] = useState(45.540141);
+  const [defaultLong, setDefaultLong] = useState(-73.635064);
+  const [defaultZoom, setDefaultZoom] = useState(10.5);
+  // const [defaultMapType, setDefaulMapType] = useState("ROADMAP");
+
+  const [preview, setPreview] = useState(false);
 
   const [form, setForm] = useState({
     check: false,
@@ -77,8 +78,12 @@ export default function upload() {
         },
         body: JSON.stringify({ form, url, lat, long }),
       });
-      // setIsSubmitting(false);
-      // router.push("/share");
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      // reset map
+      setDefaultZoom(10.5);
+      setDefaultLat(45.540141);
+      setDefaultLong(-73.635064);
     } catch (error) {
       console.log(error);
     }
@@ -92,14 +97,29 @@ export default function upload() {
   };
 
   let handleFile = async (event) => {
-    setForm({
-      ...form,
-      image: event.target.files[0].name,
-    });
-    setFileName(event.target.files[0].name);
-    setFilePreview(URL.createObjectURL(event.target.files[0]));
+    if (event.target.files[0]) {
+      setForm({
+        ...form,
+        image: event.target.files[0].name,
+      });
+      setFileName(event.target.files[0].name);
+      setFilePreview(URL.createObjectURL(event.target.files[0]));
+      setFile(event.target.files[0]);
 
-    setFile(event.target.files[0]);
+      let totalBytes = event.target.files[0].size;
+      let _size = Math.floor(totalBytes / 1000000);
+      //  console.log(_size);
+      setFileSize(_size);
+    }
+    // else {
+    //   setFileName("");
+    //   setForm({
+    //     ...form,
+    //     image: "",
+    //   });
+    //   setFilePreview(null)
+    // }
+    // setFile(event.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
@@ -107,21 +127,32 @@ export default function upload() {
     let errs = validate();
     setErrors(errs);
     if (!errs.check) {
+      setIsSubmitting(true);
       let { url } = await uploadToS3(file);
       setImageUrl(url);
       createSpot(url);
-      setIsSubmitting(true);
+      // setIsSubmitting(true);
 
       // reset form
-      setLat(null);
-      setLong(null);
+      setLat(0);
+      setLong(0);
       setImageUrl("");
       setFile(null);
-      setErrors({} as any)
+      setErrors({} as any);
       setBust("");
       setCategory("");
       setFilePreview(null);
       setFileName("");
+
+      setDefaultLat(1);
+      setDefaultLong(1);
+      setDefaultZoom(1);
+
+      // hack to reset map terrain to street
+      let element: HTMLElement = document.querySelector(
+        '[aria-label="Show street map"]'
+      ) as HTMLElement;
+      element.click();
 
       setForm({
         check: false,
@@ -134,6 +165,7 @@ export default function upload() {
         description: "",
       });
 
+      window.scroll({ top: 0, left: 0, behavior: "smooth" });
     }
   };
 
@@ -151,6 +183,11 @@ export default function upload() {
 
     if (!form.image) {
       err.image = "Image required";
+      err.check = true;
+    }
+
+    if (fileSize > 100) {
+      err.image = "File Size Must Be Less Than 100MB.";
       err.check = true;
     }
 
@@ -180,14 +217,12 @@ export default function upload() {
     }
 
     if (form.description.length > 500) {
-      err.description = "Must be less than 500 characters";
+      err.description = `Must be less than 500 characters. Currently: ${form.description.length}.`;
       err.check = true;
     }
 
     return err;
   };
-
-
 
   return (
     <div className="section upload">
@@ -210,18 +245,20 @@ export default function upload() {
         <div className="upload__inner">
           <div className="upload__wrapper">
             <div className="upload__head">
-              <h2 className="upload__title h2">Spot Upload</h2>
+              <h2 className="upload__title h2">
+                {isSubmitted
+                  ? "Upload Successful. Thanks For Sharing."
+                  : "Share Spots"}
+              </h2>
             </div>
-
             <div className="upload__form">
               <form onSubmit={handleSubmit}>
                 <div className="upload__list">
-                 
                   <div className="upload__item">
-                    <div className="upload__category">Upload Photo</div>
-                    <div className="upload__note">
+                    <div className="upload__category">Spot Photo</div>
+                    {/* <div className="upload__note">
                       Choose Your File To Upload
-                    </div>
+                    </div> */}
                     <div className="upload__file">
                       <input
                         className="upload__input"
@@ -236,10 +273,7 @@ export default function upload() {
                       {fileName ? (
                         <div className="upload__format">{fileName}</div>
                       ) : (
-                        <div className="upload__format">
-                          {" "}
-                          PNG / JPG. Max 500Mb.
-                        </div>
+                        <div className="upload__format"> PNG / JPG.</div>
                       )}
                     </div>
                     <div className="error">{errors.image}</div>
@@ -248,7 +282,6 @@ export default function upload() {
                   <div className="upload__item">
                     <div className="upload__category">Spot Details</div>
                     <div className="upload__fieldset">
-                      
                       <div className="field">
                         <div className="field__label">title *</div>
                         <div className="field__wrap">
@@ -256,7 +289,8 @@ export default function upload() {
                             className="field__input"
                             type="text"
                             name="title"
-                            onKeyUp={handleChange}
+                            onChange={handleChange}
+                            value={form.title}
                           />
                           <div className="error">{errors.title}</div>
                         </div>
@@ -369,11 +403,21 @@ export default function upload() {
                                 }
                                 onClick={toggle3}
                               >
-                                  <span className="current">
+                                <span className="current">
                                   {lat && long ? lat + ", " + long : ""}
                                 </span>
                               </div>
-                              <Map show={isOpen3} lat={lat} setLat={setLat} long={long} setLong={setLong}  />
+                              <Map
+                                show={isOpen3}
+                                lat={lat}
+                                setLat={setLat}
+                                long={long}
+                                setLong={setLong}
+                                defaultLat={defaultLat}
+                                defaultLong={defaultLong}
+                                defaultZoom={defaultZoom}
+                                setDefaultZoom={setDefaultZoom}
+                              />
                               <div className="error">{errors.location}</div>
                             </div>
                           </div>
@@ -454,6 +498,7 @@ export default function upload() {
                                 type="text"
                                 name="ig"
                                 onChange={handleChange}
+                                value={form.ig}
                               />
                               <div className="error">{errors.ig}</div>
                             </div>
@@ -468,6 +513,7 @@ export default function upload() {
                             className="field__textarea"
                             name="description"
                             onChange={handleChange}
+                            value={form.description}
                           ></textarea>
                           <div className="error">{errors.description}</div>
                         </div>
@@ -476,23 +522,42 @@ export default function upload() {
                   </div>
                 </div>
                 <div className="upload__foot">
-                  <button className="button-stroke upload__button js-upload-button">
+                  <button
+                    className="button button-stroke upload__button js-upload-button preview__button"
+                    type="button"
+                    onClick={() => setPreview(!preview)}
+                  >
                     Preview
                   </button>
-                  <button className="button upload__button" type="submit">
-                    Submit
+
+                  <button
+                    className="button upload__button live__button"
+                    type="submit"
+                  >
+                    {isSubmitting ? <div className="loader"></div> : null}
+                    {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
                 </div>
               </form>
             </div>
           </div>
 
-          <div className="upload__preview js-upload-preview">
+          <div
+            className={
+              preview
+                ? "upload__preview js-upload-preview visible"
+                : "upload__preview js-upload-preview"
+            }
+          >
             <div className="upload__wrap">
-              <button className="upload__close js-upload-close">
+              <button
+                className="upload__close js-upload-close"
+                onClick={() => setPreview(false)}
+              >
                 {/* <svg className="icon icon-close">
                       <use xlink:href="#icon-close"></use>
                     </svg> */}
+                <FiX className="icon icon-close" />
               </button>
               <div className="upload__subtitle">Preview</div>
               <a className="card" href="stays-product.html">

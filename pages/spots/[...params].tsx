@@ -10,14 +10,67 @@ import {
   FiStar,
   FiClock,
   FiList,
-  FiFrown
+  FiFrown,
+  FiClipboard,
+  FiCopy,
 } from "react-icons/fi";
 import Slider from "../../components/Sliders/Slider";
+import moment from "moment";
+import Map from "../../components/Maps/SpotMap";
+import { useState, useEffect, useRef } from "react";
+import listenForOutsideClick from "../../utils/Listen";
+
+import useCopyToClipboard from "../../components/copy";
+
+
+
 
 function SingleSpot({ spot, relatedSpots, category }) {
+  const menuRef = useRef(null);
+  const [listening, setListening] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+  useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
+
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  const url = `mtlspots.ca/spots/${spot.category}/${spot._id}`;
+
+  const [saved, setSaved] = useState(null);
+
+  const refStyle = useRef(null);
+
+  const [value, copy] = useCopyToClipboard();
+
+  const [savedSpot, setSavedSpot] = useState("");
+
+  useEffect(() => {
+    const item = localStorage.getItem("savedList");
+    setSavedSpot(item);
+  }, []);
+
+  const saveSpot = (e) => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("savedList");
+      if (saved && saved.includes(spot._id)) {
+        refStyle.current.classList.remove("actives");
+        let removeSpot = localStorage.getItem("savedList");
+        removeSpot = removeSpot.replace(spot._id + ",", "");
+        localStorage.setItem("savedList", removeSpot);
+        setSavedSpot(removeSpot);
+        return;
+      } else {
+        refStyle.current.classList.add("actives");
+        saved
+          ? localStorage.setItem("savedList", saved + spot._id + ",")
+          : localStorage.setItem("savedList", spot._id + ",");
+        setSavedSpot(localStorage.getItem("savedList"));
+      }
+    }
+  };
+
   return (
     <div className="outer__inner">
       <div className="section-mb64 product">
@@ -55,19 +108,87 @@ function SingleSpot({ spot, relatedSpots, category }) {
               <div className="product__line">
                 <div className="product__rating">
                   <FiClock />
-                  <div className="product__number">2 Months Ago</div>
+                  <div className="product__number">
+                    {moment(`${spot.time}`, "YYYYMMDD").fromNow()}
+                  </div>
                 </div>
-                <div className="product__options">
+                {/* <div className="product__options">
                   <div className="product__option location__icon">
                     <FiMapPin size={22} />
                     Rosemont
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
             <div className="actions js-actions">
               <div className="actions__list">
+                <div
+                  ref={menuRef}
+                  className={
+                    isOpen
+                      ? "actions__item actions__item_share js-actions-item active"
+                      : "actions__item actions__item_share js-actions-item"
+                  }
+                >
+                  <button
+                    className="button-circle-stroke button-small actions__button js-actions-button"
+                    onClick={toggle}
+                  >
+                    <FiShare size={22} className="icon" />
+                  </button>
+
+                  <div className="actions__body js-actions-body link__body">
+                    <div className="actions__title">
+                      {value
+                        ? "Link has been copied!"
+                        : "Share a link to this page"}
+                    </div>
+                    <div className="actions__list  share__modal">
+                      <a
+                        className="actions__link btn-twitter"
+                        onClick={() => copy(url)}
+                      >
+                        <span>
+                          <FiCopy size={22} />
+                        </span>
+                      </a>
+                      <a className="url">
+                        <span>
+                          mtlspots.ca/spots/{spot.category}/{spot._id}
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  ref={refStyle}
+                  // className={
+                  //   saved
+                  //     ? "actions__item actions__item_share js-actions-item actives"
+                  //     : "actions__item actions__item_share js-actions-item"
+                  // }
+                  className="actions__item actions__item_share js-actions-item"
+                >
+                  <button
+                    className={
+                      savedSpot.includes(spot._id)
+                        ? "button-circle-stroke button-small actions__button js-actions-button spot__saved"
+                        : "button-circle-stroke button-small actions__button js-actions-button"
+                    }
+                    onClick={saveSpot}
+                  >
+                    <FiBookmark size={22} className="icon icon__disable" />
+                  </button>
+
+                  <div className="actions__body js-actions-body">
+                    <div className="actions__title saved__title">
+                      This spot has been saved.
+                    </div>
+                  </div>
+                </div>
+
                 <div className="actions__item actions__item_map js-actions-item">
                   <button className="button-circle-stroke button-small actions__button js-actions-button">
                     <FiMap size={22} className="icon" />
@@ -79,39 +200,6 @@ function SingleSpot({ spot, relatedSpots, category }) {
                       height="450"
                     ></iframe>
                   </div>
-                </div>
-
-                <div className="actions__item actions__item_share js-actions-item">
-                  <button className="button-circle-stroke button-small actions__button js-actions-button">
-                    <FiShare size={22} className="icon" />
-                  </button>
-
-                  <div className="actions__body js-actions-body">
-                    <div className="actions__title">
-                      Share link to this page
-                    </div>
-                    <div
-                      className="actions__list share-btn"
-                      data-url="https://ui8.net"
-                    >
-                      <a className="actions__link btn-twitter" data-id="tw">
-                        <span>
-                          <FiSearch size={22} />
-                        </span>
-                      </a>
-                      <a className="actions__link btn-facebook" data-id="fb">
-                        <span>
-                          <FiSearch size={22} />
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="actions__item">
-                  <button className="button-circle-stroke button-small actions__favorite js-actions-favorite">
-                    <FiBookmark size={22} className="icon" />
-                  </button>
                 </div>
               </div>
             </div>
@@ -134,22 +222,28 @@ function SingleSpot({ spot, relatedSpots, category }) {
         <div className="description__center center">
           <div className="description__wrapper">
             <h4 className="description__title h4">{spot.title}</h4>
-            <div className="description__profile">
-              <div className="description__name">Shared By: @instagramuser</div>
-            </div>
-            <div className="description__parameters">
-              <div className="description__parameter">
-                Bust Level: Low
+            {spot.ig && (
+              <div className="description__profile">
+                <div className="description__name">
+                  Shared By: @
+                  <a
+                    href={`https://www.instagram.com/${spot.ig}/`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {spot.ig}
+                  </a>
+                </div>
               </div>
+            )}
+            <div className="description__parameters">
+              <div className="description__parameter">Bust Level: Low</div>
             </div>
-            <div className="description__content">
-              <p>
-                Described by Queenstown House &amp; Garden magazine as having
-                'one of the best views we've ever seen' you will love relaxing
-                in this newly built, architectural house sitting proudly on
-                Queenstown Hill.
-              </p>
-            </div>
+            {spot.description && (
+              <div className="description__content">
+                <p>{spot.description}</p>
+              </div>
+            )}
           </div>
           <div className="receipt">
             <div className="receipt__head">
@@ -164,11 +258,17 @@ function SingleSpot({ spot, relatedSpots, category }) {
               <div className="upload__note map__note">
                 Drag or choose your file to upload
               </div>
-              <div className="upload__file"></div>
+              <div className="upload__file map__spot">
+                <Map location={spot.location} />{" "}
+              </div>
             </div>
             <div className="receipt__btns">
-              <a className="button receipt__button" href="stays-checkout.html">
-                <span>Google Maps</span>
+              <a
+                className="button receipt__button"
+                target="_blank"
+                href={`https://maps.google.com/?q=${spot.location}`}
+              >
+                Google Maps
               </a>
             </div>
           </div>

@@ -85,10 +85,6 @@ function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
                     <div className="location__icon search__icon">
                       <form action="/search" onSubmit={handleSubmit}>
                         <div className="form__left">
-                          <FiSearch
-                            className="icon icon-globe share__icon"
-                            size={28}
-                          />
 
                           <input
                             className="location__input js-location-input"
@@ -103,7 +99,7 @@ function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
                           />
                         </div>
                         <button>
-                          <IoEnterOutline
+                          <FiSearch
                             className={
                               (search && searchTerm !== "none") ||
                               (searchTerm && searchTerm !== "none")

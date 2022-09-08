@@ -3177,10 +3177,14 @@ html.dark .section-bg {
   fill: #fcfcfd;
   transition: all 0.2s;
 }
-html.dark .icon {
-  fill: transparent !important;
 
-}
+// html.dark .header__head .icon {
+//   fill: inherit !important;
+// }
+
+// html.dark .icon {
+//   fill: transparent !important;
+// }
 [class^="button"]:not([class^="button-circle"]) .icon:first-child {
   margin-right: 15px;
 }
@@ -3262,17 +3266,44 @@ html.dark .button-black.active {
   background: transparent;
   transition: all 0.2s;
 }
+
+.button-circle-stroke svg {
+  fill: transparent !important;
+}
 .button-circle-stroke .icon {
   color: #777e90;
 }
+
+.icon__disable {
+  pointer-events: none;
+}
+
+.sdsds {
+  background-color: red !important ;
+}
+html.dark .spot__saved {
+  background: #353945;
+}
+.spot__saved {
+  background: #23262f;
+  box-shadow: 0 0 0 2px #23262f inset;
+  .icon {
+    fill: #23262f;
+    color: #fcfcfd;
+  }
+}
+
+
 .button-circle-stroke:hover {
   background: #23262f;
   box-shadow: 0 0 0 2px #23262f inset;
 }
+
 .button-circle-stroke:hover .icon {
   fill: #23262f;
   color: #fcfcfd;
 }
+
 html.dark .button-circle-stroke {
   box-shadow: 0 0 0 2px #353945 inset;
 }
@@ -5696,6 +5727,10 @@ html.dark .live__item:hover {
   }
 }
 
+.contact__button {
+  width: 50%;
+}
+
 .live__button .loader {
   margin: 0 16px 0 5px;
   -webkit-transform: scale(0.8);
@@ -5730,8 +5765,8 @@ html.dark .live__item:hover {
   border-radius: 50%;
   position: relative;
   font-size: 4px;
-  -webkit-animation: loader 1.1s infinite ease;
-  animation: loader 1.1s infinite ease;
+  -webkit-animation: loader-white 1.1s infinite ease;
+  animation: loader-white 1.1s infinite ease;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -5785,8 +5820,8 @@ html.dark .loader {
       -1.8em -1.8em 0 0em rgba(119, 126, 144, 0.2);
   }
   50% {
-    box-shadow: 0em -2.6em 0em 0em rgba(119, 126, 144, 0.2),
-      1.8em -1.8em 0 0em rgba(119, 126, 144, 0.2),
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
+      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
       2.5em 0em 0 0em rgba(119, 126, 144, 0.5),
       1.75em 1.75em 0 0em rgba(119, 126, 144, 0.7), 0em 2.5em 0 0em #777e90,
       -1.8em 1.8em 0 0em rgba(119, 126, 144, 0.2),
@@ -8581,12 +8616,18 @@ html.dark .control__button:hover {
   }
 }
 .sorting .control {
-  margin-bottom: 48px;
+  margin-bottom: 80px;
   padding: 0;
 }
 @media only screen and (max-width: 767px) {
   .sorting .control {
     display: none;
+  }
+  .upload .control {
+    display: none;
+  }
+  .upload__center {
+    margin-top: 80px;
   }
 }
 .sorting__body {
@@ -8654,7 +8695,7 @@ html.dark .sorting__location .sorting__button.active {
   height: 480px;
   padding: 4px;
   background: #fcfcfd;
-  border-radius: 24px 0 24px 24px;
+  border-radius: 24px;
   border: 1px solid #e6e8ec;
   box-shadow: 0px 40px 64px -16px rgba(15, 15, 15, 0.1);
   visibility: hidden;
@@ -8668,15 +8709,19 @@ html.dark .sorting__location .sorting__button.active {
 .sorting__map .googleMap {
   width: 100%;
   height: 100%;
-  border-radius: 21px 0 21px 21px;
+  // border-radius: 21px 0 21px 21px;
 }
 .sorting__title {
   margin-bottom: 12px;
 }
-@media only screen and (max-width: 767px) {
+
+@media only screen and (max-width: 1023px) {
   .sorting__map {
-    width: 100%;
+   width: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) { 
   .sorting__title {
     font-size: 32px;
   }
@@ -9709,9 +9754,11 @@ html.dark .testimonials__link:after {
 .actions {
   position: relative;
 }
-.actions__list {
-  display: flex;
-}
+// .actions__list {
+//   display: flex;
+// }
+
+
 .actions__item_share {
   position: relative;
 }
@@ -9734,6 +9781,11 @@ html.dark .actions__item.active .actions__button {
   background: #353945;
   box-shadow: 0 0 0 2px #353945 inset;
 }
+
+.actions__item.active .actions__button svg {
+  color: #fcfcfd;
+}
+
 .actions__body {
   position: absolute;
   z-index: 5;
@@ -9747,6 +9799,31 @@ html.dark .actions__item.active .actions__button {
   visibility: visible;
   opacity: 1;
 }
+
+.elementToFadeInAndOut {
+  opacity: 1;
+  animation: fade 2s linear;
+}
+
+@keyframes fade {
+0%,100% { opacity: 0; visibility: hidden; }
+50% { opacity: 1; visibility: visible; }
+}
+
+.actions__item.actives .actions__body {
+  // animation: fade 5s linear;
+
+
+  -webkit-animation: fade 5s linear;
+-webkit-animation-timing-function: linear;
+-moz-animation: fade 5s linear;
+-moz-animation-timing-function: linear;
+-o-animation: fade 5s linear;
+-o-animation-timing-function: linear;
+animation: fade 5s linear;
+animation-timing-function: linear;
+}
+
 .actions__item_map .actions__body {
   top: calc(100% + 28px);
   right: 0;
@@ -9767,7 +9844,7 @@ html.dark .actions__item.active .actions__button {
   height: 100%;
   border-radius: 21px;
 }
-.actions__item_share .actions__body {
+.actions__item_share .actions__body  {
   left: 50%;
   top: calc(100% + 8px);
   width: 220px;
@@ -9786,10 +9863,52 @@ html.dark .actions__item_share .actions__body {
   top: auto;
   bottom: calc(100% + 8px);
 }
+
+
+@media only screen and (max-width: 767px) {
+  .actions__item_share .link__body {
+    left: 0;
+    top: calc(100% + 8px);
+    width: 220px;
+    -webkit-transform: unset;
+    transform: unset;
+    padding: 32px 16px;
+    box-shadow: 0px 32px 32px -8px rgba(31, 47, 70, 0.12);
+    border-radius: 16px;
+    text-align: center;
+  }
+}
+
+
+
 .actions__title {
   margin-bottom: 24px;
   font-weight: 500;
 }
+
+.saved__title {
+  margin-bottom: 0;
+}
+
+.share-btn {
+  align-items: center;
+}
+
+.share__modal {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  .actions__link {
+    margin-right: 12px !important;
+  }
+}
+
+.url {
+  overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .actions__list {
   display: flex;
   // justify-content: center; 
@@ -9802,32 +9921,37 @@ html.dark .actions__item_share .actions__body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #e6e8ec;
+  box-shadow: 0 0 0 2px #e6e8ec inset;
+  background: transparent;
   cursor: pointer;
   transition: all 0.2s;
 }
-.actions__link span .icon {
+.actions__link span svg {
   width: 20px;
   height: 20px;
-  transition: fill 0.2s;
+  transition: all 0.2s;
+  color: #777e90;
 }
 .actions__link span:hover {
-  background: #3b71fe;
+  // background: red;
+  background: #23262f;
+  box-shadow: 0 0 0 2px #23262f inset;
 }
-.actions__link span:hover .icon {
-  fill: #fcfcfd;
+.actions__link span:hover svg {
+  color: #fcfcfd;
 }
 html.dark .actions__link span {
-  background: #353945;
+  background: transparent;
+  box-shadow: 0 0 0 2px #353945 inset;
 }
-html.dark .actions__link span .icon {
-  fill: #fcfcfd;
+html.dark .actions__link span svg {
+  color: #777e90;
 }
 html.dark .actions__link span:hover {
-  background: #3b71fe;
+  background: #353945;
 }
-html.dark .actions__link span:hover .icon {
-  fill: #fcfcfd;
+html.dark .actions__link span:hover svg {
+  color: #fcfcfd;
 }
 .actions__link:not(:last-child) {
   margin-right: 24px;
@@ -9960,7 +10084,7 @@ html.dark .actions__favorite.active {
 .location__icon svg {
   width: 20px;
   height: 20px;
-  margin-right: 8px;
+  // margin-right: 8px;
 }
 
 .product__number {
@@ -10356,6 +10480,9 @@ html.dark .description {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 500;
+  a {
+    color: inherit;
+  }
 }
 .description__parameters {
   display: flex;
@@ -10367,11 +10494,15 @@ html.dark .description {
 html.dark .description__parameters {
   border-color: #23262f;
 }
+
+// html.dark .description__parameter {
+//   color: #23262f;
+// }
+
 .description__parameter {
   display: flex;
   align-items: center;
   margin-top: 10px;
-  color: #23262f;
 }
 .description__parameter .icon {
   width: 20px;
@@ -10388,9 +10519,9 @@ html.dark .description__parameters {
   line-height: 1.5;
   text-align: left;
 }
-.description__content p {
-  color: #23262f;
-}
+// .description__content p {
+//   color: #23262f;
+// }
 .description__content p:not(:last-child) {
   margin-bottom: 24px;
 }
@@ -13155,6 +13286,11 @@ html.dark .topics .slick-arrow:hover path {
   right: calc(50% - 34px);
 }
 
+
+.contact__form {
+margin-bottom: 24px;
+}
+
 .faq__top {
   max-width: 640px;
   margin: 0 auto 80px;
@@ -13188,6 +13324,9 @@ html.dark .topics .slick-arrow:hover path {
   font-size: 16px;
   line-height: 1.5;
   color: #353945;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media only screen and (max-width: 767px) {
   .faq__info {
@@ -13205,8 +13344,13 @@ html.dark .faq__info {
   text-decoration: underline;
 }
 
+.faq__info svg {
+  margin-right: 5px;
+}
+
 .faq__row {
   display: flex;
+  justify-content: center;
 }
 @media only screen and (max-width: 767px) {
   .faq__row {
@@ -13216,11 +13360,11 @@ html.dark .faq__info {
 
 .faq__col:first-child {
   flex-shrink: 0;
-  width: 160px;
+  width: 50%;
 }
 @media only screen and (max-width: 767px) {
   .faq__col:first-child {
-    display: none;
+    width: 100%;
   }
 }
 
@@ -13293,9 +13437,9 @@ html.dark .faq__link.active .icon {
   margin-bottom: 40px;
 }
 
-.faq__box {
-  display: none;
-}
+// .faq__box {
+//   display: none;
+// }
 
 .faq__item {
   border-top: 1px solid #e6e8ec;
@@ -15583,6 +15727,7 @@ html.dark .place__text {
   flex: 0 0 calc(100% - 352px);
   width: calc(100% - 352px);
   padding-right: 128px;
+ 
 }
 @media only screen and (max-width: 1339px) {
   .upload__wrapper {
@@ -15730,6 +15875,44 @@ html.dark .upload__list {
 html.dark .upload__file {
   background: #23262f;
 }
+
+
+// .map__spot {
+//   display: block;
+// }
+
+// .map__spot div:first-of-type {
+//   width: 100%;
+//   height: 100%;
+// }
+
+.simple__map, .map__height {
+  height: 100%;
+  width: 100%;
+}
+
+.googleMap div div {
+  border-radius: 24px;
+}
+
+.map__spot {
+  height: 200px;
+}
+@media only screen and (max-width: 1024px) {
+  .map__spot {
+    height: 300px;
+  }
+}
+
+.map__marker {
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+// .map__spot .sorting__map {
+//   width: 100%;
+//   height: 100%;
+// }
+
 
 .upload__input {
   position: absolute;
@@ -15913,11 +16096,11 @@ html.dark .upload__cell:not(:last-child) {
     width: 100%;
   }
 }
-.upload__foot .upload__button:first-child {
+.preview__button {
   display: none;
 }
 @media only screen and (max-width: 1023px) {
-  .upload__foot .upload__button:first-child {
+  .preview__button {
     display: inline-block;
   }
 }
@@ -15951,6 +16134,7 @@ html.dark .upload__cell:not(:last-child) {
     padding: 24px;
     border-radius: 24px;
     background: #fcfcfd;
+    width: 100%;
   }
 }
 

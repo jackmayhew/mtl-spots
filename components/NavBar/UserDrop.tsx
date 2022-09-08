@@ -35,7 +35,7 @@ const UserDrop = ({ language, setLanguage, languageHandle }) => {
             <Link href="/saved">
               <a
                 className={
-                  router.asPath === "/saved"
+                  router.asPath.includes("/saved")
                     ? "header__link active"
                     : "header__link"
                 }

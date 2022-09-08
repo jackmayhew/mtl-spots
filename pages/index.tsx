@@ -129,12 +129,12 @@ function Home({ spots }) {
                       Start finding and sharing skate spots today
                     </div>
                     <div className="description__btns">
-                      <Link href="/share">
+                      <Link href="/spots">
                         <a className="button-stroke description__button cta__button">
                           Find Spots
                         </a>
                       </Link>
-                      <Link href="/spots">
+                      <Link href="/share">
                         <a className="button-stroke description__button cta__button">
                           Share Spots
                         </a>

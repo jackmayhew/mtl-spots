@@ -5,7 +5,7 @@ import "../styles/app.scss";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" >
+    <ThemeProvider attribute="class" defaultTheme="light"  >
       <Layout>
         <Component {...pageProps} />
       </Layout>

@@ -16,7 +16,10 @@ export default async (req, res) => {
           res.status(400).json({ success: false });
         }
         const related = await Spot.find({
-          category: new RegExp(spot.category, "i"),
+          $and: [
+            { _id: { $ne: id_query } },
+            { $or: [{ category: new RegExp(spot.category, "i") }] },
+          ],
         })
           .sort({ _id: -1 })
           .limit(7);

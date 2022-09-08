@@ -86,7 +86,7 @@ function NavBar() {
             <Link href="/saved">
               <a
                 className={
-                  router.asPath === "/saved"
+                  router.asPath.includes("/saved")
                     ? "header__item active mobile__nav"
                     : "header__item mobile__nav"
                 }

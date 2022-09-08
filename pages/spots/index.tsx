@@ -160,10 +160,6 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                     <div className="location__icon search__icon">
                       <form action="/search" onSubmit={handleSubmit}>
                         <div className="form__left">
-                          <FiSearch
-                            className="icon icon-globe share__icon"
-                            size={28}
-                          />
 
                           <input
                             className="location__input js-location-input"
@@ -175,7 +171,7 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                           />
                         </div>
                         <button>
-                          <IoEnterOutline
+                          <FiSearch
                             className={
                               search
                                 ? "icon icon-globe share__icon submit__icon submit__icon__show"
