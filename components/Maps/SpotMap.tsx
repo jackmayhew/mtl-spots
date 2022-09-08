@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from "react";
 import GoogleMapReact from "google-map-react";
 import { GrLocationPin } from "react-icons/gr";
-import { MdLocationPin} from 'react-icons/md'
+import { MdLocationPin } from "react-icons/md";
 function Marker({ lat, lng }) {
   return (
     <div className="map__marker">
-      <MdLocationPin size={32} className="map__marker"/>
+      <MdLocationPin size={32} className="map__marker" />
     </div>
   );
 }
@@ -47,8 +47,8 @@ function getMapOptions(maps, id) {
   };
 }
 
-function SimpleMap({location}) {
-  let cords = location.split(/[ ,]+/);
+function SimpleMap({ location }) {
+  let cords = location.split(",");
   const defaultProps = {
     center: {
       lat: 45.540141,

@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import Map from "../components/Maps/Map";
+import { server } from "../utils/domain";
 
-function map() {
-  const [activeTab, setActiveTab] = useState("All");
+function map({ initialSpots }) {
+  const [activeTab, setActiveTab] = useState("");
+
+  let filteredSpots = initialSpots.filter((spot) =>
+    spot.category.includes(activeTab)
+  );
 
   return (
     <div className="outer__inner">
       <div className="section main main_tasks">
         <div className="main__center center">
           <div className="main__preview">
-            <Map />
+            <Map initialSpots={filteredSpots} />
           </div>
           <div className="panel panel_tasks">
             <div className="panel__background"></div>
             <div className="panel__nav map__nav">
               <a
                 className={
-                  activeTab === "All" ? "panel__link active" : "panel__link"
+                  activeTab === "" ? "panel__link active" : "panel__link"
                 }
-                onClick={() => setActiveTab("All")}
+                onClick={() => setActiveTab("")}
               >
                 All
               </a>
@@ -68,6 +73,18 @@ function map() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch(`${server}/api/spots/saved`);
+
+  const data = await res.json();
+
+  return {
+    props: {
+      initialSpots: data.data,
+    },
+  };
 }
 
 export default map;

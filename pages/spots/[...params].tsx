@@ -1,19 +1,7 @@
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import { server } from "../../utils/domain";
-import {
-  FiSearch,
-  FiMapPin,
-  FiShare,
-  FiBookmark,
-  FiMap,
-  FiStar,
-  FiClock,
-  FiList,
-  FiFrown,
-  FiClipboard,
-  FiCopy,
-} from "react-icons/fi";
+import { FiShare, FiBookmark, FiMap, FiClock, FiCopy } from "react-icons/fi";
 import Slider from "../../components/Sliders/Slider";
 import moment from "moment";
 import Map from "../../components/Maps/SpotMap";
@@ -21,9 +9,6 @@ import { useState, useEffect, useRef } from "react";
 import listenForOutsideClick from "../../utils/Listen";
 
 import useCopyToClipboard from "../../utils/copy";
-
-
-
 
 function SingleSpot({ spot, relatedSpots, category }) {
   const menuRef = useRef(null);
@@ -37,8 +22,6 @@ function SingleSpot({ spot, relatedSpots, category }) {
   }
 
   const url = `mtlspots.ca/spots/${spot.category}/${spot._id}`;
-
-  const [saved, setSaved] = useState(null);
 
   const refStyle = useRef(null);
 
@@ -54,14 +37,17 @@ function SingleSpot({ spot, relatedSpots, category }) {
   const saveSpot = (e) => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("savedList");
+      // unsave spot
       if (saved && saved.includes(spot._id)) {
         refStyle.current.classList.remove("actives");
-        let removeSpot = localStorage.getItem("savedList");
-        removeSpot = removeSpot.replace(spot._id + ",", "");
+        let removeSpot = localStorage
+          .getItem("savedList")
+          .replace(spot._id + ",", "");
         localStorage.setItem("savedList", removeSpot);
         setSavedSpot(removeSpot);
         return;
       } else {
+        // save spot
         refStyle.current.classList.add("actives");
         saved
           ? localStorage.setItem("savedList", saved + spot._id + ",")

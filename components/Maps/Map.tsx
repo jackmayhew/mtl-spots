@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import GoogleMapReact from "google-map-react";
 import { GrLocationPin } from "react-icons/gr";
 import { MdLocationPin } from "react-icons/md";
+
 function Marker({ lat, lng }) {
   return (
     <div className="map__marker">
@@ -51,13 +52,13 @@ function getMapOptions(maps) {
   };
 }
 
-function SimpleMap() {
+function SimpleMap({ initialSpots }) {
   const defaultProps = {
     center: {
-      lat: 45.540141,
+      lat: 45.510141,
       lng: -73.635064,
     },
-    zoom: 9,
+    zoom: 10.9,
   };
 
   return (
@@ -68,17 +69,23 @@ function SimpleMap() {
         zoom={defaultProps.zoom}
         options={getMapOptions}
       >
-        <Marker lat={45.540141} lng={-73.635064} />
+        {initialSpots.map((spot) => (
+          <Marker
+            key={spot._id}
+            lat={spot.location.split(",")[0]}
+            lng={spot.location.split(",")[1]}
+          />
+        ))}
       </GoogleMapReact>
     </div>
   );
 }
 
-function Map() {
+function Map({ initialSpots }) {
   return (
     <div className="map__height main__height">
       <div className="sorting__map js-sorting-map show simple__map main__map">
-        <SimpleMap />
+        <SimpleMap initialSpots={initialSpots} />
       </div>
     </div>
   );
