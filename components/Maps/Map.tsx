@@ -104,21 +104,21 @@ function SimpleMap({ initialSpots, isBreakpoint }) {
         showModal={true}
       >
 
-<Marker
+{/* <Marker
         
             lat={45.510141}
             lng={-73.635064}
             spot={initialSpots[0]}
-          />
+          /> */}
 
-        {/* {initialSpots.map((spot) => (
+        {initialSpots.map((spot) => (
           <Marker
             key={spot._id}
             lat={spot.location.split(",")[0]}
             lng={spot.location.split(",")[1]}
             spot={spot}
           />
-        ))} */}
+        ))}
       </GoogleMapReact>
     </div>
   );

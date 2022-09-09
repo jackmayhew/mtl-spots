@@ -72,6 +72,17 @@ function NavBar() {
                 Spots
               </a>
             </Link>
+            <Link href="/map">
+              <a
+                className={
+                  router.asPath.includes("/map")
+                    ? "header__item active mobile__nav"
+                    : "header__item mobile__nav"
+                }
+              >
+                Map
+              </a>
+            </Link>
             <Link href="/share">
               <a
                 className={
