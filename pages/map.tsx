@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Map from "../components/Maps/Map";
 import { server } from "../utils/domain";
 import useMediaQuery from "../utils/width";
+import { useRouter } from "next/router";
 
 function map({ initialSpots }) {
   const [activeTab, setActiveTab] = useState("");
@@ -12,13 +13,33 @@ function map({ initialSpots }) {
 
   const isBreakpoint = useMediaQuery(768);
 
+  const router = useRouter();
+  let openSpot = router.query.spot;
+
+  const closeModal = (e) => {
+    // close modals
+    let allMarkers = document.getElementsByClassName("map__modal");
+    for (let i = 0; i < allMarkers.length; i++) {
+      allMarkers[i].classList.remove("modal__show");
+    }
+    // remove query so modal doesnt reopen
+    router.query.spot = "";
+    // set active tab
+    e.target.textContent === "All"
+      ? setActiveTab("")
+      : setActiveTab(e.target.textContent);
+  };
+
   return (
     <div className="outer__inner">
-        
       <div className="section main main_tasks">
         <div className="main__center center">
           <div className="main__preview">
-            <Map initialSpots={filteredSpots} isBreakpoint={isBreakpoint} />
+            <Map
+              initialSpots={filteredSpots}
+              isBreakpoint={isBreakpoint}
+              openSpot={openSpot}
+            />
           </div>
           <div className="panel panel_tasks">
             <div className="panel__background"></div>
@@ -27,7 +48,7 @@ function map({ initialSpots }) {
                 className={
                   activeTab === "" ? "panel__link active" : "panel__link"
                 }
-                onClick={() => setActiveTab("")}
+                onClick={closeModal}
               >
                 All
               </a>
@@ -35,7 +56,7 @@ function map({ initialSpots }) {
                 className={
                   activeTab === "Stairs" ? "panel__link active" : "panel__link"
                 }
-                onClick={() => setActiveTab("Stairs")}
+                onClick={closeModal}
               >
                 Stairs
               </a>
@@ -43,7 +64,7 @@ function map({ initialSpots }) {
                 className={
                   activeTab === "Rails" ? "panel__link active" : "panel__link"
                 }
-                onClick={() => setActiveTab("Rails")}
+                onClick={closeModal}
               >
                 Rails
               </a>
@@ -51,7 +72,7 @@ function map({ initialSpots }) {
                 className={
                   activeTab === "Ledges" ? "panel__link active" : "panel__link"
                 }
-                onClick={() => setActiveTab("Ledges")}
+                onClick={closeModal}
               >
                 Ledges
               </a>
@@ -59,7 +80,7 @@ function map({ initialSpots }) {
                 className={
                   activeTab === "Gaps" ? "panel__link active" : "panel__link"
                 }
-                onClick={() => setActiveTab("Gaps")}
+                onClick={closeModal}
               >
                 Gaps
               </a>
@@ -69,7 +90,7 @@ function map({ initialSpots }) {
                     ? "panel__link panel__hide active"
                     : "panel__link panel__hide"
                 }
-                onClick={() => setActiveTab("Other")}
+                onClick={closeModal}
               >
                 Other
               </a>
@@ -82,7 +103,7 @@ function map({ initialSpots }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`${server}/api/spots/saved`);
+  const res = await fetch(`${server}/api/spots/map`);
 
   const data = await res.json();
 

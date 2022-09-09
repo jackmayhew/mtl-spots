@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 import { server } from "../utils/domain";
 import Link from "next/link";

@@ -1,7 +1,8 @@
 import GoogleMapReact from "google-map-react";
 
-function Marker({ lat, lng, spot }) {
-  const markerClick = () => {
+function Marker({ lat, lng, spot, openSpot }) {
+  
+  const openModal = () => {
     
     let allMarkers = document.getElementsByClassName("map__modal");
     for (let i = 0; i < allMarkers.length; i++) {
@@ -14,6 +15,8 @@ function Marker({ lat, lng, spot }) {
     e.stopPropagation();
   };
 
+
+  
   return (
     <div>
       <div className="map__marker">
@@ -22,11 +25,11 @@ function Marker({ lat, lng, spot }) {
           alt=""
           style={{ width: 18, height: "auto" }}
           className="map__marker"
-          onClick={markerClick}
+          onClick={openModal}
         />
       </div>
 
-      <div id={spot._id} className="map__modal" onClick={modalClick}>
+      <div id={spot._id} className={openSpot === spot._id ? "map__modal modal__show" : "map__modal"} onClick={modalClick}>
         <h2>{spot.title}</h2>
         <h3>{spot.category}</h3>
         <h4><a href={`https://mtlspots.ca/spots/${spot.category}/${spot._id}`} target="_blank">View Spot</a></h4>
@@ -77,7 +80,7 @@ function getMapOptions(maps) {
   };
 }
 
-function SimpleMap({ initialSpots, isBreakpoint }) {
+function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
   const defaultProps = {
     center: {
       lat: 45.510141,
@@ -85,7 +88,7 @@ function SimpleMap({ initialSpots, isBreakpoint }) {
     },
   };
 
-  const removeModals = () => {
+  const closeModals = () => {
     let allModals = document.getElementsByClassName("map__modal");
     for (let i = 0; i < allModals.length; i++) {
       allModals[i].classList.remove("modal__show");
@@ -100,7 +103,7 @@ function SimpleMap({ initialSpots, isBreakpoint }) {
         zoom={isBreakpoint ? 10.5 : 10.9}
         options={getMapOptions}
         showModal={true}
-        onClick={removeModals}
+        onClick={closeModals}
       >
         {initialSpots.map((spot) => (
           <Marker
@@ -108,6 +111,7 @@ function SimpleMap({ initialSpots, isBreakpoint }) {
             lat={spot.location.split(",")[0]}
             lng={spot.location.split(",")[1]}
             spot={spot}
+            openSpot={openSpot}
           />
         ))}
       </GoogleMapReact>
@@ -115,11 +119,11 @@ function SimpleMap({ initialSpots, isBreakpoint }) {
   );
 }
 
-function Map({ initialSpots, isBreakpoint }) {
+function Map({ initialSpots, isBreakpoint, openSpot }) {
   return (
     <div className="map__height main__height">
       <div className="sorting__map js-sorting-map show simple__map main__map">
-        <SimpleMap initialSpots={initialSpots} isBreakpoint={isBreakpoint} />
+        <SimpleMap initialSpots={initialSpots} isBreakpoint={isBreakpoint} openSpot={openSpot} />
       </div>
     </div>
   );
