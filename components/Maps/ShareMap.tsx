@@ -1,11 +1,13 @@
-// import React, { useState, useMemo } from "react";
 import GoogleMapReact from "google-map-react";
-import { GrLocationPin } from "react-icons/gr";
 
 function Marker({ lat, lng }) {
   return (
-    <div>
-      <GrLocationPin className="map__marker" size={44} />
+    <div className="map__marker">
+      <img
+        src="../marker.png"
+        style={{ width: 18, height: "auto" }}
+        className="map__marker"
+      />
     </div>
   );
 }
@@ -55,9 +57,8 @@ function SimpleMap({
   defaultLat,
   defaultLong,
   defaultZoom,
-  setDefaultZoom
+  setDefaultZoom,
 }) {
-
   const defaultProps = {
     center: {
       lat: defaultLat,
@@ -77,7 +78,7 @@ function SimpleMap({
           setLong(ev.lng);
         }}
         options={getMapOptions}
-        >
+      >
         <Marker lat={lat} lng={long} />
       </GoogleMapReact>
     </div>
@@ -93,7 +94,7 @@ function Map({
   defaultLat,
   defaultLong,
   defaultZoom,
-  setDefaultZoom
+  setDefaultZoom,
 }) {
   return (
     <div>
@@ -120,6 +121,3 @@ function Map({
 }
 
 export default Map;
-
-
-

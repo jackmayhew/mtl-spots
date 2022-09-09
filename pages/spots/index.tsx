@@ -5,8 +5,7 @@ import Link from "next/link";
 import Pagination from "../../components/Spots/Pagination";
 import listenForOutsideClick from "../../utils/Listen";
 import { FiSearch } from "react-icons/fi";
-import { IoEnterOutline } from "react-icons/io5";
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 function All({ initialSpots, initialCount, initialPage, initialCategory }) {
   const menuRef = useRef(null);
@@ -67,10 +66,7 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                 </div>
               </div>
               <div className="sorting__foot spotspage__search">
-                <div
-                  className="sorting__select"
-                  ref={menuRef}
-                >
+                <div className="sorting__select" ref={menuRef}>
                   <div
                     className={
                       isOpen ? "nice-select select open" : "nice-select select"
@@ -153,7 +149,6 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                       </Link>
                     </ul>
                   </div>
-
                 </div>
 
                 <div className="location js-location location_small location_down active spots__search">
@@ -161,7 +156,6 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                     <div className="location__icon search__icon">
                       <form action="/search" onSubmit={handleSubmit}>
                         <div className="form__left">
-
                           <input
                             className="location__input js-location-input"
                             type="text"
@@ -267,7 +261,7 @@ export async function getServerSideProps({ req, query }) {
       initialSpots: data.data,
       initialCount: data.count,
       initialPage: query.page,
-      initialCategory: query.category
+      initialCategory: query.category,
     },
   };
 }

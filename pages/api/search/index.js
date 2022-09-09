@@ -10,22 +10,25 @@ export default async (req, res) => {
     ? (req.query.page = 1)
     : (req.query.page = req.query.page);
   const page = req.query.page ? parseInt(req.query.page) : 1;
+
+  const searchTerm = req.query.term.trim();
+
   switch (method) {
     case "GET":
       try {
         const count = await Spot.countDocuments({
           $or: [
-            { title: { $regex: req.query.term, $options: "i" } },
-            { category: { $regex: req.query.term, $options: "i" } },
-            { location: { $regex: req.query.term, $options: "i" } },
+            { title: { $regex: searchTerm, $options: "i" } },
+            { category: { $regex: searchTerm, $options: "i" } },
+            { location: { $regex: searchTerm, $options: "i" } },
           ],
         }).exec();
 
         const spots = await Spot.find({
           $or: [
-            { title: { $regex: req.query.term, $options: "i" } },
-            { category: { $regex: req.query.term, $options: "i" } },
-            { location: { $regex: req.query.term, $options: "i" } },
+            { title: { $regex: searchTerm, $options: "i" } },
+            { category: { $regex: searchTerm, $options: "i" } },
+            { location: { $regex: searchTerm, $options: "i" } },
           ],
         })
           .sort({ _id: -1 })

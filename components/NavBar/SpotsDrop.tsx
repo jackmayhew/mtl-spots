@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import listenForOutsideClick from "../../utils/Listen";
 import { IoIosArrowDown } from "react-icons/io";
+
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FiUpload, FiMap } from "react-icons/fi";
@@ -48,7 +49,6 @@ const SpotsDrop = () => {
                     ? "header__link active"
                     : "header__link"
                 }
-                // onClick={handleActive}
               >
                 All Spots
               </a>
@@ -97,17 +97,6 @@ const SpotsDrop = () => {
                 Gaps
               </a>
             </Link>
-            {/* <Link href="/spots/other">
-              <a
-                className={
-                  router.asPath === "/spots/other"
-                    ? "header__link active"
-                    : "header__link"
-                }
-              >
-                Other
-              </a>
-            </Link> */}
           </div>
         </div>
       </div>

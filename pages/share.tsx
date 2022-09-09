@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import fetch from "isomorphic-unfetch";
-import { useRouter } from "next/router";
 import { server } from "../utils/domain";
 import { FiUpload, FiX } from "react-icons/fi";
 import listenForOutsideClick from "../utils/Listen";
@@ -31,6 +30,8 @@ export default function upload() {
     listenForOutsideClick(listening3, setListening3, menuRef3, setIsOpen3)
   );
 
+
+
   const [fileName, setFileName] = useState("");
   const [filePreview, setFilePreview] = useState(null);
   const [fileSize, setFileSize] = useState(0);
@@ -53,7 +54,6 @@ export default function upload() {
   const [defaultLat, setDefaultLat] = useState(45.540141);
   const [defaultLong, setDefaultLong] = useState(-73.635064);
   const [defaultZoom, setDefaultZoom] = useState(10.5);
-  // const [defaultMapType, setDefaulMapType] = useState("ROADMAP");
 
   const [preview, setPreview] = useState(false);
 

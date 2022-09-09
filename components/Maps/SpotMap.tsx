@@ -1,11 +1,13 @@
-// import React, { useState, useMemo } from "react";
 import GoogleMapReact from "google-map-react";
-import { GrLocationPin } from "react-icons/gr";
-import { MdLocationPin } from "react-icons/md";
+
 function Marker({ lat, lng }) {
   return (
     <div className="map__marker">
-      <MdLocationPin size={32} className="map__marker" />
+      <img
+        src="../../marker.png"
+        style={{ width: 18, height: "auto" }}
+        className="map__marker"
+      />
     </div>
   );
 }

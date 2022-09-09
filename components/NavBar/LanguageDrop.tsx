@@ -37,7 +37,7 @@ const LanguageDrop = ({ language, setLanguage, languageHandle }) => {
             onClick={languageHandle}
           >
             <div className="header__category">English</div>
-            <div className="header__country">United States</div>
+            <div className="header__country">Canada</div>
           </div>
           <div
             className={

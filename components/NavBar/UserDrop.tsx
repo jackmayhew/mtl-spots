@@ -25,7 +25,11 @@ const UserDrop = ({ language, setLanguage, languageHandle }) => {
           : "header__item header__item_user js-header-item"
       }
     >
-      <button className="header__head js-header-head" onClick={toggle} aria-label="User">
+      <button
+        className="header__head js-header-head"
+        onClick={toggle}
+        aria-label="User"
+      >
         <FiUser size={24} className="user_icon" />
       </button>
 
@@ -58,33 +62,11 @@ const UserDrop = ({ language, setLanguage, languageHandle }) => {
                 Contact Us
               </a>
             </Link>
-            {/* {theme === "light" ? (
-              <a className="header__link" onClick={() => setTheme('dark')}>
-                <FiMoon size={24} className="icon icon-home" />
-                Dark Mode
-              </a>
-            ) : (
-              <a className="header__link" onClick={() => setTheme('dark')}>
-                <FiSun size={24} className="icon icon-home" />
-                Light Mode
-              </a>
-            )} */}
           </div>
           <ThemeChanger />
           <div className="header__menu"></div>
         </div>
         <div className="header__btns">
-          {/* <Link href="/spots">
-            <a className="button button-small header__button" onClick={toggle}>
-              Find Spots
-            </a>
-          </Link>
-          <Link href="/share">
-            <a className="button button-small header__button" onClick={toggle}>
-              Share Spots
-            </a>
-          </Link> */}
-
           <div className="header__body js-header-body language__body slat">
             <div className="header__list">
               <div
@@ -95,7 +77,7 @@ const UserDrop = ({ language, setLanguage, languageHandle }) => {
                 onClick={languageHandle}
               >
                 <div className="header__category">English</div>
-                <div className="header__country">United States</div>
+                <div className="header__country">Canada</div>
               </div>
               <div
                 className={
@@ -109,8 +91,6 @@ const UserDrop = ({ language, setLanguage, languageHandle }) => {
               </div>
             </div>
           </div>
-
-          {/* <div className="header__body js-header-body language__body slat"><div className="header__list"><a className="header__box active" id="english"><div className="header__category">English</div><div className="header__country">United States</div></a><a className="header__box" id="french"><div className="header__category">Français</div><div className="header__country">Canada</div></a></div></div> */}
         </div>
       </div>
     </div>

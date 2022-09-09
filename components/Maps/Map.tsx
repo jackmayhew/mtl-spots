@@ -1,45 +1,36 @@
-// import React, { useState, useMemo } from "react";
-import { useState, useRef, useEffect  } from "react";
 import GoogleMapReact from "google-map-react";
-import { MdLocationPin } from "react-icons/md";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import listenForOutsideClick from "../../utils/Listen";
-{
-  /* <FaMapMarkerAlt size={26} className="map__marker" /> */
-}
 
 function Marker({ lat, lng, spot }) {
-  
-    const menuRef = useRef(null);
-    const [listening, setListening] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
-    useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
-
-    const deletepost = (e) => {
-    // let p = document.getElementsByClassName("map__modal");
-    // for (let i = 0; i < p.length; i++) {
-    //   p[i].classList.remove("modal__show");
-    // }
+  const markerClick = () => {
+    
+    let allMarkers = document.getElementsByClassName("map__modal");
+    for (let i = 0; i < allMarkers.length; i++) {
+      allMarkers[i].classList.remove("modal__show");
+    }
     document.getElementById(spot._id).classList.add("modal__show");
   };
 
+  const modalClick = (e) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div ref={menuRef}>
+    <div>
       <div className="map__marker">
         <img
           src="marker.png"
           alt=""
           style={{ width: 18, height: "auto" }}
           className="map__marker"
-          onClick={deletepost}
-          
+          onClick={markerClick}
         />
       </div>
-      <div id={spot._id}  className={isOpen ? "map__modal modal__show" : "map__modal"} onClick={toggle}>
 
-        <h5>{spot.title}</h5>
-
+      <div id={spot._id} className="map__modal" onClick={modalClick}>
+        <h2>{spot.title}</h2>
+        <h3>{spot.category}</h3>
+        <h4><a href={`https://mtlspots.ca/spots/${spot.category}/${spot._id}`} target="_blank">View Spot</a></h4>
+        <h4><a href={`https://maps.google.com/?q=${spot.location}`} target="_blank">Google Maps</a></h4>
       </div>
     </div>
   );
@@ -94,6 +85,13 @@ function SimpleMap({ initialSpots, isBreakpoint }) {
     },
   };
 
+  const removeModals = () => {
+    let allModals = document.getElementsByClassName("map__modal");
+    for (let i = 0; i < allModals.length; i++) {
+      allModals[i].classList.remove("modal__show");
+    }
+  };
+
   return (
     <div style={{ height: "100%", width: "100%" }} className="googleMap">
       <GoogleMapReact
@@ -102,15 +100,8 @@ function SimpleMap({ initialSpots, isBreakpoint }) {
         zoom={isBreakpoint ? 10.5 : 10.9}
         options={getMapOptions}
         showModal={true}
+        onClick={removeModals}
       >
-
-{/* <Marker
-        
-            lat={45.510141}
-            lng={-73.635064}
-            spot={initialSpots[0]}
-          /> */}
-
         {initialSpots.map((spot) => (
           <Marker
             key={spot._id}

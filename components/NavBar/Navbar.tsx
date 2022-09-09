@@ -118,7 +118,6 @@ function NavBar() {
             </Link>
           </div>
 
-          {/* <UploadLink /> */}
           <LanguageDrop
             language={language}
             setLanguage={setLanguage}
