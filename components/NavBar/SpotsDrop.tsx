@@ -3,7 +3,7 @@ import listenForOutsideClick from "../../utils/Listen";
 import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FiUpload } from "react-icons/fi";
+import { FiUpload, FiMap } from "react-icons/fi";
 
 const SpotsDrop = () => {
   const menuRef = useRef(null);
@@ -13,7 +13,6 @@ const SpotsDrop = () => {
   useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
 
   const router = useRouter();
-
 
   return (
     <div className="find__share__wrap">
@@ -25,7 +24,10 @@ const SpotsDrop = () => {
             : "header__item header__item_dropdown js-header-item spot__upload"
         }
       >
-        <button className="header__head js-header-head find__spots" onClick={toggle}>
+        <button
+          className="header__head js-header-head find__spots"
+          onClick={toggle}
+        >
           <span
             className={
               router.asPath.includes("/spots") ? "spots__drop__active" : ""
@@ -39,9 +41,10 @@ const SpotsDrop = () => {
         <div className="header__body desktop__nav">
           <div className="header__menu" onClick={toggle}>
             <Link href="/spots">
-              <a 
+              <a
                 className={
-                  router.asPath === "/spots" || router.asPath.includes("/spots?category=")
+                  router.asPath === "/spots" ||
+                  router.asPath.includes("/spots?category=")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -108,6 +111,7 @@ const SpotsDrop = () => {
           </div>
         </div>
       </div>
+
       <div className="header__item header__item_language upload__link">
         <Link href="/share">
           <a
@@ -122,6 +126,24 @@ const SpotsDrop = () => {
           >
             Share Spots
             <FiUpload className="icon icon-globe share__icon" />
+          </a>
+        </Link>
+      </div>
+
+      <div className="header__item header__item_language upload__link">
+        <Link href="/map">
+          <a
+            className={
+              router.asPath.includes("/map")
+                ? "header__head upload__active"
+                : "header__head"
+            }
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
+            Map
+            <FiMap className="icon icon-globe share__icon" />
           </a>
         </Link>
       </div>

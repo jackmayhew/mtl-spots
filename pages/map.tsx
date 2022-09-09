@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Map from "../components/Maps/Map";
 import { server } from "../utils/domain";
+import useMediaQuery from "../utils/width";
 
 function map({ initialSpots }) {
   const [activeTab, setActiveTab] = useState("");
@@ -9,12 +10,15 @@ function map({ initialSpots }) {
     spot.category.includes(activeTab)
   );
 
+  const isBreakpoint = useMediaQuery(768);
+
   return (
     <div className="outer__inner">
+        
       <div className="section main main_tasks">
         <div className="main__center center">
           <div className="main__preview">
-            <Map initialSpots={filteredSpots} />
+            <Map initialSpots={filteredSpots} isBreakpoint={isBreakpoint} />
           </div>
           <div className="panel panel_tasks">
             <div className="panel__background"></div>
@@ -61,7 +65,9 @@ function map({ initialSpots }) {
               </a>
               <a
                 className={
-                  activeTab === "Other" ? "panel__link active" : "panel__link"
+                  activeTab === "Other"
+                    ? "panel__link panel__hide active"
+                    : "panel__link panel__hide"
                 }
                 onClick={() => setActiveTab("Other")}
               >
