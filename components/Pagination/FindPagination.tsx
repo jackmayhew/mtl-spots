@@ -1,6 +1,11 @@
 import Link from "next/link";
+import smoothscroll from 'smoothscroll-polyfill';
 
 function Pagination({ count, page, spotCategory }) {
+  
+  smoothscroll.polyfill();
+
+
   let pageIndex = parseInt(page);
   page === undefined ? (pageIndex = 1) : (pageIndex = parseInt(page));
 

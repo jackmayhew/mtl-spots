@@ -29,6 +29,7 @@
     "remove-trailing-slash": "^0.1.1",
     "sass": "^1.52.1",
     "slick-carousel": "^1.8.1",
+    "smoothscroll-polyfill": "^0.4.4",
     "swiper": "^8.2.2"
   },
   "devDependencies": {
