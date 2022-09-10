@@ -2690,6 +2690,11 @@ html.dark .select.open {
   -webkit-transform: translateY(-50%) rotate(180deg);
   transform: translateY(-50%) rotate(180deg);
 }
+
+html.dark .select .current {
+  color: #ffffff;
+}
+
 .select .current {
   display: block;
   overflow: hidden;
@@ -7776,6 +7781,11 @@ html.dark .location.active .location__head {
   }
 }
 
+
+html.dark .location__head .form__left .location__input::placeholder {
+  color: #ffffff !important;
+}
+
 .location__input {
   &:hover {
     cursor: text;
@@ -8192,7 +8202,9 @@ html.dark .location__item:hover:before {
 //   }
 // }
 
-
+html.dark  .location_small .location__icon button {
+  color: #ffffff;
+}
   .location_small .location__icon {
     color: #5d5b5b;
     button {
@@ -9003,6 +9015,9 @@ html.dark .card__foot {
   font-size: 12px;
   line-height: 1.66667;
   color: #777e90;
+  &:hover {
+    color: #3b71fe;
+  }
 }
 .card_row {
   flex-direction: row;
@@ -10486,6 +10501,11 @@ html.dark .description {
     margin-bottom: 64px;
   }
 }
+
+.spot__title {
+  text-align: left !important;
+}
+
 .description__title {
   margin-bottom: 8px;
   text-align: left;

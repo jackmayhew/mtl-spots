@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 import { server } from "../utils/domain";
 import Link from "next/link";
-import SavedPagination from "../components/Spots/SavedPagination";
+import SavedPagination from "../components/Pagination/SavedPagination";
 import { useRouter } from "next/router";
+import Card from "../components/Cards/Card";
 
 function All({ initialSpots, initialPage }) {
   const router = useRouter();
@@ -82,7 +83,7 @@ function All({ initialSpots, initialPage }) {
                       : " Saved Spot"}
                   </h2>
                   <h2>
-                    {!spots.length
+                    {!spots
                       ? 'No saved spots yet. Click the "save" button while viewing a spot and it will appear here.'
                       : null}
                   </h2>
@@ -96,42 +97,7 @@ function All({ initialSpots, initialPage }) {
               {initialSpots.length > 0 && (
                 <div className="catalog__cards">
                   {renderedSpots.map((spot) => (
-                    <Link
-                      href={`/spots/${spot.category}/${spot._id}`}
-                      key={spot._id}
-                    >
-                      <a className="card" key={spot._id}>
-                        <div className="card__preview">
-                          <img
-                            src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
-                            alt="Entire serviced classy moutain house"
-                          />
-                          {/* <div className="category card__category">superhost</div> */}
-                        </div>
-                        <div className="card__body">
-                          <div className="card__line">
-                            <div className="card__title">{spot.title}</div>
-                            <div className="card__price">
-                              <div className="card__actual">info</div>
-                            </div>
-                          </div>
-                          <div className="card__options">
-                            <div className="card__option">{spot.location}</div>
-                          </div>
-                          <div className="card__foot">
-                            <div className="card__flex">
-                              <div className="card__cost">{spot.category}</div>
-                              <div className="card__rating">
-                                <div className="card__number">4.8</div>
-                                <div className="card__reviews">
-                                  (12 reviews)
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </Link>
+                    <Card spot={spot} key={spot._id} />
                   ))}
                 </div>
               )}

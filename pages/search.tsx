@@ -2,9 +2,9 @@ import { useState } from "react";
 import fetch from "isomorphic-unfetch";
 import { server } from "../utils/domain";
 import Link from "next/link";
-import SearchPagination from "../components/Spots/SearchPagination";
+import SearchPagination from "../components/Pagination/SearchPagination";
 import { FiSearch, FiArrowLeft } from "react-icons/fi";
-import { IoEnterOutline } from "react-icons/io5";
+import Card from "../components/Cards/Card";
 
 function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
   const [searchTerm, setSearchTerm] = useState(initialTerm);
@@ -121,39 +121,7 @@ function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
             <div className="catalog__center center">
               <div className="catalog__cards">
                 {initialSpots.map((spot) => (
-                  <Link
-                    href={`/spots/${spot.category}/${spot._id}`}
-                    key={spot._id}
-                  >
-                    <a className="card" key={spot._id}>
-                      <div className="card__preview">
-                        <img
-                          src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
-                          alt="Entire serviced classy moutain house"
-                        />
-                      </div>
-                      <div className="card__body">
-                        <div className="card__line">
-                          <div className="card__title">{spot.title}</div>
-                          <div className="card__price">
-                            <div className="card__actual">info</div>
-                          </div>
-                        </div>
-                        <div className="card__options">
-                          <div className="card__option">{spot.location}</div>
-                        </div>
-                        <div className="card__foot">
-                          <div className="card__flex">
-                            <div className="card__cost">{spot.category}</div>
-                            <div className="card__rating">
-                              <div className="card__number">4.8</div>
-                              <div className="card__reviews">(12 reviews)</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </Link>
+                  <Card spot={spot} key={spot._id} />
                 ))}
               </div>
 

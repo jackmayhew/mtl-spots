@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import Link from "next/link";
+import Card from "../../components/Cards/Card";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -101,41 +101,7 @@ function HomeSlider({ spots, category }) {
               >
                 {spots.map((spot) => (
                   <SwiperSlide key={spot._id}>
-                    <Link href={`/spots/${spot.category}/${spot._id}`}>
-                      <a className="card">
-                        <div className="card__preview">
-                          <img
-                            src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
-                            alt="Entire serviced classy moutain house"
-                          />
-                          {/* <div className="category card__category">superhost</div> */}
-                        </div>
-                        <div className="card__body">
-                          <div className="card__line">
-                            <div className="card__title">{spot.title}</div>
-                            <div className="card__price">
-                              {/* <div className="card__old">$356</div> */}
-                              <div className="card__actual">info</div>
-                            </div>
-                          </div>
-                          <div className="card__options">
-                            <div className="card__option">{spot.location}</div>
-                            {/* <div className="card__option">Breakfast included</div> */}
-                          </div>
-                          <div className="card__foot">
-                            <div className="card__flex">
-                              <div className="card__cost">{spot.category}</div>
-                              <div className="card__rating">
-                                <div className="card__number">4.8</div>
-                                <div className="card__reviews">
-                                  (12 reviews)
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </Link>
+                    <Card spot={spot} />
                   </SwiperSlide>
                 ))}
               </Swiper>

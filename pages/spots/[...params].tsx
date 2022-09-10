@@ -100,7 +100,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
                 </div>
                 {/* <div className="product__options">
                   <div className="product__option location__icon">
-                    <FiMapPin size={22} />
+                    <FiClock size={22} />
                     Rosemont
                   </div>
                 </div> */}
@@ -150,11 +150,6 @@ function SingleSpot({ spot, relatedSpots, category }) {
 
                 <div
                   ref={refStyle}
-                  // className={
-                  //   saved
-                  //     ? "actions__item actions__item_share js-actions-item actives"
-                  //     : "actions__item actions__item_share js-actions-item"
-                  // }
                   className="actions__item actions__item_share js-actions-item"
                 >
                   <button
@@ -176,9 +171,11 @@ function SingleSpot({ spot, relatedSpots, category }) {
                 </div>
 
                 <div className="actions__item actions__item_map js-actions-item">
+                <Link className="button-circle-stroke button-small actions__button js-actions-button" href={`/map?spot=${spot._id}`}>
                   <button className="button-circle-stroke button-small actions__button js-actions-button">
                     <FiMap size={22} className="icon" />
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -188,7 +185,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
             <div className="gallery__list gallery__list_stays">
               <div className="gallery__preview">
                 <img
-                  src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg"
+                  src={spot.image}
                   alt="Gallery"
                 />
               </div>
@@ -200,7 +197,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
       <div className="section description">
         <div className="description__center center">
           <div className="description__wrapper">
-            <h4 className="description__title h4">{spot.title}</h4>
+            <h4 className="description__title h4 spot__title">{spot.title}</h4>
             {spot.ig && (
               <div className="description__profile">
                 <div className="description__name">
