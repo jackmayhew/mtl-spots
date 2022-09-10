@@ -163,9 +163,9 @@ function SingleSpot({ spot, relatedSpots, category }) {
                     <FiBookmark size={22} className="icon icon__disable" />
                   </button>
 
-                  <div className="actions__body js-actions-body">
+                  <div className="actions__body js-actions-body saved__msg">
                     <div className="actions__title saved__title">
-                      This spot has been saved.
+                      This spot has been saved
                     </div>
                   </div>
                 </div>

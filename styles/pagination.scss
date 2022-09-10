@@ -1,4 +1,4 @@
-$primary-blue: #39a5e8;
+$primary-blue: #3b71fe;
 
 a {
   text-decoration: none;
@@ -68,15 +68,28 @@ a {
   color: #222;
 }
 
-/* ONE */
-
 .p1 a {
   width: 40px;
   height: 40px;
   line-height: 40px;
   padding: 0;
   text-align: center;
-  border: 1.5px solid #edf2f7;
+  border: 1.5px solid #e6e8ec;
+  width: 2.75rem;
+  border-radius: 0.375rem;
+  margin: 0 .5em;
+  font-weight: bold;
+}
+
+html.dark .p1 a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  text-align: center;
+
+  color: #fcfcfd;
+  border: 1.5px solid #353945;
   width: 2.75rem;
   border-radius: 0.375rem;
   margin: 0 .5em;
@@ -90,6 +103,16 @@ a {
   border-radius: 0.375rem;
   border: 1.5px solid transparent;
 }
+
+html.dark .p1 a.is-active {
+  background-color: $primary-blue;
+  color: #fff;
+  width: 2.75rem;
+  border-radius: 0.375rem;
+  border: 1.5px solid transparent;
+}
+
+
 
 .pag_flex {
   display: flex;
