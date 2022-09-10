@@ -4,7 +4,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FiUpload, FiMap } from "react-icons/fi";
+import { FiShare, FiMap } from "react-icons/fi";
 
 const SpotsDrop = () => {
   const menuRef = useRef(null);
@@ -114,7 +114,7 @@ const SpotsDrop = () => {
             }}
           >
             Share Spots
-            <FiUpload className="icon icon-globe share__icon" />
+            <FiShare className="icon icon-globe share__icon" />
           </a>
         </Link>
       </div>

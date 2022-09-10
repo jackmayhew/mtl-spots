@@ -5750,7 +5750,7 @@ html.dark .live__item:hover {
   }
 }
 
-.contact__button {
+.upload__foot .contact__button {
   width: 50%;
 }
 
@@ -8706,6 +8706,9 @@ html.dark .sorting__body {
 .sorting__box {
   margin-right: auto;
 }
+.sorting__search {
+  width: 100%;
+}
 .sorting__line {
   display: flex;
   align-items: center;
@@ -8815,6 +8818,11 @@ html.dark .sorting__map {
   line-height: 1.5;
   font-weight: 500;
 }
+.search__overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .sorting__foot {
   display: flex;
   justify-content: space-between;
@@ -8883,12 +8891,13 @@ html.dark .sorting_flights .sorting__foot {
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 24px;
+  // border-radius: 24px;
   overflow: hidden;
   background: #fcfcfd;
   border: 1px solid #e6e8ec;
   color: #141416;
   transition: border-color 0.2s;
+  border-radius: 24px;
 }
 .card:hover {
   border-color: #b1b5c3;
@@ -8905,6 +8914,9 @@ html.dark .card {
 .card__preview {
   position: relative;
   overflow: hidden;
+  transform: rotate(0);
+  overflow: hidden;
+  border-radius: 24px 0 0;
 }
 .card__preview:before {
   content: "";

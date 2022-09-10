@@ -44,27 +44,27 @@ function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
                     </Link>
                   </li>
                   <li className="breadcrumbs__item">
-                    <a className="breadcrumbs__link">Search Results</a>
+                    <a className="breadcrumbs__link">Search</a>
                   </li>
                   <li className="breadcrumbs__item">
                     <Link href={`/search?term=${initialTerm}`}>
                       <a className="breadcrumbs__link">
-                        {capitalizeFirstLetter(initialTerm)}
+                        {initialTerm}
                       </a>
                     </Link>
                   </li>
                 </ul>
               </div>
               <div className="sorting__body">
-                <div className="sorting__box">
+                <div className="sorting__box sorting__search">
                   <h2 className="sorting__title h2">
                     {initialCount > 1 || initialCount === 0
                       ? `${initialCount} Spots Found`
                       : `${initialCount} Spot Found`}
                   </h2>
                   <div className="sorting__line">
-                    <div className="sorting__details">
-                      Search Results: {capitalizeFirstLetter(initialTerm)}
+                    <div className="sorting__details search__overflow">
+                      Search Results: <span>{initialTerm}</span> 
                     </div>
                   </div>
                 </div>

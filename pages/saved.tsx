@@ -12,9 +12,13 @@ function All({ initialSpots, initialPage }) {
   const [spots, setSpots] = useState([]);
   const [renderedSpots, setRenderedSpots] = useState([]);
 
+  const [spotCheck, setSpotCheck] = useState(false);
+
+
   useEffect(() => {
     if (localStorage.getItem("savedList")) {
       // get ids from local storage
+      setSpotCheck(true)
       const array = localStorage
         .getItem("savedList")
         .split(",")
@@ -83,9 +87,7 @@ function All({ initialSpots, initialPage }) {
                       : " Saved Spot"}
                   </h2>
                   <h2>
-                    {!spots
-                      ? 'No saved spots yet. Click the "save" button while viewing a spot and it will appear here.'
-                      : null}
+                  Click the "save" button while viewing a spot and it will appear here.
                   </h2>
                 </div>
               </div>
