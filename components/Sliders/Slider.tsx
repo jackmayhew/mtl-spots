@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import Card from "../../components/Cards/Card";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";

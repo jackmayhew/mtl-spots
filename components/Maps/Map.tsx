@@ -3,7 +3,6 @@ import GoogleMapReact from "google-map-react";
 function Marker({ lat, lng, spot, openSpot }) {
   
   const openModal = () => {
-    
     let allMarkers = document.getElementsByClassName("map__modal");
     for (let i = 0; i < allMarkers.length; i++) {
       allMarkers[i].classList.remove("modal__show");
@@ -103,7 +102,7 @@ function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
         zoom={isBreakpoint ? 10.5 : 10.9}
         options={getMapOptions}
         showModal={true}
-        onClick={closeModals}
+        // onClick={closeModals}
       >
         {initialSpots.map((spot) => (
           <Marker
