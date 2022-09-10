@@ -31,7 +31,7 @@ function getMapOptions(maps, id) {
     gestureHandling: "greedy",
     // disableDoubleClickZoom: true,
     minZoom: 5,
-    maxZoom: 20,
+    maxZoom: 22,
 
     mapTypeControl: true,
     mapTypeId: maps.MapTypeId.ROADMAP,

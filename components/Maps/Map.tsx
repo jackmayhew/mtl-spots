@@ -56,9 +56,8 @@ function getMapOptions(maps) {
     ],
     gestureHandling: "greedy",
     // gestureHandling: "cooperative",
-    // disableDoubleClickZoom: true,
     minZoom: 5,
-    maxZoom: 20,
+    maxZoom: 22,
 
     mapTypeControl: true,
     zoomControlOptions: {
