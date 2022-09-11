@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { FiMail } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
-
+import smoothscroll from "smoothscroll-polyfill";
+  
 function contact() {
   const formRef = useRef();
 
@@ -98,6 +99,10 @@ function contact() {
 
     return err;
   };
+
+  useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
 
   return (
     <div className="outer__inner">

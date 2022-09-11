@@ -6,8 +6,10 @@ import { FiUpload, FiX } from "react-icons/fi";
 import listenForOutsideClick from "../utils/Listen";
 import { useS3Upload } from "next-s3-upload";
 import Map from "../components/Maps/ShareMap";
+import smoothscroll from "smoothscroll-polyfill";
 
 export default function upload() {
+  
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -223,6 +225,10 @@ export default function upload() {
 
     return err;
   };
+
+  useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
 
   return (
     <div className="section upload">
