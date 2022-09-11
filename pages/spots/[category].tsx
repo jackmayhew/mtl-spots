@@ -69,7 +69,6 @@ function Category({
                   <Pagination
                     count={initialCount}
                     page={initialPage}
-                    spotCategory={initialCategory}
                     url={`/spots/${initialCategory}?`}
                   />
                 </div>

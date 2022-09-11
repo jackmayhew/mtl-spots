@@ -108,7 +108,6 @@ function All({ initialSpots, initialPage }) {
                   <Pagination
                     count={spots.length}
                     page={initialPage}
-                    spotCategory={""}
                     url={`/saved?`}
                   />
                 </div>

@@ -130,7 +130,6 @@ function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
                   <Pagination
                     count={initialCount}
                     page={initialPage}
-                    spotCategory={""}
                     url={`?term=${initialTerm}&`}
                   />
                 </div>

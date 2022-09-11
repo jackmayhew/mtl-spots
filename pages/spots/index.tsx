@@ -196,7 +196,6 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                   <Pagination
                     count={initialCount}
                     page={initialPage}
-                    spotCategory={initialCategory}
                     url={`/spots?category=${initialCategory}&`}
                   />
                 </div>

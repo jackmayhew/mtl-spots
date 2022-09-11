@@ -1,14 +1,12 @@
 import Link from "next/link";
-import smoothscroll from 'smoothscroll-polyfill';
-import {useEffect } from "react";
+import smoothscroll from "smoothscroll-polyfill";
+import { useEffect } from "react";
 
-function Pagination({ count, page, spotCategory, url }) {
-  
-
+function Pagination({ count, page, url }) {
   useEffect(() => {
     smoothscroll.polyfill();
   }, []);
-  
+
   let pageIndex = parseInt(page);
   page === undefined ? (pageIndex = 1) : (pageIndex = parseInt(page));
 
@@ -18,12 +16,6 @@ function Pagination({ count, page, spotCategory, url }) {
   const previousPage = pageIndex - 1;
   const lastPage = Math.ceil(count / 12);
 
-  // if browsing by category, add to url
-  const path = `?category=${spotCategory}`;
-
-  console.log(url)
-
-  
   return (
     <div className="pagination p1">
       <ul>
