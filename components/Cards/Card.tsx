@@ -16,7 +16,6 @@ function Card({ spot }) {
       <a className="card">
         <div className="card__preview">
           <img src={spot.image} alt={`${spot.title} skateboard spot in Montreal.`} />
-          {/* <div className="category card__category">superhost</div> */}
         </div>
         <div className="card__body">
           <div className="card__line">

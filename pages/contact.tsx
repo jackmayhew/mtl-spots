@@ -131,7 +131,6 @@ function contact() {
             <div className="faq__center center">
               <div className="faq__top">
                 <div className="faq__stage">
-                  {/* reach out with questions or for support */}
                   {isSubmitted
                           ? <div className="email__result">Email Sent. We'll Be In Touch Shortly!</div>
                           : emailError
@@ -148,11 +147,6 @@ function contact() {
                   <div className="faq__box js-tabs-item">
                     <div className="upload__item">
                       <div className="upload__category contact__form faq__stage">
-                        {/* {isSubmitted
-                          ? "Email Sent. We'll Be In Touch Shortly!"
-                          : emailError
-                          ? "something went wrong. please try again or email us at bonjour@mtlspots.ca"
-                          : "Contact Form"} */}
                           Contact Form
                       </div>
                       <form ref={formRef} onSubmit={handleSubmit}>

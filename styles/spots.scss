@@ -4388,6 +4388,7 @@ html.dark .panel__nav {
 }
 html.dark .panel__link {
   color: #b1b5c3;
+  border-color: #b1b5c3;
 }
 html.dark .panel__link:hover {
   color: #fcfcfd;
@@ -8973,6 +8974,11 @@ html.dark .card {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 500;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 .card__price {
   margin-left: 16px;
@@ -10147,6 +10153,12 @@ html.dark .actions__favorite.active {
 .product__title {
   max-width: 640px;
   margin-bottom: 16px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+
 }
 @media only screen and (max-width: 767px) {
   .product__title {
@@ -15916,6 +15928,9 @@ html.dark .upload__list {
 .map__note {
   text-align: left;
 }
+.map__title {
+  text-align: left;
+}
 
 .upload__note {
   margin-top: 4px;
@@ -16004,7 +16019,7 @@ html.dark .upload__file {
 }
 
 .map__modal {
-    height: 100px;
+    height: 150px;
     width: 200px;
     position: absolute;
     margin-left: auto;
@@ -16013,7 +16028,7 @@ html.dark .upload__file {
     right: 0;
     text-align: center;
     background: #ffffff;
-    margin-top: -121px;
+    margin-top: -180px;
     margin-right: -100px;
     display: none;
     z-index: 1;
@@ -16022,11 +16037,25 @@ html.dark .upload__file {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
 
-    a {
-      color: inherit;
-      text-decoration: underline;
-    }
+
+.map__modal:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: 12.5px solid #fcfcfd;
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+}
+
+html.dark .map__modal:after {
+  border-top: 12.5px solid #23262f;
 }
 
 html.dark .map__modal {
@@ -16041,16 +16070,22 @@ html.dark .map__modal {
   display: flex;
 
 }
-// .map__modal:after {
-//   content:"";
-//   position: absolute;
-//   z-index: -1;
-//   top: 0;
-//   bottom: 0;
-//   left: 50%;
-//   border-left: 2px dotted #000000;
-//   transform: translate(-50%);
-// }
+
+.modal__card {
+  width: 100%;
+  border: none;
+}
+
+
+
+.modal__foot {
+  border-radius: 0 !important;
+}
+
+.modal__info {
+  border-radius: 4px !important;
+}
+
 
 .map__marker {
   transform: translate(-50%, -50%);
