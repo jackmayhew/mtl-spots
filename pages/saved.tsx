@@ -86,9 +86,9 @@ function All({ initialSpots, initialPage }) {
                       ? " Saved Spots"
                       : " Saved Spot"}
                   </h2>
-                  <h2>
+                  {/* <h2>
                   Click the "save" button while viewing a spot and it will appear here.
-                  </h2>
+                  </h2> */}
                 </div>
               </div>
             </div>

@@ -15,7 +15,7 @@ function Card({ spot }) {
     <Link href={`/spots/${spot.category}/${spot._id}`}>
       <a className="card">
         <div className="card__preview">
-          <img src={spot.image} alt="Entire serviced classy moutain house" />
+          <img src={spot.image} alt={`${spot.title} skateboard spot in Montreal.`} />
           {/* <div className="category card__category">superhost</div> */}
         </div>
         <div className="card__body">
