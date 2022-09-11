@@ -2,9 +2,9 @@ import { useState } from "react";
 import fetch from "isomorphic-unfetch";
 import { server } from "../utils/domain";
 import Link from "next/link";
-import SearchPagination from "../components/Pagination/SearchPagination";
 import { FiSearch, FiArrowLeft } from "react-icons/fi";
 import Card from "../components/Cards/Card";
+import Pagination from "../components/Pagination/Pagination";
 
 function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
   const [searchTerm, setSearchTerm] = useState(initialTerm);
@@ -127,10 +127,11 @@ function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
 
               {initialSpots.length > 0 && (
                 <div className="catalog__btns">
-                  <SearchPagination
+                  <Pagination
                     count={initialCount}
                     page={initialPage}
-                    initialTerm={initialTerm}
+                    spotCategory={""}
+                    url={`?term=${initialTerm}&`}
                   />
                 </div>
               )}

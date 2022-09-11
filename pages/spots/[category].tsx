@@ -1,8 +1,8 @@
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
-import CategoryPagination from "../../components/Pagination/CategoryPagination";
 import { server } from "../../utils/domain";
 import Card from "../../components/Cards/Card";
+import Pagination from "../../components/Pagination/Pagination";
 
 function Category({
   initialSpots,
@@ -66,10 +66,11 @@ function Category({
 
               {initialSpots.length > 0 && (
                 <div className="catalog__btns">
-                  <CategoryPagination
+                  <Pagination
                     count={initialCount}
                     page={initialPage}
                     spotCategory={initialCategory}
+                    url={`/spots/${initialCategory}?`}
                   />
                 </div>
               )}

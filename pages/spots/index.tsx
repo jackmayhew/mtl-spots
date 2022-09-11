@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import fetch from "isomorphic-unfetch";
 import { server } from "../../utils/domain";
 import Link from "next/link";
-import Pagination from "../../components/Pagination/FindPagination";
+import Pagination from "../../components/Pagination/Pagination";
 import listenForOutsideClick from "../../utils/Listen";
 import { FiSearch } from "react-icons/fi";
 import Card from "../../components/Cards/Card";
@@ -197,6 +197,7 @@ function All({ initialSpots, initialCount, initialPage, initialCategory }) {
                     count={initialCount}
                     page={initialPage}
                     spotCategory={initialCategory}
+                    url={`/spots?category=${initialCategory}&`}
                   />
                 </div>
               )}

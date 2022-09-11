@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 import { server } from "../utils/domain";
 import Link from "next/link";
-import SavedPagination from "../components/Pagination/SavedPagination";
 import { useRouter } from "next/router";
 import Card from "../components/Cards/Card";
+import Pagination from "../components/Pagination/Pagination";
 
 function All({ initialSpots, initialPage }) {
   const router = useRouter();
@@ -105,7 +105,12 @@ function All({ initialSpots, initialPage }) {
               )}
               {renderedSpots.length > 0 && (
                 <div className="catalog__btns">
-                  <SavedPagination count={spots.length} page={initialPage} />
+                  <Pagination
+                    count={spots.length}
+                    page={initialPage}
+                    spotCategory={""}
+                    url={`/saved?`}
+                  />
                 </div>
               )}
             </div>
