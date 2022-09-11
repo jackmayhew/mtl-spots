@@ -4349,12 +4349,12 @@ html.dark .panel__background:before {
   z-index: 2;
   display: flex;
   margin-bottom: 24px;
-  box-shadow: inset 0 -1px 0 0 #e6e8ec;
+  // box-shadow: inset 0 -1px 0 0 #e6e8ec;
 }
 @media only screen and (max-width: 767px) {
   .panel__nav {
     margin: 0 -20px 16px;
-    padding: 0 20px;
+    padding: 0 10px;
   }
 }
 html.dark .panel__nav {
@@ -4362,7 +4362,7 @@ html.dark .panel__nav {
 }
 .panel__link {
   padding-bottom: 12px;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid #e6e8ec;
   font-family: "DM Sans", sans-serif;
   font-size: 14px;
   line-height: 1.14286;
@@ -18400,3 +18400,6 @@ html.dark .description {
 }
 
 
+.email__result {
+  font-size: 18px;
+}
