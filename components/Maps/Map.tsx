@@ -3,11 +3,15 @@ import GoogleMapReact from "google-map-react";
 function Marker({ lat, lng, spot, openSpot }) {
   
   const openModal = () => {
+    
     let allMarkers = document.getElementsByClassName("map__modal");
     for (let i = 0; i < allMarkers.length; i++) {
       allMarkers[i].classList.remove("modal__show");
     }
-    document.getElementById(spot._id).classList.add("modal__show");
+    setTimeout(() => {
+      document.getElementById(spot._id).classList.add("modal__show");
+    }, 20)
+    
   };
 
   const modalClick = (e) => {
@@ -58,10 +62,13 @@ function getMapOptions(maps) {
     // gestureHandling: "cooperative",
     minZoom: 5,
     maxZoom: 22,
-
+    rotateControl: true,
     mapTypeControl: true,
     zoomControlOptions: {
       position: maps.ControlPosition.TOP_RIGHT,
+    },
+    rotateControlOptions: {
+      position: maps.ControlPosition.TOP_LEFT,
     },
     mapTypeId: maps.MapTypeId.ROADMAP,
     mapTypeControlOptions: {
@@ -98,10 +105,10 @@ function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API }}
         center={defaultProps.center}
-        zoom={isBreakpoint ? 10.5 : 10.9}
+        zoom={isBreakpoint ? 10 : 10.9}
         options={getMapOptions}
         showModal={true}
-        // onClick={closeModals}
+        onClick={closeModals}
       >
         {initialSpots.map((spot) => (
           <Marker

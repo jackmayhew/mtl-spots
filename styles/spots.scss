@@ -2585,14 +2585,26 @@ img {
   margin: 0 auto;
   padding: 0 80px;
 }
+
+.map__center {
+  padding: 0 80px !important;
+  width: 100%;
+  max-width: 1280px !important;
+}
 @media only screen and (max-width: 1023px) {
   .center {
     padding: 0 40px;
+  }
+  .map__center {
+    padding: 0 40px !important;
   }
 }
 @media only screen and (max-width: 767px) {
   .center {
     padding: 0 32px;
+  }
+  .map__center {
+    padding: 0 32px !important;
   }
 }
 
@@ -15942,16 +15954,34 @@ html.dark .upload__file {
 .main__height {
   height: 100vh !important;
 }
+@media only screen and (min-width: 1600px) {
+  .main__height {
+    height: 70vh !important;
+  }
+}
 
+
+.map__margin {
+  margin-bottom: 0;
+}
 @media only screen and (max-width: 767px) {
   .main__height {
     height: 90vh !important;
+  }
+  .map__center {
+    padding: 0 32px;
   }
 }
 
 @media only screen and (max-width: 474px) {
   .main__height {
-    height: 80vh !important;
+    height: 70vh !important;
+  }
+  .map__margin {
+    margin-bottom: 0;
+  }
+  .map__set {
+    margin-bottom: 24px !important;
   }
 }
 

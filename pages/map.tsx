@@ -31,11 +31,102 @@ function map({ initialSpots }) {
   };
 
   return (
+    // <div className="outer__inner">
+    //   <div className="section main main_tasks">
+    //     <div className="main__center center">
+    //       <div className="main__preview">
+    //         <Map
+    //           initialSpots={filteredSpots}
+    //           isBreakpoint={isBreakpoint}
+    //           openSpot={openSpot}
+    //         />
+    //       </div>
+    //       <div className="panel panel_tasks">
+    //         <div className="panel__background"></div>
+    //         <div className="panel__nav map__nav">
+    //           <a
+    //             className={
+    //               activeTab === "" ? "panel__link active" : "panel__link"
+    //             }
+    //             onClick={closeModal}
+    //           >
+    //             All
+    //           </a>
+    //           <a
+    //             className={
+    //               activeTab === "Stairs" ? "panel__link active" : "panel__link"
+    //             }
+    //             onClick={closeModal}
+    //           >
+    //             Stairs
+    //           </a>
+    //           <a
+    //             className={
+    //               activeTab === "Rails" ? "panel__link active" : "panel__link"
+    //             }
+    //             onClick={closeModal}
+    //           >
+    //             Rails
+    //           </a>
+    //           <a
+    //             className={
+    //               activeTab === "Ledges" ? "panel__link active" : "panel__link"
+    //             }
+    //             onClick={closeModal}
+    //           >
+    //             Ledges
+    //           </a>
+    //           <a
+    //             className={
+    //               activeTab === "Gaps" ? "panel__link active" : "panel__link"
+    //             }
+    //             onClick={closeModal}
+    //           >
+    //             Gaps
+    //           </a>
+    //           <a
+    //             className={
+    //               activeTab === "Other"
+    //                 ? "panel__link panel__hide active"
+    //                 : "panel__link panel__hide"
+    //             }
+    //             onClick={closeModal}
+    //           >
+    //             Other
+    //           </a>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
     <div className="outer__inner">
-      <div className="section main main_tasks">
-        <div className="main__center center">
-          <div className="main__preview">
-            <Map
+    <div className="section-mb80 main main_cars-category">
+      <div className="section catalog map__margin">
+        <div className="sorting map__margin">
+          <div className="sorting__center center">
+            <div className="control map__set">
+              <ul className="breadcrumbs">
+                <li className="breadcrumbs__item">
+                  {/* <Link href={`/`}> */}
+                    <a className="breadcrumbs__link">Home</a>
+                  {/* </Link> */}
+                </li>
+                <li className="breadcrumbs__item">
+                  {/* <Link href={`/saved`}> */}
+                    <a className="breadcrumbs__link">Map</a>
+                  {/* </Link> */}
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    <div className="main__center center map__center">
+      <div className="main__preview">
+        <Map
               initialSpots={filteredSpots}
               isBreakpoint={isBreakpoint}
               openSpot={openSpot}
@@ -97,8 +188,9 @@ function map({ initialSpots }) {
             </div>
           </div>
         </div>
-      </div>
+
     </div>
+  </div>
   );
 }
 
