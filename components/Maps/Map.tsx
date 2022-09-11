@@ -27,13 +27,7 @@ function Marker({ lat, lng, spot, openSpot }) {
         />
       </div>
 
-      <div
-        id={spot._id}
-        className={
-          openSpot === spot._id ? "map__modal modal__show" : "map__modal"
-        }
-        onClick={modalClick}
-      >
+      <div id={spot._id} className={ openSpot === spot._id ? "map__modal modal__show" : "map__modal" } onClick={modalClick} >
         <div className="card modal__card">
           <div className="card__body">
             <div className="card__line">
@@ -67,6 +61,8 @@ function Marker({ lat, lng, spot, openSpot }) {
           </div>
         </div>
       </div>
+
+
     </div>
   );
 }
@@ -130,21 +126,6 @@ function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
     console.log(e.target)
   };
 
-
-  if (typeof window !== 'undefined'){
-  let ah = document.querySelector('.gm-style-moc')
-  
-
-
-  ah.addEventListener('click', () => {
-    console.log('ah')
-  })
-
-  }
-
-
-
-
   return (
     <div style={{ height: "100%", width: "100%" }} className="googleMap">
       <GoogleMapReact
@@ -154,6 +135,7 @@ function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
         options={getMapOptions}
         showModal={true}
         onClick={closeModals} 
+        onDoubleClick={() => console.log('?')}
       >
         {initialSpots.map((spot) => (
           <Marker
