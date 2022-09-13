@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from 'next/image'
 
 function Card({ spot }) {
   const router = useRouter();
@@ -11,11 +11,20 @@ function Card({ spot }) {
     router.push(`/map?spot=${spot._id}`);
   };
 
+  const myLoader = ({ src }) => {
+    return `${src}${spot.image.slice(64)}?w=500`
+  }
+
   return (
     <Link href={`/spots/${spot.category}/${spot._id}`}>
       <a className="card">
         <div className="card__preview">
-          <img src={spot.image} alt={`${spot.title} skateboard spot in Montreal.`} />
+          <Image
+            loader={myLoader}
+            src={"https://mtlspots.imgix.net/next-s3-uploads"}
+            layout='fill'
+            alt={`${spot.title} skateboard spot in Montreal, Quebec`}
+          />
         </div>
         <div className="card__body">
           <div className="card__line">

@@ -29,14 +29,14 @@ function HomeSlider({ spots, category }) {
                   Other {capitalizeFirstLetter(category)}
                 </h2>
               ) : (
-                <h2 className="browse__title h2">Recently Added</h2>
+                <h2 className="browse__title h2 no__select">Recently Added</h2>
               )}
 
-              <div className="browse__info info">
+              <div className="browse__info info no__select">
                 {category ? (
-                  <div>Browse Other {capitalizeFirstLetter(category)}</div>
+                  <div className="no__select">Browse Other {capitalizeFirstLetter(category)}</div>
                 ) : (
-                  <div>Browse Recent Spots</div>
+                  <div className="no__select">Browse Recent Spots</div>
                 )}
 
                 <div

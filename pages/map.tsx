@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Map from "../components/Maps/Map";
 import { server } from "../utils/domain";
 import useMediaQuery from "../utils/width";

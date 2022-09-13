@@ -1,5 +1,4 @@
 import GoogleMapReact from "google-map-react";
-import { useState, useEffect } from "react";
 
 function Marker({ lat, lng, spot, openSpot }) {
   const openModal = (e) => {
@@ -73,7 +72,6 @@ function getMapOptions(maps) {
   return {
     streetViewControl: false,
     scaleControl: true,
-    // fullscreenControl: false,
     styles: [
       {
         featureType: "poi.business",
@@ -86,7 +84,6 @@ function getMapOptions(maps) {
       },
     ],
     gestureHandling: "greedy",
-    // gestureHandling: "cooperative",
     minZoom: 5,
     maxZoom: 22,
     rotateControl: true,

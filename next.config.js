@@ -5,6 +5,11 @@ const nextConfig = {
   i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US' 
+  },
+  images: {
+    loader: 'imgix',
+    // domains: ['mtlspots.imgix.net'],
+    path: 'mtlspots.imgix.net',
   }
 }
 

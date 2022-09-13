@@ -10416,9 +10416,9 @@ html.dark .actions__favorite.active {
 .gallery__preview {
   position: relative;
   cursor: pointer;
-  // height: 600px;
+  height: 100%;
 }
-.gallery__preview img {
+.gallery__preview .gallery__img {
   width: 100%;
   height: 100%;
   border-radius: 16px;
@@ -18488,4 +18488,14 @@ html.dark .description {
     padding: 0 32px;
   }
   
+}
+
+
+.no__select::selection {
+  background: transparent;
+} 
+
+.no__select::-moz-selection { /* Code for Firefox */
+
+  background: transparent;
 }
