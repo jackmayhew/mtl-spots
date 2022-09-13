@@ -120,10 +120,12 @@ function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
 
   const closeModals = (e) => {
     let allModals = document.getElementsByClassName("map__modal");
-    for (let i = 0; i < allModals.length; i++) {
-      allModals[i].classList.remove("modal__show");
+    if(e.x) {
+      // console.log(e.x) 
+      for (let i = 0; i < allModals.length; i++) {
+        allModals[i].classList.remove("modal__show");
+      }
     }
-    console.log(e.target)
   };
 
   return (
