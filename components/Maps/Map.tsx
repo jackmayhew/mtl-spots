@@ -1,7 +1,9 @@
 import GoogleMapReact from "google-map-react";
+import { useState, useEffect } from "react";
 
 function Marker({ lat, lng, spot, openSpot }) {
-  const openModal = () => {
+  const openModal = (e) => {
+    e.stopPropagation();
     let allMarkers = document.getElementsByClassName("map__modal");
     for (let i = 0; i < allMarkers.length; i++) {
       allMarkers[i].classList.remove("modal__show");
@@ -111,6 +113,16 @@ function getMapOptions(maps) {
 }
 
 function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
+  
+  let timer;
+  let allModals;
+  let clickCount = 0;
+  let timeout;
+
+  if (typeof window !== "undefined") {
+      allModals = document.getElementsByClassName("map__modal");
+  }
+
   const defaultProps = {
     center: {
       lat: 45.510141,
@@ -118,14 +130,33 @@ function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
     },
   };
 
-  const closeModals = (e) => {
-    let allModals = document.getElementsByClassName("map__modal");
-    if(e.x && e.event.target.nodeName !== "BUTTON") {
-      for (let i = 0; i < allModals.length; i++) {
-        allModals[i].classList.remove("modal__show");
-      }
+
+  function closeModals(e) { 
+    // e.event.detail not registering on mobile? always returns 1. forced to create custom click counter
+
+    clickCount++;
+  
+    clearTimeout(timer)
+
+    // close modal on single map click - keep open on double click (map zoom in)
+    if (clickCount === 1) {
+      timer = setTimeout(() => {
+        if(e.x && e.event.target.nodeName !== "BUTTON") {
+          for (let i = 0; i < allModals.length; i++) {
+            allModals[i].classList.remove("modal__show");
+          }
+        }
+      }, 300);
+    } else {
+    clearTimeout(timeout);
     }
-  };
+
+    timeout = setTimeout(() => {
+    clickCount = 0;
+    }, 300);
+
+  }
+
 
   return (
     <div style={{ height: "100%", width: "100%" }} className="googleMap">
