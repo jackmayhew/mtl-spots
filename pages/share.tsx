@@ -87,7 +87,6 @@ export default function upload() {
       setDefaultLat(45.540141);
       setDefaultLong(-73.635064);
     } catch (error) {
-      console.log('error');
       console.log(error);
     }
   };
@@ -111,7 +110,6 @@ export default function upload() {
 
       let totalBytes = event.target.files[0].size;
       let _size = Math.floor(totalBytes / 1000000);
-      //  console.log(_size);
       setFileSize(_size);
     }
     // else {
@@ -131,7 +129,6 @@ export default function upload() {
     setErrors(errs);
     if (!errs.check) {
       setIsSubmitting(true);
-      console.log(file)
       let { url } = await uploadToS3(file);
       setImageUrl(url);
       createSpot(url);
