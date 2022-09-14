@@ -40,7 +40,7 @@ function Card({ spot }) {
           </div>
           <div className="card__foot">
             <div className="card__flex">
-              <div className="card__cost">Bust Level: {spot.bust}</div>
+              <div className="card__cost">Bust: {spot.bust}</div>
               <div className="card__rating">
                 <div className="card__reviews" onClick={openMap}>
                   Open Map

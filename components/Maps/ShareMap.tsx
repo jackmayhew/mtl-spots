@@ -74,8 +74,10 @@ function SimpleMap({
         center={defaultProps.center}
         zoom={defaultZoom}
         onClick={(ev) => {
-          setLat(ev.lat);
-          setLong(ev.lng);
+          if (ev.x && ev.event.target.nodeName !== "BUTTON") {
+            setLat(ev.lat);
+            setLong(ev.lng);
+          }
         }}
         options={getMapOptions}
       >
