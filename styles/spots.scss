@@ -15952,6 +15952,11 @@ html.dark .upload__list {
   overflow: hidden;
   background: #f4f5f6;
 }
+
+.upload__file:hover {
+  cursor: pointer !important;
+}
+
 html.dark .upload__file {
   background: #23262f;
 }
