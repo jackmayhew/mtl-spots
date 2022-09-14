@@ -6,11 +6,11 @@ const nextConfig = {
     locales: ['en-US'],
     defaultLocale: 'en-US' 
   },
-  // images: {
-  //   loader: 'imgix',
-  //   domains: ['mtlspots.imgix.net'],
-  //   path: 'mtlspots.imgix.net',
-  // }
+  images: {
+    loader: 'imgix',
+    domains: ['mtlspots.imgix.net'],
+    path: 'mtlspots.imgix.net',
+  }
 }
 
 module.exports = nextConfig

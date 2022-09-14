@@ -131,7 +131,7 @@ export default function upload() {
     setErrors(errs);
     if (!errs.check) {
       setIsSubmitting(true);
-      console.log('1')
+      console.log(file)
       let { url } = await uploadToS3(file);
       console.log('2')
       setImageUrl(url);
