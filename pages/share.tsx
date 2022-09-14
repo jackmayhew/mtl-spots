@@ -71,7 +71,9 @@ export default function upload() {
   });
 
   const createSpot = async (url) => {
+    console.log('1');
     try {
+      console.log('2');
       const res = await fetch(`${server}/api/spots/share`, {
         method: "POST",
         headers: {
@@ -80,6 +82,8 @@ export default function upload() {
         },
         body: JSON.stringify({ form, url, lat, long }),
       });
+      console.log('3');
+      console.log(res);
       setIsSubmitting(false);
       setIsSubmitted(true);
       // reset map
