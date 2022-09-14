@@ -138,7 +138,7 @@ export default function upload() {
       console.log('3')
       createSpot(url);
       console.log('4')
-      // setIsSubmitting(true);
+      // setIsSubmitting(true)
 
       // reset form
       setLat(0);
