@@ -52,7 +52,7 @@ export default function upload() {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
 
-  // RESET MAP DEFAULTS ON SUBMIT
+  // reset map defaults on submit
   const [defaultLat, setDefaultLat] = useState(45.540141);
   const [defaultLong, setDefaultLong] = useState(-73.635064);
   const [defaultZoom, setDefaultZoom] = useState(10.5);
@@ -130,14 +130,14 @@ export default function upload() {
     if (!errs.check) {
       setIsSubmitting(true);
       let { url } = await uploadToS3(file);
-      setImageUrl(url);
+      // setImageUrl(url);
       createSpot(url);
       // setIsSubmitting(true)
 
       // reset form
       setLat(0);
       setLong(0);
-      setImageUrl("");
+      // setImageUrl("");
       setFile(null);
       setErrors({} as any);
       setBust("");
@@ -231,7 +231,7 @@ export default function upload() {
 
   return (
     <div className="section upload">
-      {imageUrl && <img src={imageUrl} />}
+      {/* {imageUrl && <img src={imageUrl} />} */}
       <div className="upload__center center">
         <div className="control">
           <ul className="breadcrumbs">
@@ -592,7 +592,7 @@ export default function upload() {
                   </div>
                   <div className="card__foot">
                     <div className="card__flex">
-                      <div className="card__cost">Bust Level: {bust}</div>
+                      <div className="card__cost">Bust: {bust}</div>
                       {/* <div className="card__rating">
                         <div className="card__reviews">Map View</div>
                       </div> */}

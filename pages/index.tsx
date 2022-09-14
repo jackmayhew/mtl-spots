@@ -123,7 +123,7 @@ function Home({ spots }) {
               <div className="testimonials__row">
                 <div className="testimonials__col">
                   <div className="description__wrap">
-                    <h1 className="description__title h1">
+                    <h1 className="description__title h2">
                       Ready to Get Started?
                     </h1>
                     <div className="description__text">
