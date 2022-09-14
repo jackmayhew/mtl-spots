@@ -87,6 +87,7 @@ export default function upload() {
       setDefaultLat(45.540141);
       setDefaultLong(-73.635064);
     } catch (error) {
+      console.log('error');
       console.log(error);
     }
   };
