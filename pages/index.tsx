@@ -18,7 +18,8 @@ function Home({ spots }) {
               loop
               muted
               playsInline
-            ></video>
+              className="hero__vid"
+              ></video>
           </div>
           <div className="panel panel_stays-category">
             <div className="panel__background"></div>

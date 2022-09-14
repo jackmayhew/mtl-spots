@@ -8,7 +8,6 @@ import Map from "../../components/Maps/SpotMap";
 import { useState, useEffect, useRef } from "react";
 import listenForOutsideClick from "../../utils/Listen";
 import useCopyToClipboard from "../../utils/copy";
-import Image from 'next/image'
 
 function SingleSpot({ spot, relatedSpots, category }) {
   const menuRef = useRef(null);
@@ -57,10 +56,6 @@ function SingleSpot({ spot, relatedSpots, category }) {
     }
   };
 
-  const myLoader = ({ src }) => {
-    return `https://mtlspots.imgix.net/next-s3-uploads/d587f3b3-b73d-4c30-bc98-d25b597b8ad8/IMG_0319.png?h=500`
-  }
-
   return (
     <div className="outer__inner">
       <div className="section-mb64 product">
@@ -91,7 +86,6 @@ function SingleSpot({ spot, relatedSpots, category }) {
               </li>
             </ul>
           </div>
-
           <div className="product__head">
             <div className="product__box">
               <h2 className="product__title h2">{spot.title}</h2>
@@ -185,30 +179,15 @@ function SingleSpot({ spot, relatedSpots, category }) {
             </div>
           </div>
 
-
           <div className="gallery">
             <div className="gallery__list gallery__list_stays">
               
               <div className="gallery__preview">
-
-                {/* <Image
-            loader={myLoader}
-            src={"https://mtlspots.imgix.net/next-s3-uploads/d587f3b3-b73d-4c30-bc98-d25b597b8ad8/IMG_0319.png"}
-            layout='fill'
-            className="gallery__img"
-           
-          /> */}
-
-<div style={{width: '100%', height: '100%', position: 'relative'}}>
-<Image
-            loader={myLoader}
-            src={"https://mtlspots.imgix.net/next-s3-uploads/d587f3b3-b73d-4c30-bc98-d25b597b8ad8/IMG_0319.png"}
-            layout='fill'
-            className="gallersy__img"
-           
-          /> 
-</div>
-
+                <img
+                  src={spot.image}
+                  alt="Gallery"
+                  className="gallery__img"
+                />
               </div>
             </div>
           </div>
