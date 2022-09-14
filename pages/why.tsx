@@ -6,6 +6,7 @@ export default function UploadTest() {
   let { FileInput, openFileDialog, uploadToS3 } = useS3Upload();
 
   let handleFileChange = async file => {
+    console.log(file)
     let { url } = await uploadToS3(file);
     setImageUrl(url);
   };
