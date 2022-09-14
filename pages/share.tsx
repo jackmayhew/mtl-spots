@@ -133,11 +133,8 @@ export default function upload() {
       setIsSubmitting(true);
       console.log(file)
       let { url } = await uploadToS3(file);
-      console.log('2')
       setImageUrl(url);
-      console.log('3')
       createSpot(url);
-      console.log('4')
       // setIsSubmitting(true)
 
       // reset form
