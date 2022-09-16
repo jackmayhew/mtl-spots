@@ -30,6 +30,16 @@ function All({ initialSpots, initialPage }) {
       let filteredSpots = initialSpots.filter((spot) =>
         array.includes(spot._id)
       );
+
+      // reverse localstorage array and sort rendered array to match
+      // renders in order they were saved in
+      let reference_array = array.reverse();
+      let arrays = filteredSpots;
+      arrays.sort(function(a, b) {
+        return reference_array.indexOf(a._id) - reference_array.indexOf(b._id);
+      });
+    
+
       setSpots(filteredSpots);
 
       // show spots onload
@@ -38,6 +48,9 @@ function All({ initialSpots, initialPage }) {
           // .filter((spot) => array.includes(spot._id))
           .slice(parseInt(initialPage) * 12 - 12, parseInt(initialPage) * 12)
       );
+
+
+
 
       // pagination - show correct 12 spots per page on click
       const handleRouteChange = (url) => {
@@ -54,9 +67,10 @@ function All({ initialSpots, initialPage }) {
         );
       };
 
-      router.events.on("routeChangeStart", handleRouteChange);
+      router.events.on("routeChangeStart", handleRouteChange);  
     }
   }, []);
+
 
   return (
     <div className="outer__inner">
@@ -81,13 +95,13 @@ function All({ initialSpots, initialPage }) {
               <div className="sorting__body">
                 <div className="sorting__box">
                   <h2 className="sorting__title h2">
-                    {spots.length}
+                    {spots.length ? spots.length : " "}
                     {spots.length > 1 || !spots.length
                       ? " Saved Spots"
                       : " Saved Spot"}
                   </h2>
                   {/* <h2>
-                  Click the "save" button while viewing a spot and it will appear here.
+                  Click the "save" button while viewing a spot and it will appear here. 632216b1ba0bf1ad89105385
                   </h2> */}
                 </div>
               </div>
