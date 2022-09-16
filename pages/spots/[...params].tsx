@@ -61,7 +61,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
     <div className="outer__inner">
       <Head>
         <title>mtlspots - {spot.title} </title>
-        <link rel="apple-touch-icon" href={spot.image}  />
+        <link rel="apple-touch-icon" href={spot.image} />
         <meta property="og:url" content={url} />
         <meta property="og:image" content={spot.image} />
         <meta property="og:image:url" content={spot.image} />
@@ -228,7 +228,10 @@ function SingleSpot({ spot, relatedSpots, category }) {
 
             {spot.description ? (
               <div className="description__content">
-                <p>{spot.description}No description available...</p>
+                <p>
+                  <span className="weight">description:</span>{" "}
+                  {spot.description}
+                </p>
               </div>
             ) : (
               <div className="description__content weight">

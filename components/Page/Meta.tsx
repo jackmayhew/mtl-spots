@@ -3,7 +3,7 @@ import Head from "next/head";
 function Meta({ keywords, description, titles, img, metaTitle }) {
   return (
     <Head>
-      <title>MTLSPOTS - {titles}</title>
+      <title>mtlspots - {titles}</title>
       <meta charSet="UTF-8" />
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
