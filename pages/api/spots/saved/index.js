@@ -8,7 +8,7 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        const spots = await Spot.find({});
+        const spots = await Spot.find({}).sort({ _id: -1 });
         res.status(200).json({ success: true, data: spots });
       } catch (error) {
         res.status(400).json({ success: false });

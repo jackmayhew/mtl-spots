@@ -14,7 +14,8 @@ export default function upload() {
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
+  useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));    
+
 
   const menuRef2 = useRef(null);
   const [listening2, setListening2] = useState(false);

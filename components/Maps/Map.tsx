@@ -130,9 +130,7 @@ function SimpleMap({ initialSpots, isBreakpoint, openSpot }) {
 
   function closeModals(e) { 
     // e.event.detail not registering on mobile? always returns 1. forced to create custom click counter
-
     clickCount++;
-  
     clearTimeout(timer)
 
     // close modal on single map click - keep open on double click (map zoom in)

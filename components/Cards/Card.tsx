@@ -31,9 +31,9 @@ function Card({ spot }) {
         <div className="card__body">
           <div className="card__line">
             <div className="card__title">{spot.title}</div>
-            <div className="card__price">
+            {/* <div className="card__price">
               <div className="card__actual">info</div>
-            </div>
+            </div> */}
           </div>
           <div className="card__options">
             <div className="card__option">{spot.category}</div>

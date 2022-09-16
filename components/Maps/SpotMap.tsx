@@ -35,6 +35,9 @@ function getMapOptions(maps, id) {
 
     mapTypeControl: true,
     mapTypeId: maps.MapTypeId.ROADMAP,
+    rotateControlOptions: {
+      position: maps.ControlPosition.BOTTOM_LEFT,
+    },
     mapTypeControlOptions: {
       style: maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: maps.ControlPosition.TOP_LEFT,
