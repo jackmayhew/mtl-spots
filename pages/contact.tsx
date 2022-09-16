@@ -139,7 +139,7 @@ function contact() {
                           : "reach out with questions or for support"}
                 </div>
                 <h1 className="faq__title h2">Contact MTL SPOTS</h1>
-                <div className="faq__info">
+                <div className="faq__info weight">
                   <FiMail size={22} /> bonjour@mtlspots.ca
                 </div>
               </div>

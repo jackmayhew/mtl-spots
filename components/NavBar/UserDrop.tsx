@@ -87,7 +87,7 @@ const UserDrop = ({ language, setLanguage, languageHandle }) => {
                 onClick={languageHandle}
               >
                 <div className="header__category">Français</div>
-                <div className="header__country">Canada</div>
+                <div className="header__country">Bientôt</div>
               </div>
             </div>
           </div>

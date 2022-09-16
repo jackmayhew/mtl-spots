@@ -579,10 +579,6 @@ function Share() {
                     <div className="card__title">
                       {form.title ? form.title : "Title Preview"}
                     </div>
-                    {/* <div className="card__price">
-                      <div className="card__old">$356</div>
-                      <div className="card__actual">$267</div>
-                    </div> */}
                   </div>
                   <div className="card__options">
                     <div className="card__option">
