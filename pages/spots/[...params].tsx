@@ -268,6 +268,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
           </div>
         </div>
       </div>
+      
       {relatedSpots.length >= 1 && (
         <Slider spots={relatedSpots} category={category} />
       )}

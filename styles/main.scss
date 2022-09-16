@@ -2708,12 +2708,13 @@ html.dark .panel__controls .panel__button.active {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .location {
   width: 33%;
 }
+
 
 .panel_flights .panel__row {
   padding-right: 100px;
@@ -4047,7 +4048,7 @@ html.dark .location__input::placeholder {
 }
 
 .button {
-  width: 30%;
+  width: 25%;
   h3 {
     margin-right: 10px;
   }
