@@ -91,6 +91,9 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+body, .header__head, ::placeholder {
+  text-transform: lowercase !important;
+}
 img,
 fieldset,
 a img {
