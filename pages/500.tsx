@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from "next/link";
 import { useRouter } from 'next/router'
-Custom505.title = "Error"
+Custom505.title = "error"
 
 function Custom505() {
     const router = useRouter()

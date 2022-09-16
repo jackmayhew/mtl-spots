@@ -60,7 +60,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
   return (
     <div className="outer__inner">
       <Head>
-        <title>MTLSPOTS - {capitalizeFirstLetter(spot.title)} </title>
+        <title>mtlspots - {spot.title} </title>
         <link rel="apple-touch-icon" href={spot.image}  />
         <meta property="og:url" content={url} />
         <meta property="og:image" content={spot.image} />

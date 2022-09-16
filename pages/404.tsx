@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from "next/link";
 import { useRouter } from 'next/router'
-Custom404.title = "Error"
+Custom404.title = "error"
 
 function Custom404() {
     const router = useRouter()

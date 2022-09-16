@@ -6,7 +6,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import listenForOutsideClick from "../../utils/Listen";
 import { FiSearch } from "react-icons/fi";
 import Card from "../../components/Cards/Card";
-AllSpots.title = "Spots"
+AllSpots.title = "spots"
 
 function AllSpots({ initialSpots, initialCount, initialPage, initialCategory }) {
   const menuRef = useRef(null);

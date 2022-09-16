@@ -3,7 +3,7 @@ import { FiSearch, FiMap, FiShare } from "react-icons/fi";
 import Link from "next/link";
 import { server } from "../utils/domain";
 import useMediaQuery from "../utils/width";
-Home.title = "Home";
+Home.title = "home";
 import Head from "next/head";
 
 function Home({ spots }) {

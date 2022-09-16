@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Map from "../components/Maps/Map";
 import { server } from "../utils/domain";
 import useMediaQuery from "../utils/width";
 import { useRouter } from "next/router";
 import Link from "next/link";
-map.title = 'Map';
+map.title = 'map';
 
 function map({ initialSpots }) {
   const [activeTab, setActiveTab] = useState("");

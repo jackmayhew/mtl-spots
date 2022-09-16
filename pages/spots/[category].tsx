@@ -3,7 +3,6 @@ import fetch from "isomorphic-unfetch";
 import { server } from "../../utils/domain";
 import Card from "../../components/Cards/Card";
 import Pagination from "../../components/Pagination/Pagination";
-import Head from "next/head";
 
 function SpotCategory({
   initialSpots,
@@ -17,11 +16,6 @@ function SpotCategory({
 
   return (
     <div className="outer__inner">
-      {/* apparently this is ok? taken from next docs */}
-      <Head>
-        <title>MTLSPOTS - {capitalizeFirstLetter(initialCategory)}</title>
-        <meta name="description" content={`Find ${capitalizeFirstLetter(initialCategory)} Skate Spots In Montreal`}/>
-      </Head>
       <div className="section-mb80 main main_cars-category">
         <div className="section catalog">
           <div className="sorting">
