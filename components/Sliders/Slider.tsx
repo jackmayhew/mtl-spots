@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 
-function HomeSlider({ spots, category }) {
+function HomeSlider({ spots }) {
   const [swiperRef, setSwiperRef] = useState(null);
 
   const [swiperIndex, setSwiperIndex] = useState(0);
@@ -14,31 +14,16 @@ function HomeSlider({ spots, category }) {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   return (
     <div className="section browse">
       {spots.length >= 1 ? (
         <div className="browse__center center">
           <div className="browse__inner">
             <div className="browse__head">
-              {category ? (
-                <h2 className="browse__title h2">
-                  Other {capitalizeFirstLetter(category)}
-                </h2>
-              ) : (
                 <h2 className="browse__title h2 no__select">Recently Added</h2>
-              )}
 
               <div className="browse__info info no__select">
-                {category ? (
-                  <div className="no__select">Browse Other {capitalizeFirstLetter(category)}</div>
-                ) : (
                   <div className="no__select">Browse Recent Spots</div>
-                )}
-
                 <div
                   className={
                     spots.length <= 4

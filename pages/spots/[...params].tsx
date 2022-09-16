@@ -2,7 +2,7 @@ import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import { server } from "../../utils/domain";
 import { FiShare, FiBookmark, FiMap, FiClock, FiCopy } from "react-icons/fi";
-import Slider from "../../components/Sliders/Slider";
+import Slider from "../../components/Sliders/RelatedSlider";
 import moment from "moment";
 import Map from "../../components/Maps/SpotMap";
 import { useState, useEffect, useRef } from "react";
@@ -255,8 +255,9 @@ function SingleSpot({ spot, relatedSpots, category }) {
           </div>
         </div>
       </div>
-
-      <Slider spots={relatedSpots} category={category} />
+      {relatedSpots.length >= 1 && (
+        <Slider spots={relatedSpots} category={category} />
+      )}
     </div>
   );
 }

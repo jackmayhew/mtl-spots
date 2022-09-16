@@ -58,7 +58,7 @@ function Home({ spots }) {
         </div>
       </div>
 
-      <HomeSlider spots={spots} category="" />
+      <HomeSlider spots={spots} />
 
       <div className="section work">
         <div className="work__center center">
