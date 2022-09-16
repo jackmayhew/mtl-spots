@@ -3,13 +3,20 @@ import { FiSearch, FiMap, FiShare } from "react-icons/fi";
 import Link from "next/link";
 import { server } from "../utils/domain";
 import useMediaQuery from "../utils/width";
-Home.title = 'Home';
+Home.title = "Home";
+import Head from "next/head";
 
 function Home({ spots }) {
   const isBreakpoint = useMediaQuery(768);
 
   return (
     <div className="outer__inner">
+      {/* apparently this is ok? taken from next docs */}
+      <Head>
+        <link rel="apple-touch-icon" href="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
+        <meta property="og:image" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
+        <meta property="og:image:url" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
+      </Head>
       <div className="section-mb80 main main_stays-category">
         <div className="main__center center">
           <div className="main__preview">
@@ -20,7 +27,7 @@ function Home({ spots }) {
               muted
               playsInline
               className="hero__vid"
-              ></video>
+            ></video>
           </div>
           <div className="panel panel_stays-category">
             <div className="panel__background"></div>

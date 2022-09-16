@@ -15,14 +15,14 @@ function Meta({ keywords, description, titles, img, metaTitle }) {
       <meta name="twitter:description" content={description} />
       <meta name="twitter:card" content="summary" />
       {/* <link rel="icon" type="image/png" href={img} /> */}
-      <link rel="apple-touch-icon" href={img} />
+      {/* <link rel="apple-touch-icon" href={img} /> */}
       <meta property="og:type" content="website" />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content="https://www.mtlspots.ca/" />
       <meta property="og:site_name" content={metaTitle} />
-      <meta property="og:image" content={img} />
-      <meta property="og:image:url" content={img} />
+      {/* <meta property="og:image" content={img} />
+      <meta property="og:image:url" content={img} /> */}
       <meta property="og:image:width" content="400" />
       <meta property="og:image:height" content="300" />
       <meta name="twitter:title" content={metaTitle} />

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Card from "../components/Cards/Card";
 import Pagination from "../components/Pagination/Pagination";
-Saved.title = 'Saved Spots';
+Saved.title = 'Saved';
 
 function Saved({ initialSpots, initialPage }) {
   const router = useRouter();

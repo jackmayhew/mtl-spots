@@ -7,7 +7,7 @@ import listenForOutsideClick from "../utils/Listen";
 import { useS3Upload } from "next-s3-upload";
 import Map from "../components/Maps/ShareMap";
 import smoothscroll from "smoothscroll-polyfill";
-Share.title = 'Share Spots';
+Share.title = 'Share';
 
 function Share() {
   
