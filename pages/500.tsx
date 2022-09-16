@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from "next/link";
 import { useRouter } from 'next/router'
+Custom505.title = "Error"
 
-export default function Custom505() {
+function Custom505() {
     const router = useRouter()
 
   return (
@@ -30,3 +31,5 @@ export default function Custom505() {
 </div>
   )
 }
+
+export default Custom505;

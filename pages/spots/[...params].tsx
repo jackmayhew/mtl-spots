@@ -8,6 +8,7 @@ import Map from "../../components/Maps/SpotMap";
 import { useState, useEffect, useRef } from "react";
 import listenForOutsideClick from "../../utils/Listen";
 import useCopyToClipboard from "../../utils/copy";
+import Head from "next/head";
 
 function SingleSpot({ spot, relatedSpots, category }) {
   const menuRef = useRef(null);
@@ -58,6 +59,15 @@ function SingleSpot({ spot, relatedSpots, category }) {
 
   return (
     <div className="outer__inner">
+      <Head>
+        <title>MTLSPOTS - {capitalizeFirstLetter(spot.title)} </title>
+        <link rel="apple-touch-icon" href={spot.image}  />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={spot.image} />
+        <meta property="og:image:url" content={spot.image} />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
+      </Head>
       <div className="section-mb64 product">
         <div className="product__center center">
           <div className="control">

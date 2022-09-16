@@ -3,10 +3,10 @@ import Navbar from "../NavBar/Navbar";
 import Footer from "./Footer";
 
 
-function Layout({ children }) {
+function Layout({ children, titles }) {
   return (
     <>
-      <Meta />
+      <Meta titles={titles} />
       <Navbar  />
       {children}
       <Footer />

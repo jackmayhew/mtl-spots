@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FiSearch, FiArrowLeft } from "react-icons/fi";
 import Card from "../components/Cards/Card";
 import Pagination from "../components/Pagination/Pagination";
+Search.title = 'Search Results';
 
 function Search({ initialSpots, initialCount, initialPage, initialTerm }) {
   const [searchTerm, setSearchTerm] = useState(initialTerm);

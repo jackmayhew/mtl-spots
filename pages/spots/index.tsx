@@ -6,8 +6,9 @@ import Pagination from "../../components/Pagination/Pagination";
 import listenForOutsideClick from "../../utils/Listen";
 import { FiSearch } from "react-icons/fi";
 import Card from "../../components/Cards/Card";
+AllSpots.title = "Spots"
 
-function All({ initialSpots, initialCount, initialPage, initialCategory }) {
+function AllSpots({ initialSpots, initialCount, initialPage, initialCategory }) {
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -233,4 +234,4 @@ export async function getServerSideProps({ req, query }) {
   };
 }
 
-export default All;
+export default AllSpots;

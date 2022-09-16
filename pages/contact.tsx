@@ -3,7 +3,8 @@ import Link from "next/link";
 import { FiMail } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
 import smoothscroll from "smoothscroll-polyfill";
-  
+contact.title = 'Contact';
+
 function contact() {
   const formRef = useRef();
 

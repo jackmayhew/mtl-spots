@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Card from "../components/Cards/Card";
 import Pagination from "../components/Pagination/Pagination";
+Saved.title = 'Saved Spots';
 
-function All({ initialSpots, initialPage }) {
+function Saved({ initialSpots, initialPage }) {
   const router = useRouter();
 
   const [spots, setSpots] = useState([]);
@@ -48,9 +49,6 @@ function All({ initialSpots, initialPage }) {
           // .filter((spot) => array.includes(spot._id))
           .slice(parseInt(initialPage) * 12 - 12, parseInt(initialPage) * 12)
       );
-
-
-
 
       // pagination - show correct 12 spots per page on click
       const handleRouteChange = (url) => {
@@ -151,4 +149,4 @@ export async function getServerSideProps({ req, query }) {
   };
 }
 
-export default All;
+export default Saved;

@@ -4,6 +4,7 @@ import { server } from "../utils/domain";
 import useMediaQuery from "../utils/width";
 import { useRouter } from "next/router";
 import Link from "next/link";
+map.title = 'Map';
 
 function map({ initialSpots }) {
   const [activeTab, setActiveTab] = useState("");

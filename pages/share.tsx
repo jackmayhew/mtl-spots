@@ -7,8 +7,9 @@ import listenForOutsideClick from "../utils/Listen";
 import { useS3Upload } from "next-s3-upload";
 import Map from "../components/Maps/ShareMap";
 import smoothscroll from "smoothscroll-polyfill";
+Share.title = 'Share Spots';
 
-export default function upload() {
+function Share() {
   
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
@@ -609,3 +610,5 @@ export default function upload() {
 
   );
 }
+
+export default Share

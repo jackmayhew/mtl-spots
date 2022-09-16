@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from "next/link";
 import { useRouter } from 'next/router'
+Custom404.title = "Error"
 
-export default function Custom404() {
+function Custom404() {
     const router = useRouter()
 
   return (
@@ -30,3 +31,5 @@ export default function Custom404() {
 </div>
   )
 }
+
+export default Custom404;
