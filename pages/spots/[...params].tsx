@@ -169,10 +169,13 @@ function SingleSpot({ spot, relatedSpots, category }) {
                 </div>
 
                 <div className="actions__item actions__item_map js-actions-item">
-                <Link className="button-circle-stroke button-small actions__button js-actions-button" href={`/map?spot=${spot._id}`}>
-                  <button className="button-circle-stroke button-small actions__button js-actions-button">
-                    <FiMap size={22} className="icon" />
-                  </button>
+                  <Link
+                    className="button-circle-stroke button-small actions__button js-actions-button"
+                    href={`/map?spot=${spot._id}`}
+                  >
+                    <button className="button-circle-stroke button-small actions__button js-actions-button">
+                      <FiMap size={22} className="icon" />
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -181,13 +184,8 @@ function SingleSpot({ spot, relatedSpots, category }) {
 
           <div className="gallery">
             <div className="gallery__list gallery__list_stays">
-              
               <div className="gallery__preview">
-                <img
-                  src={spot.image}
-                  alt="Gallery"
-                  className="gallery__img"
-                />
+                <img src={spot.image} alt="Gallery" className="gallery__img" />
               </div>
             </div>
           </div>
@@ -198,6 +196,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
         <div className="description__center center">
           <div className="description__wrapper">
             <h4 className="description__title h4 spot__title">{spot.title}</h4>
+
             {spot.ig && (
               <div className="description__profile">
                 <div className="description__name">
@@ -212,12 +211,18 @@ function SingleSpot({ spot, relatedSpots, category }) {
                 </div>
               </div>
             )}
-            <div className="description__parameters">
-              <div className="description__parameter">Bust Level: Low</div>
+            <div className="description__profile">
+              <div className="description__name">Bust Level: {spot.bust}</div>
             </div>
-            {spot.description && (
+            <div className="description__parameters"></div>
+
+            {spot.description ? (
               <div className="description__content">
-                <p>{spot.description}</p>
+                <p>{spot.description}No description available...</p>
+              </div>
+            ) : (
+              <div className="description__content weight">
+                <p>No description available...</p>
               </div>
             )}
           </div>

@@ -11,10 +11,8 @@ function Card({ spot }) {
     router.push(`/map?spot=${spot._id}`);
   };
 
-  // slice after word "uploads"
   const myLoader = ({ src }) => {
     return `${src}${spot.image.split("uploads")[1]}?w=500`
-    // return `${src}${spot.image.slice(64)}?w=500`
   }
 
   return (
