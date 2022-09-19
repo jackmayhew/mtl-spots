@@ -37,11 +37,7 @@ function HomeSlider({ spots, category }) {
               
 
                 <div
-                  className={
-                    spots.length <= 4
-                      ? "slider_nav desktop__arrows hide__arrows"
-                      : "slider_nav desktop__arrows"
-                  }
+                  className="slider_nav desktop__arrows hide__arrows"
                 >
                   <div
                     onClick={() => {
@@ -127,7 +123,7 @@ function HomeSlider({ spots, category }) {
 
                 <div
                   className={
-                    spots.length <= 4
+                    spots.length <= 1
                       ? "slider_nav desktop__arrows hide__arrows"
                       : "slider_nav desktop__arrows"
                   }

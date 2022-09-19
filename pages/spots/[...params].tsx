@@ -60,7 +60,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
   return (
     <div className="outer__inner">
       <Head>
-        <title>mtlspots - {spot.title} </title>
+        <title>mtlspots - {spot.title.toLowerCase()} </title>
         <link rel="apple-touch-icon" href={spot.image} />
         <meta property="og:url" content={url} />
         <meta property="og:image" content={spot.image} />
@@ -216,7 +216,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
                     target="_blank"
                     rel="noopener"
                   >
-                    {spot.ig.includes("@") ? spot.ig.replace("@", "") : null}
+                    {spot.ig.includes("@") ? spot.ig.replace("@", "") : spot.ig}
                   </a>
                 </div>
               </div>
@@ -268,7 +268,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
           </div>
         </div>
       </div>
-      
+
       {relatedSpots.length >= 1 && (
         <Slider spots={relatedSpots} category={category} />
       )}
