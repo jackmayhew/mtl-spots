@@ -594,10 +594,15 @@ html.dark .header__link.active {
     cursor: pointer;
   }
 }
-.header__box:hover,
+.header__box:not(:last-child),
 .header__box.active {
   background: #f4f5f6;
 }
+
+.header__box:last-child:hover {
+  cursor: default;
+}
+
 html.dark .header__box:hover,
 html.dark .header__box.active {
   background: #262628;

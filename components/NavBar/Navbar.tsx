@@ -24,7 +24,7 @@ function NavBar() {
   const [language, setLanguage] = useState("english");
 
   const languageHandle = (e) => {
-    setLanguage(e.target.id);
+    setLanguage("english");
   };
 
   return (

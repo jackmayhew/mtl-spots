@@ -23,7 +23,6 @@ function HomeSlider({ spots, category }) {
   const isBreakpoint2 = useMediaQuery(767);
   const isBreakpoint3 = useMediaQuery(474);
 
-  console.log(isBreakpoint2);
   return (
     <div className="section browse">
       {spots.length === 1 ? (
