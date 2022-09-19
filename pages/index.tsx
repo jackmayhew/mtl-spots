@@ -7,6 +7,7 @@ Home.title = "home";
 import Head from "next/head";
 
 function Home({ spots }) {
+  
   const isBreakpoint = useMediaQuery(768);
 
   return (

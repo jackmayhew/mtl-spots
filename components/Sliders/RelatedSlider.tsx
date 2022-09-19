@@ -5,6 +5,7 @@ import Card from "../../components/Cards/Card";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import useMediaQuery from "../../utils/width";
 
 function HomeSlider({ spots, category }) {
   const [swiperRef, setSwiperRef] = useState(null);
@@ -18,27 +19,27 @@ function HomeSlider({ spots, category }) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  const isBreakpoint = useMediaQuery(1024);
+  const isBreakpoint2 = useMediaQuery(767);
+  const isBreakpoint3 = useMediaQuery(474);
+
+  console.log(isBreakpoint2);
   return (
     <div className="section browse">
       {spots.length === 1 ? (
         <div className="browse__center center">
           <div className="browse__inner">
             <div className="browse__head">
-                <h2 className="browse__title h2">
-                  Other {capitalizeFirstLetter(category)}
-                </h2>
-              
+              <h2 className="browse__title h2">
+                Other {capitalizeFirstLetter(category)}
+              </h2>
 
               <div className="browse__info info no__select">
+                <div className="no__select">
+                  Browse Other {capitalizeFirstLetter(category)}
+                </div>
 
-                  <div className="no__select">
-                    Browse Other {capitalizeFirstLetter(category)}
-                  </div>
-              
-
-                <div
-                  className="slider_nav desktop__arrows hide__arrows"
-                >
+                <div className="slider_nav desktop__arrows hide__arrows">
                   <div
                     onClick={() => {
                       navigationNextRef.current.className = "slider_arrow";
@@ -123,9 +124,13 @@ function HomeSlider({ spots, category }) {
 
                 <div
                   className={
-                    spots.length <= 1
-                      ? "slider_nav desktop__arrows hide__arrows"
-                      : "slider_nav desktop__arrows"
+                    spots.length > 4 ||
+                    (spots.length > 3 && isBreakpoint) ||
+                    (spots.length > 2 && isBreakpoint2) ||
+                    (spots.length > 1 && isBreakpoint3)
+                      ?
+                        "slider_nav desktop__arrows"
+                      : "slider_nav desktop__arrows hide__arrows"
                   }
                 >
                   <div

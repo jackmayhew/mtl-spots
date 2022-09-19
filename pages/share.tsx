@@ -280,7 +280,7 @@ function Share() {
                       {fileName ? (
                         <div className="upload__format">{fileName}</div>
                       ) : (
-                        <div className="upload__format"> PNG / JPG.</div>
+                        <div className="upload__format"> PNG / JPG</div>
                       )}
                     </div>
                     <div className="error">{errors.image}</div>
