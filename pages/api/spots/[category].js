@@ -23,6 +23,7 @@ export default async (req, res) => {
         const spots = await Spot.find({
           category: new RegExp(req.query.category, "i"),
         })
+          .sort({ _id: -1 })
           .limit(12)
           .skip((page - 1) * 12);
         res.status(200).json({ success: true, data: spots, count: count });

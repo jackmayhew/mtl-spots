@@ -216,7 +216,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
                     target="_blank"
                     rel="noopener"
                   >
-                    {spot.ig}
+                    {spot.ig.includes("@") ? spot.ig.replace("@", "") : null}
                   </a>
                 </div>
               </div>
