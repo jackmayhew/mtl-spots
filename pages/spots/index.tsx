@@ -136,6 +136,18 @@ function AllSpots({ initialSpots, initialCount, initialPage, initialCategory }) 
                           <a>Gaps</a>
                         </li>
                       </Link>
+                      <Link scroll={false} href={`/spots?category=skate parks`}>
+                        <li
+                          onClick={() => setQuery("skate parks")}
+                          className={
+                            query === "skate parks"
+                              ? "option selected focus"
+                              : "option"
+                          }
+                        >
+                          <a>skate parks</a>
+                        </li>
+                      </Link>
                       <Link scroll={false} href={`/spots?category=other`}>
                         <li
                           onClick={() => setQuery("other")}

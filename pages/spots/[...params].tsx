@@ -224,6 +224,9 @@ function SingleSpot({ spot, relatedSpots, category }) {
             <div className="description__profile">
               <div className="description__name">Bust Level: {spot.bust}</div>
             </div>
+            <div className="description__profile">
+              <div className="description__name">Category: {spot.category}</div>
+            </div>
             <div className="description__parameters"></div>
 
             {spot.description ? (

@@ -134,8 +134,6 @@ function Share() {
       let { url } = await uploadToS3(file);
       // setImageUrl(url);
       createSpot(url);
-      // setIsSubmitting(true)
-
       // reset form
       setLat(0);
       setLong(0);
@@ -280,7 +278,7 @@ function Share() {
                       {fileName ? (
                         <div className="upload__format">{fileName}</div>
                       ) : (
-                        <div className="upload__format"> PNG / JPG</div>
+                        <div className="upload__format">drag, drop or select your photo. PNG / JPG accepted</div>
                       )}
                     </div>
                     <div className="error">{errors.image}</div>
@@ -380,6 +378,20 @@ function Share() {
 
                                   <li
                                     onClick={() => {
+                                      setCategory("Skate Parks");
+                                      setForm({ ...form, category: "Skate Parks" });
+                                    }}
+                                    className={
+                                      category === "Skate Parks"
+                                        ? "option selected focus"
+                                        : "option"
+                                    }
+                                  >
+                                    <a>Skate Parks</a>
+                                  </li>
+
+                                  <li
+                                    onClick={() => {
                                       setCategory("Other");
                                       setForm({ ...form, category: "Other" });
                                     }}
@@ -449,6 +461,21 @@ function Share() {
                                   {bust ? bust : ""}
                                 </span>
                                 <ul className="list">
+
+                                <li
+                                    onClick={() => {
+                                      setBust("Never");
+                                      setForm({ ...form, bust: "Never" });
+                                    }}
+                                    className={
+                                      bust === "Never"
+                                        ? "option selected focus"
+                                        : "option"
+                                    }
+                                  >
+                                    <a>Never</a>
+                                  </li>
+
                                   <li
                                     onClick={() => {
                                       setBust("Low");
@@ -528,6 +555,7 @@ function Share() {
                     </div>
                   </div>
                 </div>
+
                 <div className="upload__foot">
                   <button
                     className="button button-stroke upload__button js-upload-button preview__button"
@@ -537,12 +565,10 @@ function Share() {
                     Preview
                   </button>
 
-                  <button
-                    className="button upload__button live__button"
-                    type="submit"
-                  >
-                    {isSubmitting ? <div className="loader"></div> : null}
-                    {isSubmitting ? "Submitting..." : "Submit"}
+                  <button className="button upload__button live__button" type="submit"> 
+                    {isSubmitting ? 
+                    <div className="loader"></div> : null}
+                    Submit
                   </button>
                 </div>
               </form>
