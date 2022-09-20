@@ -25,6 +25,7 @@ function NavBar() {
 
   const languageHandle = (e) => {
     setLanguage("english");
+    // setLanguage(e.target.id);
   };
 
   return (
