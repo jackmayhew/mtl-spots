@@ -1,8 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MTL Spots
+* MTL Spots is a platform for skateboarders to share and find skate spots in Montreal
+* [ Visit MTL Spots ](https://mtlspots.ca/)
 
-## Getting Started
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Setup](#setup)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Final Thoughts](#final-thoughts)
+* [Contact](#contact)
 
-First, run the development server:
+
+## General Information
+- Finding places to skateboard can be a challenge. MTL Spots is meant to give local skateboarders a platform to share spots with eachother
+- I decided against user authentication for this project, as it will be used by a fairly small/niche community, and I don't want to potentially lose any users by forcing them to sign up 
+
+## Technologies Used
+- Next.js
+- TypeScript
+- SCSS
+- MongoDB
+- Mongoose
+- Amazon S3
+- Imgix
+
+
+## Features
+
+Share page:
+- Users share spots by filling out the form
+- Users set spot location by clicking google map component (google-map-react)
+- Info gets saved to MongoDB, and images get uploaded to S3
+- Considered using a library for the form + form validation (formik w/ yup), but decided against it as the form is relatively small and I try to avoid unnecessary dependencies
+
+Find page:
+- API call to render all spots
+- Drop down select to filter categories
+- Search bar to search by title or category
+- Image optimization done with Imgix
+
+Map page:
+- Simple page with google map component
+- Render all saved spots with lat/lng coordinates
+- Category tabs to filter spots
+
+
+## Setup
+
+First, install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -10,25 +65,30 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Project Status
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Project is: _complete_
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Room for Improvement
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Room for improvement:
+- Design (color schemes, fonts etc.)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To do:
+- Add french translation option
+- Add a comments section to spot pages
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Final Thoughts
+- Next.js with TypeScript is awesome!
+- Looking back, I wish I had used a SQL database, as I've already worked with MongoDB in the past
+- I regret not translating the website during development, since it will be a huge job to go back and do all at once 
+- I had a lot of fun building this project, and I'm proud of the final result!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Contact
+Created by [@jackmayhew](https://www.jackmayhew.com/) - feel free to contact me!
