@@ -108,6 +108,16 @@ function map({ initialSpots }) {
               </a>
               <a
                 className={
+                  activeTab === "Parks"
+                    ? "panel__link panel__hide active"
+                    : "panel__link panel__hide"
+                }
+                onClick={closeModal}
+              >
+                 Parks
+              </a>
+              <a
+                className={
                   activeTab === "Other"
                     ? "panel__link panel__hide active"
                     : "panel__link panel__hide"
