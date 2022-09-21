@@ -517,6 +517,20 @@ function Share() {
                                   >
                                     <a>High</a>
                                   </li>
+
+                                  <li
+                                    onClick={() => {
+                                      setBust("go late");
+                                      setForm({ ...form, bust: "go late" });
+                                    }}
+                                    className={
+                                      bust === "go late"
+                                        ? "option selected focus"
+                                        : "option"
+                                    }
+                                  >
+                                    <a>go late</a>
+                                  </li>
                                 </ul>
                               </div>
                               <div className="error">{errors.bust}</div>
