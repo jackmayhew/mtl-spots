@@ -3,6 +3,7 @@ import fetch from "isomorphic-unfetch";
 import { server } from "../../utils/domain";
 import Card from "../../components/Cards/Card";
 import Pagination from "../../components/Pagination/Pagination";
+import Head from "next/head";
 
 function SpotCategory({
   initialSpots,
@@ -16,6 +17,9 @@ function SpotCategory({
 
   return (
     <div className="outer__inner">
+        <Head>
+          <title key="title">mtlspots - {initialCategory}</title>      
+        </Head>
       <div className="section-mb80 main main_cars-category">
         <div className="section catalog">
           <div className="sorting">
