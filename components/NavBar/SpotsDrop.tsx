@@ -97,6 +97,17 @@ const SpotsDrop = () => {
                 Gaps
               </a>
             </Link>
+            <Link href="/spots/skate parks">
+              <a
+                className={
+                  router.asPath.includes("/spots/skate")
+                    ? "header__link active"
+                    : "header__link"
+                }
+              >
+                skate parks
+              </a>
+            </Link>
           </div>
         </div>
       </div>
