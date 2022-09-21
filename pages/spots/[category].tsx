@@ -15,6 +15,7 @@ function SpotCategory({
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+
   return (
     <div className="outer__inner">
         <Head>
@@ -48,7 +49,11 @@ function SpotCategory({
               <div className="sorting__body">
                 <div className="sorting__box">
                   <h2 className="sorting__title h2">
-                    {initialCount} Spots Found
+                    {initialCount} 
+                    {initialCount === 1
+                    ? " Spot Found"
+                    : " Spots Found"
+                  }
                   </h2>
                   <div className="sorting__line">
                     <div className="sorting__details">
