@@ -252,7 +252,7 @@ function Share() {
             <div className="upload__head">
               <h2 className="upload__title h2">
                 {isSubmitted
-                  ? "Upload Successful. Thanks For Sharing."
+                  ? "Upload Successful. Thanks For Sharing"
                   : "Share Spots"}
               </h2>
             </div>
