@@ -278,7 +278,7 @@ function Share() {
                       {fileName ? (
                         <div className="upload__format">{fileName}</div>
                       ) : (
-                        <div className="upload__format">drag, drop or select your photo. PNG / JPG accepted</div>
+                        <div className="upload__format">drag, drop or select a photo. PNG / JPG accepted</div>
                       )}
                     </div>
                     <div className="error">{errors.image}</div>

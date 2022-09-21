@@ -57,6 +57,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
     }
   };
 
+
   return (
     <div className="outer__inner">
       <Head>
@@ -85,7 +86,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
               <li className="breadcrumbs__item">
                 <Link href={`/spots/${spot.category}`}>
                   <a className="breadcrumbs__link">
-                    {capitalizeFirstLetter(spot.category)}
+                    {spot.category === "Skate Parks" ? "parks" : spot.category}
                   </a>
                 </Link>
               </li>
@@ -206,7 +207,12 @@ function SingleSpot({ spot, relatedSpots, category }) {
         <div className="description__center center">
           <div className="description__wrapper">
             <h4 className="description__title h4 spot__title">{spot.title}</h4>
-
+            <div className="description__profile">
+              <div className="description__name">Category: {spot.category}</div>
+            </div>
+            <div className="description__profile">
+              <div className="description__name">Bust Level: {spot.bust}</div>
+            </div>
             {spot.ig && (
               <div className="description__profile">
                 <div className="description__name">
@@ -221,12 +227,6 @@ function SingleSpot({ spot, relatedSpots, category }) {
                 </div>
               </div>
             )}
-            <div className="description__profile">
-              <div className="description__name">Bust Level: {spot.bust}</div>
-            </div>
-            <div className="description__profile">
-              <div className="description__name">Category: {spot.category}</div>
-            </div>
             <div className="description__parameters"></div>
 
             {spot.description ? (
@@ -253,7 +253,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
 
             <div className="upload__item">
               <div className="upload__note map__note">
-                Drag or choose your file to upload
+                find spot location on google maps
               </div>
               <div className="upload__file map__spot">
                 <Map location={spot.location} />{" "}
