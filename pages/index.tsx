@@ -14,9 +14,11 @@ function Home({ spots }) {
     <div className="outer__inner">
       {/* apparently this is ok? taken from next docs */}
       <Head>
-        <link rel="apple-touch-icon" href="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
         <meta property="og:image" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
         <meta property="og:image:url" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
+        <meta name="twitter:image" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
       </Head>
       <div className="section-mb80 main main_stays-category">
         <div className="main__center center">
