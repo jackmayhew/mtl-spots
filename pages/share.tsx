@@ -379,6 +379,8 @@ function Share() {
                                   <li
                                     onClick={() => {
                                       setCategory("Skate Parks");
+                                      setBust("Never");
+                                      setForm({ ...form, bust: "Never" });
                                       setForm({ ...form, category: "Skate Parks" });
                                     }}
                                     className={
