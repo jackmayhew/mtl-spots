@@ -5689,15 +5689,27 @@ html.dark .actions__favorite.active {
 .product__title {
   max-width: 640px;
   margin-bottom: 16px;
-
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 100%;
 }
+
+@media only screen and (max-width: 950px) {
+  .product__title {
+    max-width: 550px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .product__title {
+    max-width: 500px;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .product__title {
-    font-size: 32px;
+    max-width: 640px;
   }
 }
 
