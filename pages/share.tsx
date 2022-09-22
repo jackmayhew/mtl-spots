@@ -231,7 +231,6 @@ function Share() {
 
   return (
     <div className="section upload">
-      {/* {imageUrl && <img src={imageUrl} />} */}
       <div className="upload__center center">
         <div className="control">
           <ul className="breadcrumbs">
@@ -261,9 +260,6 @@ function Share() {
                 <div className="upload__list">
                   <div className="upload__item">
                     <div className="upload__category">Spot Photo</div>
-                    {/* <div className="upload__note">
-                      Choose Your File To Upload
-                    </div> */}
                     <div className="upload__file">
                       <input
                         className="upload__input"

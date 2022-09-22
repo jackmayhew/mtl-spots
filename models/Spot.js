@@ -34,6 +34,10 @@ const SpotSchema = new mongoose.Schema({
     type: String,
   },
 
+  comments: {
+    type: String,
+  },
+
   time: {
     type: Date,
     default: Date.now,

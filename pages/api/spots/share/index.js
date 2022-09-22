@@ -17,7 +17,6 @@ export default async (req, res) => {
           ig: req.body.form.ig,
           description: req.body.form.description
       });
-      console.log(spot)
         res.status(201).json({ success: true, data: spot });
       } catch (error) {
         console.log(error)

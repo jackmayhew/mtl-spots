@@ -9,17 +9,17 @@ import { useState, useEffect, useRef } from "react";
 import listenForOutsideClick from "../../utils/Listen";
 import useCopyToClipboard from "../../utils/copy";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
-function SingleSpot({ spot, relatedSpots, category }) {
+function SingleSpot({ spot, relatedSpots, category, comments }) {
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  const router = useRouter();
+
 
   const url = `mtlspots.ca/spots/${spot.category}/${spot._id}`;
 
@@ -29,11 +29,13 @@ function SingleSpot({ spot, relatedSpots, category }) {
 
   const [savedSpot, setSavedSpot] = useState("");
 
+  // get savedSpot string from localStorage
   useEffect(() => {
     const item = localStorage.getItem("savedList");
     setSavedSpot(item);
   }, []);
 
+  // save/unsave spot on click
   const saveSpot = (e) => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("savedList");
@@ -57,6 +59,71 @@ function SingleSpot({ spot, relatedSpots, category }) {
     }
   };
 
+
+  // use state for array, clear and reset on url change below
+  // const [mapSpots, setMapSpots] = useState([]);
+
+  // form
+  const [form, setForm] = useState({
+    comment: "",
+    spot: spot._id
+  });
+
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const createSpot = async () => {
+    try {
+      const res = await fetch(`${server}/api/spots/comments`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ form }),
+      });
+
+      // re-render comment list here - use state ? prolly
+      // const newComments = await fetch(`${server}/api/spots/comments?spot=${spot._id}`);
+      // const data = await newComments.json();
+      // comments = data.comment
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sumbitForm = async (e) => {
+    e.preventDefault()
+    if(!form.comment){
+        setError("please enter your comment")
+    } else {
+      setError("");
+      setForm({
+        ...form,
+        comment: ""
+      });
+      createSpot();
+
+    }
+    
+  }
+
+  const [count, setCount] = useState(3);
+
+  // reset count on url change - 
+  // used for 'show more' comments
+  useEffect(() => {
+    router.events.on('routeChangeStart',  () => {
+      setCount(3)
+    })
+  }, [])
 
   return (
     <div className="outer__inner">
@@ -104,7 +171,7 @@ function SingleSpot({ spot, relatedSpots, category }) {
                 <div className="product__rating">
                   <FiClock />
                   <div className="product__number">
-                    {moment(`${spot.time}`, "YYYYMMDD").fromNow()}
+                    {moment(Date.parse(spot.time)).fromNow()}
                   </div>
                 </div>
                 {/* <div className="product__options">
@@ -272,6 +339,64 @@ function SingleSpot({ spot, relatedSpots, category }) {
         </div>
       </div>
 
+      <div className="section comments">
+        <div className="comments__center center">
+          <div className="comment">
+            <form className="comment__form" onSubmit={sumbitForm}>
+              <div className="comment__title">Comments</div>
+              <div className="comment__head">
+                <div className="comment__text">
+                  Share Additional Infromation
+                </div>
+              </div>
+              <div className="comment__field">
+                <input
+                  className="comment__input"
+                  type="text"
+                  name="comment"
+                  placeholder="Share your thoughts..."
+                  onChange={handleChange}
+                  value={form.comment}
+                />
+                <button className="button-small comment__button" type="submit">
+                  <span>Post it!</span>
+                </button>
+              </div>
+              <div className="error">{error}</div>
+            </form>
+            <div className="comment__head">
+              <div className="comment__title">{comments.length} {comments.length !== 1 ? "comments" : "comment"}</div>
+            </div>
+            <div className="comment__list">
+              {comments.slice(0, count).map((comment) => (
+              <div className="comment__item" key={comment._id}>
+                <div className="comment__avatar">
+                  <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                </div>
+                <div className="comment__details">
+                  <div className="comment__content">
+                  {comment.comment}
+                  </div>
+                  <div className="comment__foot">
+                    <div className="comment__time">{moment(Date.parse(comment.time)).fromNow()}</div>
+                  </div>
+                </div>
+              </div>
+              ))}
+            </div>
+
+            {comments.length > 0 &&
+              <div className="comment__btns">
+                <button className="button-stroke button-small comment__button" onClick={() => setCount(count + 6)}>
+                  <span>show more</span>
+                </button>
+              </div>
+            }
+
+          </div>
+        </div>
+      </div>
+
       {relatedSpots.length >= 1 && (
         <Slider spots={relatedSpots} category={category} />
       )}
@@ -285,11 +410,16 @@ export async function getServerSideProps({ query }) {
   const res = await fetch(`${server}/api/spots/category/${spotID}`);
   const data = await res.json();
 
+  // const res2 = await fetch(`${server}/api/spots/comments?spot=${spotID}`);
+  // const data2 = await res2.json();
+
   return {
     props: {
       spot: data.data,
       relatedSpots: data.related,
       category: data.data.category,
+      // comments: data2.comment
+      comments: data.comments
     },
   };
 }
