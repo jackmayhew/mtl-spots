@@ -70,6 +70,7 @@ function HomeSlider({ spots, category }) {
                 slidesPerView={4}
                 centeredSlides={false}
                 spaceBetween={30}
+                shortSwipes={false}
                 navigation={{
                   prevEl: navigationPrevRef.current,
                   nextEl: navigationNextRef.current,

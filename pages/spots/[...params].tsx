@@ -379,11 +379,13 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
                   </div>
                   <div className="comment__foot">
                     <div className="comment__time">{moment(Date.parse(comment.time)).fromNow()}</div>
+                    
                   </div>
                 </div>
               </div>
               ))}
             </div>
+
 
             {comments.length > 0 &&
               <div className="comment__btns">
