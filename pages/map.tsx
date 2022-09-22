@@ -34,7 +34,7 @@ function map({ initialSpots }) {
 
   return (
     <div className="outer__inner">
-      <div className="section-mb80 main main_cars-category">
+      <div className="section-mb80 main main_cars-category map__space">
         <div className="section catalog map__margin">
           <div className="sorting map__margin">
             <div className="sorting__center center">

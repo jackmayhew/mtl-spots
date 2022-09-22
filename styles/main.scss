@@ -2046,12 +2046,18 @@ html.dark .select-empty .option.selected {
   }
 }
 
+.map__space {
+  margin-bottom: 180px !important;
+}
 .section-mb80 {
   margin-bottom: 80px;
 }
 @media only screen and (max-width: 1179px) {
   .section-mb80 {
     margin-bottom: 64px;
+  }
+  .map__space {
+    margin-bottom: 120px !important;
   }
 }
 
@@ -5964,6 +5970,7 @@ html.dark .actions__favorite.active {
   padding-bottom: 136px;
   // border-bottom: 1px solid #e6e8ec;
   margin-bottom: 0;
+  margin-bottom: 120px !important;
 }
 @media only screen and (max-width: 1179px) {
   .description {
@@ -6018,6 +6025,7 @@ html.dark .description {
 
 .spot__title {
   text-align: left !important;
+  display: none;
 }
 
 .description__title {
