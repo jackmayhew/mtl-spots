@@ -84,7 +84,7 @@ function Home({ spots }) {
                 <div className="work__preview">
                   <img
                     className="some-icon"
-                    src="https://ui8-fleet-html.herokuapp.com/img/content/work-pic-1@2x.png"
+                    src="peace.jpeg"
                     alt="Work"
                   />
                 </div>
@@ -98,7 +98,7 @@ function Home({ spots }) {
                 <div className="work__preview">
                   <img
                     className="some-icon"
-                    src="https://ui8-fleet-html.herokuapp.com/img/content/work-pic-2@2x.png"
+                    src="peace.jpeg"
                     alt="Work"
                   />
                 </div>
@@ -112,7 +112,7 @@ function Home({ spots }) {
                 <div className="work__preview">
                   <img
                     className="some-icon"
-                    src="https://ui8-fleet-html.herokuapp.com/img/content/work-pic-3@2x.png"
+                    src="peace.jpeg"
                     alt="Work"
                   />
                 </div>

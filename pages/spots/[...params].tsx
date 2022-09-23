@@ -61,7 +61,7 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
 
 
   // use state for array, clear and reset on url change below
-  // const [mapSpots, setMapSpots] = useState([]);
+  const [mapSpots, setMapSpots] = useState([]);
 
   // form
   const [form, setForm] = useState({
@@ -78,7 +78,7 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
     });
   };
 
-  const createSpot = async () => {
+  const createComment = async () => {
     try {
       const res = await fetch(`${server}/api/spots/comments`, {
         method: "POST",
@@ -89,10 +89,10 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
         body: JSON.stringify({ form }),
       });
 
-      // re-render comment list here - use state ? prolly
-      // const newComments = await fetch(`${server}/api/spots/comments?spot=${spot._id}`);
-      // const data = await newComments.json();
-      // comments = data.comment
+        // render new comment on submit
+        const newComments = await fetch(`${server}/api/spots/comments?spot=${spot._id}`);
+        const data = await newComments.json();
+        setMapSpots(data.comment)
 
     } catch (error) {
       console.log(error);
@@ -109,7 +109,7 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
         ...form,
         comment: ""
       });
-      createSpot();
+      createComment();
 
     }
     
@@ -117,8 +117,7 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
 
   const [count, setCount] = useState(3);
 
-  // reset count on url change - 
-  // used for 'show more' comments
+  // reset comment count on url change
   useEffect(() => {
     router.events.on('routeChangeStart',  () => {
       setCount(3)
@@ -378,7 +377,7 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
                   {comment.comment}
                   </div>
                   <div className="comment__foot">
-                    <div className="comment__time">{moment(comment.time).fromNow()}</div>
+                    <div className="comment__time">{moment(Date.parse(comment.time)).fromNow()}</div>
                   </div>
                 </div>
               </div>
@@ -386,10 +385,10 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
             </div>
 
 
-            {comments.length > 0 &&
+            {comments.length > 3 &&
               <div className="comment__btns">
                 <button className="button-stroke button-small comment__button" onClick={() => setCount(count + 6)}>
-                  <span>show more</span>
+                  <span>{count >= comments.length ? "showing all" : "show more" }</span>
                 </button>
               </div>
             }
