@@ -63,10 +63,18 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
   // use state for array, clear and reset on url change below
   const [mapSpots, setMapSpots] = useState([]);
 
+
+  const [spotID, setSpotID] = useState(spot._id);
+
+  useEffect(() => {
+    setSpotID(spot._id);
+  }, [spot._id]);
+
+
   // form
   const [form, setForm] = useState({
     comment: "",
-    spot: spot._id
+    spot: ""
   });
 
   const [error, setError] = useState("");
@@ -74,9 +82,11 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
   const handleChange = (e) => {
     setForm({
       ...form,
+      spot: router.query.params[1],
       [e.target.name]: e.target.value,
     });
   };
+
 
   const createComment = async () => {
     try {
@@ -90,9 +100,10 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
       });
 
         // render new comment on submit
-        const newComments = await fetch(`${server}/api/spots/comments?spot=${spot._id}`);
+        const newComments = await fetch(`${server}/api/spots/comments?spot=${spotID}`);
         const data = await newComments.json();
         setMapSpots(data.comment)
+        setCounter(data.comment.length)
 
     } catch (error) {
       console.log(error);
@@ -107,6 +118,7 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
       setError("");
       setForm({
         ...form,
+        spot: "",
         comment: ""
       });
       createComment();
@@ -121,8 +133,13 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
   useEffect(() => {
     router.events.on('routeChangeStart',  () => {
       setCount(3)
+      setMapSpots([])
+      setSpotID(spot._id)
     })
   }, [])
+
+  const [counter, setCounter] = useState(comments.length);
+
 
   return (
     <div className="outer__inner">
@@ -364,34 +381,63 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
               <div className="error">{error}</div>
             </form>
             <div className="comment__head">
-              <div className="comment__title">{comments.length} {comments.length !== 1 ? "comments" : "comment"}</div>
-            </div>
-            <div className="comment__list">
-              {comments.slice(0, count).map((comment) => (
-              <div className="comment__item" key={comment._id}>
-                <div className="comment__avatar">
-                  <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
-                </div>
-                <div className="comment__details">
-                  <div className="comment__content">
-                  {comment.comment}
-                  </div>
-                  <div className="comment__foot">
-                    <div className="comment__time">{moment(Date.parse(comment.time)).fromNow()}</div>
-                  </div>
-                </div>
+              <div className="comment__title">
+                {counter}
+                {counter !== 1 ? " comments" : " comment"}
               </div>
-              ))}
             </div>
 
 
-            {comments.length > 3 &&
+            {mapSpots.length
+              ?
+              <div className="comment__list">
+                {mapSpots.slice(0, count).map((comment) => (
+                  <div className="comment__item" key={comment._id}>
+                    <div className="comment__avatar">
+                      <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                    </div>
+                    <div className="comment__details">
+                      <div className="comment__content">
+                        {comment.comment}
+                      </div>
+                      <div className="comment__foot">
+                        <div className="comment__time">{moment(Date.parse(comment.time)).fromNow()}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              : <div className="comment__list">
+                {comments.slice(0, count).map((comment) => (
+                  <div className="comment__item" key={comment._id}>
+                    <div className="comment__avatar">
+                      <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                    </div>
+                    <div className="comment__details">
+                      <div className="comment__content">
+                        {comment.comment}
+                      </div>
+                      <div className="comment__foot">
+                        <div className="comment__time">{moment(Date.parse(comment.time)).fromNow()}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            }
+
+
+
+            {counter > 3 &&
               <div className="comment__btns">
                 <button className="button-stroke button-small comment__button" onClick={() => setCount(count + 6)}>
-                  <span>{count >= comments.length ? "showing all" : "show more" }</span>
+                  <span>{count >= counter ? "showing all" : "show more" }</span>
                 </button>
               </div>
             }
+
+
 
           </div>
         </div>

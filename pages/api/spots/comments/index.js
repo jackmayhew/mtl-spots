@@ -1,10 +1,13 @@
 import dbConnect from "../../../../utils/dbConnect";
 import Comment from "../../../../models/Comment";
 
+
 dbConnect();
 
 export default async (req, res) => {
   const { method } = req;
+
+  
 
   switch (method) {
     // call this when comment gets submitted
@@ -26,6 +29,9 @@ export default async (req, res) => {
           comment: req.body.form.comment,
           spot: req.body.form.spot,
         });
+
+        console.log(comment)
+
         res.status(201).json({ success: true, data: comment });
       } catch (error) {
         console.log(error);
