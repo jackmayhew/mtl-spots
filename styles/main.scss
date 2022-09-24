@@ -4776,14 +4776,16 @@ html.dark .card {
 .card__price {
   margin-left: 16px;
   padding: 6px 8px;
-  box-shadow: inset 0 0 0 2px #58c27d;
+  // box-shadow: inset 0 0 0 2px #58c27d;
+  box-shadow: inset 0 0 0 2px red;
   border-radius: 4px;
   text-align: center;
   font-size: 12px;
   line-height: 1;
   font-weight: 700;
   text-transform: uppercase;
-  color: #58c27d;
+  // color: #58c27d;
+  color: red;
 }
 .card__old {
   margin-bottom: 6px;

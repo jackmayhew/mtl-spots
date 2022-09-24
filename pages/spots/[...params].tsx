@@ -20,7 +20,6 @@ function SingleSpot({ spot, relatedSpots, category, comments,  }) {
 
   const router = useRouter();
 
-
   const url = `mtlspots.ca/spots/${spot.category}/${spot._id}`;
 
   const refStyle = useRef(null);
