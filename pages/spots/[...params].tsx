@@ -87,7 +87,6 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
     });
   };
 
-
   const createComment = async () => {
     try {
       const res = await fetch(`${server}/api/spots/comments`, {
@@ -99,11 +98,14 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
         body: JSON.stringify({ form }),
       });
 
-        // render new comment on submit
-        const newComments = await fetch(`${server}/api/spots/comments?spot=${spotID}`);
-        const data = await newComments.json();
-        setMapSpots(data.comment)
-        setCounter(data.comment.length)
+      // render new comment on submit
+      const newComments = await fetch(`${server}/api/spots/comments?spot=${spotID}`);
+      const data = await newComments.json();
+      setMapSpots(data.comment)
+      // hack to keep original comments array length in sync with
+      // newly rendered comments array
+      comments.push('gross');
+
 
     } catch (error) {
       console.log(error);
@@ -112,8 +114,8 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
 
   const sumbitForm = async (e) => {
     e.preventDefault()
-    if(!form.comment){
-        setError("please enter your comment")
+    if (!form.comment) {
+      setError("please enter a comment")
     } else {
       setError("");
       setForm({
@@ -124,21 +126,20 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
       createComment();
 
     }
-    
+
   }
 
   const [count, setCount] = useState(3);
 
   // reset comment count on url change
   useEffect(() => {
-    router.events.on('routeChangeStart',  () => {
+    router.events.on('routeChangeStart', () => {
       setCount(3)
       setMapSpots([])
       setSpotID(spot._id)
     })
   }, [])
 
-  const [counter, setCounter] = useState(comments.length);
 
 
   return (
@@ -382,8 +383,14 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
             </form>
             <div className="comment__head">
               <div className="comment__title">
-                {counter}
-                {counter !== 1 ? " comments" : " comment"}
+                {mapSpots.length
+                  ? mapSpots.length
+                  : comments.length
+                }
+                {mapSpots.length === 1 || comments.length == 1
+                  ? " comment"
+                  : " comments"
+                }
               </div>
             </div>
 
@@ -424,18 +431,21 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
                   </div>
                 ))}
               </div>
+            }
 
+
+            {
+              (comments.length > 3 || mapSpots.length > 3) ?
+                <div className="comment__btns">
+                  <button className="button-stroke button-small comment__button" onClick={() => setCount(count + 10)}>
+                    <span>{mapSpots.length >= count || comments.length >= count ? "show more" : "showing all"}</span>
+                  </button>
+                </div>
+                : null
             }
 
 
 
-            {counter > 3 &&
-              <div className="comment__btns">
-                <button className="button-stroke button-small comment__button" onClick={() => setCount(count + 6)}>
-                  <span>{count >= counter ? "showing all" : "show more" }</span>
-                </button>
-              </div>
-            }
 
 
 
