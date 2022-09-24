@@ -59,7 +59,6 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
     }
   };
 
-
   // use state for array, clear and reset on url change below
   const [mapSpots, setMapSpots] = useState([]);
 
