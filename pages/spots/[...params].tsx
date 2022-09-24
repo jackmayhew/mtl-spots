@@ -11,7 +11,7 @@ import useCopyToClipboard from "../../utils/copy";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-function SingleSpot({ spot, relatedSpots, category, comments }) {
+function SingleSpot({ spot, relatedSpots, category, comments,  }) {
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -59,10 +59,9 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
     }
   };
 
+
   // use state for array, clear and reset on url change below
   const [mapSpots, setMapSpots] = useState([]);
-
-
   const [spotID, setSpotID] = useState(spot._id);
 
   useEffect(() => {
@@ -138,9 +137,7 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
       setSpotID(spot._id)
     })
   }, [])
-
-
-
+  
   return (
     <div className="outer__inner">
       <Head>
