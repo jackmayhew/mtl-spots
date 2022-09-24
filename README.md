@@ -80,7 +80,6 @@ Room for improvement:
 
 To do:
 - Add french translation option
-- Add a comments section to spot pages
 
 
 ## Final Thoughts
