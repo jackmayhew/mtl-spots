@@ -24,6 +24,7 @@ function AdminCard({ spot }) {
                     "Content-Type": "application/json",
                 },
             });
+            router.reload()
         } catch (error) {
             console.log(error);
         }
