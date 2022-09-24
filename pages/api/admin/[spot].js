@@ -1,7 +1,6 @@
 import Spot from "../../../models/Spot";
 import dbConnect from "../../../utils/dbConnect";
 
-
 dbConnect();
 
 export default async (req, res) => {

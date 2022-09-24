@@ -7,9 +7,9 @@ import { useUser } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 import Pagination from "../components/Pagination/Pagination";
 import AdminCard from "../components/Cards/AdminCard";
-SingleSpot.title = "admin";
+Admin.title = "admin";
 
-function SingleSpot({
+function Admin({
   initialSpots,
   initialCount,
   initialPage,
@@ -32,7 +32,6 @@ function SingleSpot({
         <meta name="googlebot" content="noindex" />
       </Head>
       {user && user.sub === process.env.NEXT_PUBLIC_ADMIN_ID ? (
-        
         <div className="outer__inner">
           <div className="section-mb80 main main_cars-category">
             <div className="section catalog">
@@ -226,4 +225,4 @@ export async function getServerSideProps({ req, query }) {
   };
 }
 
-export default SingleSpot;
+export default Admin;
