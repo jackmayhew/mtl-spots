@@ -192,7 +192,7 @@ function Share() {
       err.check = true;
     }
 
-    if (!form.title) {
+    if (!form.title || !/\S/.test(form.title)) {
       err.title = "Title required";
       err.check = true;
     }
