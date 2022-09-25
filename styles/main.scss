@@ -3276,10 +3276,19 @@ html.dark .work__line path {
 @media only screen and (max-width: 767px) {
   .work__list {
     display: block;
+    max-width: 356px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 474px) {
+  .work__list {
+    display: block;
     max-width: 256px;
     margin: 0 auto;
   }
 }
+
 
 .work__item {
   flex: 0 0 256px;
@@ -3287,7 +3296,7 @@ html.dark .work__line path {
 }
 @media only screen and (max-width: 1023px) {
   .work__item {
-    flex: 0 0 200px;
+    flex: 0 0 30%;
   }
 }
 .work__item:not(:last-child) {

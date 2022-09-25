@@ -75,7 +75,7 @@ function Home({ spots }) {
         <div className="work__center center">
           <div className="work__head">
             <h2 className="work__title h2">How it works</h2>
-            <div className="work__info info">Keep calm &amp; travel on</div>
+            <div className="work__info info">share, find &amp; skate</div>
           </div>
           <div className="work__body">
             <div className="work__line"></div>
@@ -84,42 +84,39 @@ function Home({ spots }) {
                 <div className="work__preview">
                   <img
                     className="some-icon"
-                    src="peace.jpeg"
+                    src="spot1.jpeg"
                     alt="Work"
                   />
                 </div>
                 <div className="work__subtitle">Share</div>
                 <div className="work__content">
-                  We realize ideas from simple to complex, everything becomes
-                  easy to use.
+                    share spot details with other skaters in montreal
                 </div>
               </div>
               <div className="work__item">
                 <div className="work__preview">
                   <img
                     className="some-icon"
-                    src="peace.jpeg"
+                    src="spot2.jpeg"
                     alt="Work"
                   />
                 </div>
                 <div className="work__subtitle">Find</div>
                 <div className="work__content">
-                  We realize ideas from simple to complex, everything becomes
-                  easy to use.
+                  browse, search or use the map page to find spots
                 </div>
               </div>
               <div className="work__item">
                 <div className="work__preview">
                   <img
                     className="some-icon"
-                    src="peace.jpeg"
+                    src="spot3.jpeg"
                     alt="Work"
                   />
                 </div>
                 <div className="work__subtitle">Skate</div>
                 <div className="work__content">
-                  We realize ideas from simple to complex, everything becomes
-                  easy to use.
+                    get out there and skate! and remember to respect the spots
                 </div>
               </div>
             </div>
