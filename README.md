@@ -15,7 +15,7 @@
 
 ## General Information
 - Finding places to skateboard can be a challenge. MTL Spots is meant to give local skateboarders a platform to share spots with eachother
-- I decided against user authentication for this project, as it will be used by a fairly small/niche community, and I don't want to potentially lose any users by forcing them to sign up 
+- I decided against user authentication for this project, as it will be used by a fairly small/niche community, and I don't want to potentially lose any users by forcing them to sign up (Project uses Auth0, but only so I can have an admin system for myself to delete spots/comments if needed)
 
 ## Technologies Used
 - Next.js
@@ -24,6 +24,7 @@
 - MongoDB
 - Mongoose
 - Amazon S3
+- Auth0
 - Imgix
 
 
@@ -33,13 +34,22 @@ Share page:
 - Users share spots by filling out the form
 - Users set spot location by clicking google map component (google-map-react)
 - Info gets saved to MongoDB, and images get uploaded to S3
-- Considered using a library for the form + form validation (formik w/ yup), but decided against it as the form is relatively small and I try to avoid unnecessary dependencies
+- Considered using a library for the form + form validation (formik w/ yup), but decided against it as the form is relatively small and I wanted to avoid any unnecessary dependencies
 
 Find page:
 - API call to render all spots
 - Drop down select to filter categories
 - Search bar to search by title or category
 - Image optimization done with Imgix
+
+Spot page:
+- Find specific info for spots
+- Share or Save the spot
+- Comment Section for additional info
+
+Saved spots:
+- Users can "save" spots while viewing them
+- Since there is no user authentication, I store the spot ID in localStorage, call the api to return all spots, and then filter the saved spots on the front-end
 
 Map page:
 - Simple page with google map component
@@ -83,10 +93,10 @@ To do:
 
 
 ## Final Thoughts
-- Next.js with TypeScript is awesome!
+- Next.js with TypeScript is awesome
 - Looking back, I wish I had used a SQL database, as I've already worked with MongoDB in the past
 - I regret not translating the website during development, since it will be a huge job to go back and do all at once 
-- I had a lot of fun building this project, and I'm proud of the final result!
+- I had a lot of fun building this project, and I'm proud of the final product!
 
 
 ## Contact
