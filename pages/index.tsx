@@ -5,40 +5,10 @@ import { server } from "../utils/domain";
 import useMediaQuery from "../utils/width";
 Home.title = "home";
 import Head from "next/head";
-import { useEffect } from 'react'
 
 function Home({ spots }) {
   
   const isBreakpoint = useMediaQuery(767);
-
-
-
-// useEffect(() => {
-// (function () {
-//   function size() {
-//     var theminheight = Math.min(
-//       document.documentElement.clientHeight,
-//       window.screen.height,
-//       window.innerHeight
-//     );
-//       let header = document.querySelector('.header').clientHeight;
-//       let panel = document.querySelector('.panel_stays-category').clientHeight / 2;
-//       let setHeight = theminheight - header - panel + "px"
-//       document.getElementById("p2").style.height = setHeight;
-//   }
-//   window.addEventListener(
-//     "resize",
-//     function (event) {
-//       size();
-//     },
-//     true
-//   );
-
-//   size();
-// })();
-
-// }), [];
-
   
   return (
     <div className="outer__inner">
@@ -208,5 +178,6 @@ export async function getServerSideProps() {
     },
   };
 }
+
 
 export default Home;
