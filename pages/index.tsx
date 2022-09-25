@@ -5,11 +5,41 @@ import { server } from "../utils/domain";
 import useMediaQuery from "../utils/width";
 Home.title = "home";
 import Head from "next/head";
+import { useEffect } from 'react'
 
 function Home({ spots }) {
   
-  const isBreakpoint = useMediaQuery(768);
+  const isBreakpoint = useMediaQuery(767);
 
+
+
+// useEffect(() => {
+// (function () {
+//   function size() {
+//     var theminheight = Math.min(
+//       document.documentElement.clientHeight,
+//       window.screen.height,
+//       window.innerHeight
+//     );
+//       let header = document.querySelector('.header').clientHeight;
+//       let panel = document.querySelector('.panel_stays-category').clientHeight / 2;
+//       let setHeight = theminheight - header - panel + "px"
+//       document.getElementById("p2").style.height = setHeight;
+//   }
+//   window.addEventListener(
+//     "resize",
+//     function (event) {
+//       size();
+//     },
+//     true
+//   );
+
+//   size();
+// })();
+
+// }), [];
+
+  
   return (
     <div className="outer__inner">
       {/* apparently this is ok? taken from next docs */}
@@ -20,7 +50,7 @@ function Home({ spots }) {
         <meta property="og:image:height" content="300" />
         <meta name="twitter:image" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
       </Head>
-      <div className="section-mb80 main main_stays-category">
+      <div id="p2" className="section-mb80 main main_stays-category">
         <div className="main__center center">
           <div className="main__preview">
             <video
