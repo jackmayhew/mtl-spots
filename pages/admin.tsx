@@ -32,7 +32,7 @@ function Admin({
         <meta name="googlebot" content="noindex" />
       </Head>
       {user && (
-        <div>{user.sub}</div>
+        <div>signed in</div>
       )}
       {user && user.sub === process.env.NEXT_PUBLIC_ADMIN_ID ? (
         <div className="outer__inner">
