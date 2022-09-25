@@ -31,9 +31,6 @@ function Admin({
         <meta name="robots" content="noindex" />
         <meta name="googlebot" content="noindex" />
       </Head>
-      {user && (
-        <div>signed in</div>
-      )}
       {user && user.sub === process.env.NEXT_PUBLIC_ADMIN_ID ? (
         <div className="outer__inner">
           <div className="section-mb80 main main_cars-category">
