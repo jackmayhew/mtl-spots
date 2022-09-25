@@ -11,9 +11,9 @@ function NavBar() {
 
   const handleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
-    !document.querySelector("body").classList.contains("lock")
-      ? document.querySelector("body").classList.add("lock")
-      : document.querySelector("body").classList.remove("lock");
+    !document.querySelector("html").classList.contains("lock")
+      ? document.querySelector("html").classList.add("lock")
+      : document.querySelector("html").classList.remove("lock");
   };
 
   const handleMobileMenuLogo = () => {
