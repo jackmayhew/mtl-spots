@@ -1,9 +1,9 @@
 module.exports = [
-//   {
-//     key: "Content-Security-Policy",
-//     value:
-//       "default-src 'self'; font-src 'self'; img-src  https://mtlspots.imgix.net/; script-src 'self'",
-//   },
+  {
+    key: "Content-Security-Policy",
+    value:
+      "default-src 'self'; font-src 'self'; img-src data: https:; script-src 'self'",
+  },
   {
     key: "X-DNS-Prefetch-Control",
     value: "on",
