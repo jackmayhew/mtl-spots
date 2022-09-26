@@ -12,7 +12,7 @@ function Home({ spots }) {
   
   return (
     <div className="outer__inner">
-      {/* apparently this is ok? taken from next docs */}
+      {/* apparently this is ok. taken from next docs */}
       <Head>
         <meta property="og:image" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
         <meta property="og:image:url" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
@@ -135,8 +135,10 @@ function Home({ spots }) {
                       Ready to Get Started?
                     </h1>
                     <div className="description__text">
-                      Start finding and sharing skate spots today
+                      <div className="work__info info">Start finding &amp; sharing skate spots</div>
                     </div>
+                    
+
                     <div className="description__btns">
                       <Link href="/spots">
                         <a className="button-stroke description__button cta__button">
@@ -155,7 +157,7 @@ function Home({ spots }) {
                 <div className="testimonials__col">
                   <div className="testimonials__preview">
                     <img
-                      src="https://robert.accettura.com/wp-content/uploads/2007/10/20071014_chimp_skateboard.jpg"
+                      src="spot4.jpg"
                       alt="Testimonials"
                     />
                   </div>

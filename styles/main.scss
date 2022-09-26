@@ -5417,9 +5417,11 @@ html.dark .testimonials__link:after {
 
 .testimonials__preview {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 .testimonials__preview img {
-  width: 100%;
+  width: 350px;
   border-radius: 16px;
 }
 @media only screen and (max-width: 767px) {
