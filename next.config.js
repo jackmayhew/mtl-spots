@@ -38,9 +38,9 @@ module.exports = {
           directives: {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-            styleSrc: ["'self'", 'https:', "'unsafe-inline'"],
-            imgSrc: ["'self'", "https://mtlspots.imgix.net", "data:", "https://ui8-fleet-html.herokuapp.com/"],
-            fontSrc: ["'self'", 'https:', 'data:'],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            imgSrc: ["'self'", "https://mtlspots.imgix.net", "https://ui8-fleet-html.herokuapp.com/"],
+            fontSrc: ["'self'",  'data:'],
           },
         },
         forceHTTPSRedirect: [true, { maxAge: 15768010, includeSubDomains: true }],
