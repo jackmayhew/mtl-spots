@@ -89,9 +89,9 @@ function Home({ spots }) {
                   />
                 </div>
                 <div className="work__subtitle">Share</div>
-                <div className="work__content">
+                <p className="work__content">
                     share spots with other skaters in montreal
-                </div>
+                </p>
               </div>
               <div className="work__item">
                 <div className="work__preview">
@@ -103,7 +103,7 @@ function Home({ spots }) {
                 </div>
                 <div className="work__subtitle">Find</div>
                 <div className="work__content">
-                  browse, search or use the map page to find spots
+                  browse, search or use our map to find spots
                 </div>
               </div>
               <div className="work__item">
@@ -116,7 +116,7 @@ function Home({ spots }) {
                 </div>
                 <div className="work__subtitle">Skate</div>
                 <div className="work__content">
-                    get out there and skate! and remember to respect the spots
+                    go skate! and remember to respect the spots
                 </div>
               </div>
             </div>
@@ -135,7 +135,7 @@ function Home({ spots }) {
                       ready to start?
                     </h1>
                     <div className="description__text">
-                      <div className="work__info info">Start finding &amp; sharing skate spots</div>
+                      <div className="work__info info">Start sharing &amp; finding spots</div>
                     </div>
                     
 
