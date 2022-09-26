@@ -32,8 +32,7 @@ function Saved({ initialSpots, initialPage }) {
         array.includes(spot._id)
       );
 
-      // reverse localstorage array and sort rendered array to match
-      // renders in order they were saved in
+      // reverse and sort localstorage array to match the order they were saved in
       let reference_array = array.reverse();
       let arrays = filteredSpots;
       arrays.sort(function(a, b) {
@@ -93,14 +92,12 @@ function Saved({ initialSpots, initialPage }) {
               <div className="sorting__body">
                 <div className="sorting__box">
                   <h2 className="sorting__title h2">
-                    {spots.length ? spots.length : " "}
+                    {spots.length ? spots.length : "no"}
                     {spots.length > 1 || !spots.length
                       ? " Saved Spots"
-                      : " Saved Spot"}
+                      : " Saved Spot"
+                      }
                   </h2>
-                  {/* <h2>
-                  Click the "save" button while viewing a spot and it will appear here. 632216b1ba0bf1ad89105385
-                  </h2> */}
                 </div>
               </div>
             </div>
