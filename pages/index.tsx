@@ -7,18 +7,25 @@ Home.title = "home";
 import Head from "next/head";
 
 function Home({ spots }) {
-  
   const isBreakpoint = useMediaQuery(767);
-  
+
   return (
     <div className="outer__inner">
-      {/* apparently this is ok. taken from next docs */}
       <Head>
-        <meta property="og:image" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
-        <meta property="og:image:url" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg"
+        />
+        <meta
+          property="og:image:url"
+          content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg"
+        />
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="300" />
-        <meta name="twitter:image" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg"
+        />
       </Head>
       <div className="section-mb80 main main_stays-category">
         <div className="main__center center">
@@ -68,9 +75,7 @@ function Home({ spots }) {
           </div>
         </div>
       </div>
-
       <HomeSlider spots={spots} />
-
       <div className="section work">
         <div className="work__center center">
           <div className="work__head">
@@ -82,24 +87,16 @@ function Home({ spots }) {
             <div className="work__list">
               <div className="work__item">
                 <div className="work__preview">
-                  <img
-                    className="some-icon"
-                    src="spot1.jpeg"
-                    alt="Work"
-                  />
+                  <img className="some-icon" src="spot1.jpeg" alt="Work" />
                 </div>
                 <div className="work__subtitle">Share</div>
                 <p className="work__content">
-                    share spots with other skaters in montreal
+                  share spots with other skaters in montreal
                 </p>
               </div>
               <div className="work__item">
                 <div className="work__preview">
-                  <img
-                    className="some-icon"
-                    src="spot2.jpeg"
-                    alt="Work"
-                  />
+                  <img className="some-icon" src="spot2.jpeg" alt="Work" />
                 </div>
                 <div className="work__subtitle">Find</div>
                 <div className="work__content">
@@ -108,22 +105,17 @@ function Home({ spots }) {
               </div>
               <div className="work__item">
                 <div className="work__preview">
-                  <img
-                    className="some-icon"
-                    src="spot3.jpeg"
-                    alt="Work"
-                  />
+                  <img className="some-icon" src="spot3.jpeg" alt="Work" />
                 </div>
                 <div className="work__subtitle">Skate</div>
                 <div className="work__content">
-                    go skate! and remember to respect the spots
+                  go skate! and remember to respect the spots
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div className="section-pd section-mb0">
         <div className="testimonials__center center js-tabs">
           <div className="testimonials__container">
@@ -131,13 +123,12 @@ function Home({ spots }) {
               <div className="testimonials__row">
                 <div className="testimonials__col">
                   <div className="description__wrap">
-                    <h1 className="description__title h2">
-                      ready to start?
-                    </h1>
+                    <h1 className="description__title h2">ready to start?</h1>
                     <div className="description__text">
-                      <div className="work__info info">Start sharing &amp; finding spots</div>
+                      <div className="work__info info">
+                        Start sharing &amp; finding spots
+                      </div>
                     </div>
-                    
 
                     <div className="description__btns">
                       <Link href="/spots">
@@ -156,10 +147,7 @@ function Home({ spots }) {
 
                 <div className="testimonials__col">
                   <div className="testimonials__preview">
-                    <img
-                      src="spot4.jpg"
-                      alt="Testimonials"
-                    />
+                    <img src="spot4.jpg" alt="Testimonials" />
                   </div>
                 </div>
               </div>

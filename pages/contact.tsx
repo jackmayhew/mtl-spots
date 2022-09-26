@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { FiMail } from "react-icons/fi";
+import { FiMail, FiInstagram } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
 import smoothscroll from "smoothscroll-polyfill";
 contact.title = 'contact';
@@ -132,18 +132,20 @@ function contact() {
             <div className="faq__center center">
               <div className="faq__top">
                 <div className="faq__stage">
-                  {isSubmitted
+                  {/* {isSubmitted
                           ? <div className="email__result">Email Sent. We'll Be In Touch Shortly!</div>
                           : emailError
                           ?  <div className="email__result">something went wrong. please try again or email us at bonjour@mtlspots.ca</div>
-                          : "reach out with questions or for support"}
+                          : "message us on ig to get in touch"
+                  } */}
+                  message us on ig to get in touch
                 </div>
                 <h1 className="faq__title h2">Contact MTL SPOTS</h1>
                 <div className="faq__info weight">
-                  <FiMail size={22} /> bonjour@mtlspots.ca
+                   <a href="https://www.instagram.com/mtl_spots/" target="_blank"><FiInstagram size={22} />mtl_spots</a> 
                 </div>
               </div>
-              <div className="faq__row js-tabs">
+              {/* <div className="faq__row js-tabs">
                 <div className="faq__col">
                   <div className="faq__box js-tabs-item">
                     <div className="upload__item">
@@ -210,7 +212,7 @@ function contact() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

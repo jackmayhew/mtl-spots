@@ -7724,6 +7724,14 @@ html.dark .field_empty .select:before {
   display: flex;
   align-items: center;
   justify-content: center;
+  a {
+    color: inherit;
+    display: flex;
+    align-items: center;
+  }
+  svg {
+    margin-right: 7px;
+  }
 }
 @media only screen and (max-width: 767px) {
   .faq__info {
@@ -7733,17 +7741,7 @@ html.dark .field_empty .select:before {
 html.dark .faq__info {
   color: #e6e8ec;
 }
-.faq__info a {
-  font-weight: 500;
-  color: $primary-blue;
-}
-.faq__info a:hover {
-  text-decoration: underline;
-}
 
-.faq__info svg {
-  margin-right: 5px;
-}
 
 .faq__row {
   display: flex;
