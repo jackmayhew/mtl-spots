@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { server } from "../../utils/domain";
 
-function AdminCard({ spot }) {
+function AdminCard({ spot, user }) {
     const router = useRouter();
 
     const openMap = (e) => {
@@ -17,7 +17,7 @@ function AdminCard({ spot }) {
 
     const createSpot = async () => {
         try {
-            await fetch(`${server}/api/admin/${spot._id}`, {
+            await fetch(`${server}/api/admin/${spot._id}?user=${user}`, {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -49,8 +49,6 @@ function AdminCard({ spot }) {
                 <div className="card__line">
                     <div className="card__title">{spot.title}</div>
                     <form
-                        action={`/api/admin/${spot._id}`}
-                        method="POST"
                         onSubmit={handleSubmit}
                     >
                         <button className="card__price" type="submit">

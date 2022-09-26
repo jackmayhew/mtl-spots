@@ -31,7 +31,7 @@ function Admin({
         <meta name="robots" content="noindex" />
         <meta name="googlebot" content="noindex" />
       </Head>
-      {user && user.sub === process.env.NEXT_PUBLIC_ADMIN_ID ? (
+       {user && user.sub === process.env.NEXT_PUBLIC_ADMIN_ID ? (
         <div className="outer__inner">
           <div className="section-mb80 main main_cars-category">
             <div className="section catalog">
@@ -177,7 +177,7 @@ function Admin({
                 <div className="catalog__center center">
                   <div className="catalog__cards">
                     {initialSpots.map((spot) => (
-                      <AdminCard spot={spot} key={spot._id} />
+                      <AdminCard spot={spot} key={spot._id} user={user.sub} />
                     ))}
                   </div>
 
