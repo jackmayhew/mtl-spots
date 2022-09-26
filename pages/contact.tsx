@@ -3,9 +3,9 @@ import Link from "next/link";
 import { FiMail, FiInstagram } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
 import smoothscroll from "smoothscroll-polyfill";
-contact.title = 'contact';
+Contact.title = 'contact';
 
-function contact() {
+function Contact() {
   const formRef = useRef();
 
   const [emailError, setEmailError] = useState(false);
@@ -221,4 +221,4 @@ function contact() {
   );
 }
 
-export default contact;
+export default Contact;
