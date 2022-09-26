@@ -43,8 +43,9 @@ module.exports = {
             fontSrc: ["'self'", 'https:', 'data:'],
           },
         },
-        forceHTTPSRedirect: [true, { maxAge: 60 * 60 * 24 * 4, includeSubDomains: true }],
+        forceHTTPSRedirect: [true, { maxAge: 15768010, includeSubDomains: true }],
         referrerPolicy: "same-origin",
+
       })
     }];
   },
