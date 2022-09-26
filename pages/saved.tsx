@@ -84,7 +84,7 @@ function Saved({ initialSpots, initialPage }) {
                   </li>
                   <li className="breadcrumbs__item">
                     <Link href={`/saved`}>
-                      <a className="breadcrumbs__link">Saved Spots</a>
+                      <a className="breadcrumbs__link">Saved</a>
                     </Link>
                   </li>
                 </ul>
