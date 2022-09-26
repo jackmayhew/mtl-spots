@@ -225,5 +225,4 @@ export async function getServerSideProps({ req, query }) {
   };
 }
 
-
 export default Admin;
