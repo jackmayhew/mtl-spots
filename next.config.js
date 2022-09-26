@@ -1,4 +1,3 @@
-const headers = require('./headers');
 const { createSecureHeaders } = require("next-secure-headers");
 
 /** @type {import('next').NextConfig} */
@@ -14,20 +13,7 @@ const nextConfig = {
     domains: ['mtlspots.imgix.net'],
     path: 'mtlspots.imgix.net',
   },
-
-  
 }
-
-// module.exports = {
-//   async headers() {
-//     return [
-//       {
-//         source: '/(.*)',
-//         headers,
-//       },
-//     ];
-//   },
-// };
 
 module.exports = {
   async headers() {
@@ -38,9 +24,9 @@ module.exports = {
           directives: {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-            styleSrc: ["'self'", "'unsafe-inline'"],
-            imgSrc: ["'self'", "https://mtlspots.imgix.net", "https://ui8-fleet-html.herokuapp.com/"],
-            fontSrc: ["'self'",  'data:'],
+            styleSrc: ["'self'", 'https:', "'unsafe-inline'"],
+            imgSrc: ["'self'", "https://mtlspots.imgix.net", "data:", "https://ui8-fleet-html.herokuapp.com/"],
+            fontSrc: ["'self'", 'https:', 'data:'],
           },
         },
         forceHTTPSRedirect: [true, { maxAge: 15768010, includeSubDomains: true }],
