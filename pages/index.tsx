@@ -132,7 +132,7 @@ function Home({ spots }) {
                 <div className="testimonials__col">
                   <div className="description__wrap">
                     <h1 className="description__title h2">
-                      Ready to Get Started?
+                      ready to start?
                     </h1>
                     <div className="description__text">
                       <div className="work__info info">Start finding &amp; sharing skate spots</div>
