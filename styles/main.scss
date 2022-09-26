@@ -5430,6 +5430,12 @@ html.dark .testimonials__link:after {
   }
 }
 
+@media only screen and (max-width: 474px) {
+  .testimonials__preview img {
+    width: 100%;
+  }
+}
+
 .actions {
   position: relative;
 }

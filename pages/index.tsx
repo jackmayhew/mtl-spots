@@ -20,7 +20,7 @@ function Home({ spots }) {
         <meta property="og:image:height" content="300" />
         <meta name="twitter:image" content="https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg" />
       </Head>
-      <div id="p2" className="section-mb80 main main_stays-category">
+      <div className="section-mb80 main main_stays-category">
         <div className="main__center center">
           <div className="main__preview">
             <video
@@ -90,7 +90,7 @@ function Home({ spots }) {
                 </div>
                 <div className="work__subtitle">Share</div>
                 <div className="work__content">
-                    share spot details with other skaters in montreal
+                    share spots with other skaters in montreal
                 </div>
               </div>
               <div className="work__item">
