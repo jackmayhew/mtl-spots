@@ -11,7 +11,7 @@ import useCopyToClipboard from "../../utils/copy";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-function SingleSpot({ spot, relatedSpots, category, comments,  }) {
+function SingleSpot({ spot, relatedSpots, category, comments }) {
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +58,6 @@ function SingleSpot({ spot, relatedSpots, category, comments,  }) {
     }
   };
 
-
   // use state for array, clear and reset on url change below
   const [mapSpots, setMapSpots] = useState([]);
   const [spotID, setSpotID] = useState(spot._id);
@@ -67,11 +66,10 @@ function SingleSpot({ spot, relatedSpots, category, comments,  }) {
     setSpotID(spot._id);
   }, [spot._id]);
 
-
   // form
   const [form, setForm] = useState({
     comment: "",
-    spot: ""
+    spot: "",
   });
 
   const [error, setError] = useState("");
@@ -96,47 +94,45 @@ function SingleSpot({ spot, relatedSpots, category, comments,  }) {
       });
 
       // render new comment on submit
-      const newComments = await fetch(`${server}/api/spots/comments?spot=${spotID}`);
+      const newComments = await fetch(
+        `${server}/api/spots/comments?spot=${spotID}`
+      );
       const data = await newComments.json();
-      setMapSpots(data.comment)
+      setMapSpots(data.comment);
       // hack to keep original comments array length in sync with
       // newly rendered comments array
-      comments.push('gross');
-
-
+      comments.push("gross");
     } catch (error) {
       console.log(error);
     }
   };
 
   const sumbitForm = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!form.comment) {
-      setError("please enter a comment")
+      setError("please enter a comment");
     } else {
       setError("");
       setForm({
         ...form,
         spot: "",
-        comment: ""
+        comment: "",
       });
       createComment();
-
     }
-
-  }
+  };
 
   const [count, setCount] = useState(3);
 
   // reset comment count on url change
   useEffect(() => {
-    router.events.on('routeChangeStart', () => {
-      setCount(3)
-      setMapSpots([])
-      setSpotID(spot._id)
-    })
-  }, [])
-  
+    router.events.on("routeChangeStart", () => {
+      setCount(3);
+      setMapSpots([]);
+      setSpotID(spot._id);
+    });
+  }, []);
+
   return (
     <div className="outer__inner">
       <Head>
@@ -378,72 +374,65 @@ function SingleSpot({ spot, relatedSpots, category, comments,  }) {
             </form>
             <div className="comment__head">
               <div className="comment__title">
-                {mapSpots.length
-                  ? mapSpots.length
-                  : comments.length
-                }
+                {mapSpots.length ? mapSpots.length : comments.length}
                 {mapSpots.length === 1 || comments.length == 1
                   ? " comment"
-                  : " comments"
-                }
+                  : " comments"}
               </div>
             </div>
 
-
-            {mapSpots.length
-              ?
+            {mapSpots.length ? (
               <div className="comment__list">
                 {mapSpots.slice(0, count).map((comment) => (
                   <div className="comment__item" key={comment._id}>
                     <div className="comment__avatar">
-                      <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                      <img src="/spot1.jpeg" alt="Avatar" />
                     </div>
                     <div className="comment__details">
-                      <div className="comment__content">
-                        {comment.comment}
-                      </div>
+                      <div className="comment__content">{comment.comment}</div>
                       <div className="comment__foot">
-                        <div className="comment__time">{moment(Date.parse(comment.time)).fromNow()}</div>
+                        <div className="comment__time">
+                          {moment(Date.parse(comment.time)).fromNow()}
+                        </div>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-              : <div className="comment__list">
+            ) : (
+              <div className="comment__list">
                 {comments.slice(0, count).map((comment) => (
                   <div className="comment__item" key={comment._id}>
                     <div className="comment__avatar">
-                      <img src="https://storage.googleapis.com/fsscs1/images/small/ei9lu6chhguclgn7yjt8ygyuk2vbvfx2.jpg" alt="Avatar" />
+                      <img src="/spot1.jpeg" alt="Avatar" />
                     </div>
                     <div className="comment__details">
-                      <div className="comment__content">
-                        {comment.comment}
-                      </div>
+                      <div className="comment__content">{comment.comment}</div>
                       <div className="comment__foot">
-                        <div className="comment__time">{moment(Date.parse(comment.time)).fromNow()}</div>
+                        <div className="comment__time">
+                          {moment(Date.parse(comment.time)).fromNow()}
+                        </div>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-            }
+            )}
 
-
-            {
-              (comments.length > 3 || mapSpots.length > 3) ?
-                <div className="comment__btns">
-                  <button className="button-stroke button-small comment__button" onClick={() => setCount(count + 10)}>
-                    <span>{mapSpots.length >= count || comments.length >= count ? "show more" : "showing all"}</span>
-                  </button>
-                </div>
-                : null
-            }
-
-
-
-
-
-
+            {comments.length > 3 || mapSpots.length > 3 ? (
+              <div className="comment__btns">
+                <button
+                  className="button-stroke button-small comment__button"
+                  onClick={() => setCount(count + 10)}
+                >
+                  <span>
+                    {mapSpots.length >= count || comments.length >= count
+                      ? "show more"
+                      : "showing all"}
+                  </span>
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -470,7 +459,7 @@ export async function getServerSideProps({ query }) {
       relatedSpots: data.related,
       category: data.data.category,
       // comments: data2.comment
-      comments: data.comments
+      comments: data.comments,
     },
   };
 }
