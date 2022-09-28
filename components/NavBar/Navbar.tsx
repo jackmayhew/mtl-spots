@@ -35,7 +35,7 @@ function NavBar() {
           <a className="header__logo" onClick={() => handleMobileMenuLogo()}>
             <img
               className="some-icon"
-              src="https://ui8-fleet-html.herokuapp.com/img/logo-dark.svg"
+              src="/logo.png"
               alt="Fleet"
             />
           </a>
