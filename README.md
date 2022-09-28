@@ -6,7 +6,6 @@
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-* [Setup](#setup)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
 * [Final Thoughts](#final-thoughts)
@@ -55,27 +54,6 @@ Map page:
 - Simple page with google map component
 - Render all saved spots with lat/lng coordinates
 - Category tabs to filter spots
-
-
-## Setup
-
-First, install dependencies:
-
-```bash
-npm install
-# or
-yarn install
-```
-
-Then, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
 
 
 ## Project Status
