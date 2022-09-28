@@ -22,10 +22,10 @@ module.exports = {
       headers: createSecureHeaders({
         contentSecurityPolicy: {
           directives: {
-            defaultSrc: ["'self'", "https://maps.googleapis.com/"],
+            defaultSrc: ["'self'", "https://maps.googleapis.com/", "https://montrealspots.s3.us-east-2.amazonaws.com/"],
             scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://maps.googleapis.com/"],
             styleSrc: ["'self'", 'https:', "'unsafe-inline'"],
-            imgSrc: ["'self'", "https://mtlspots.imgix.net", "data:", "https://ui8-fleet-html.herokuapp.com/", "https://maps.googleapis.com/", "https://maps.gstatic.com/", "https://montrealspots.s3.us-east-2.amazonaws.com/"],
+            imgSrc: ["'self'", "https://mtlspots.imgix.net", "data:", "blob:", "https://ui8-fleet-html.herokuapp.com/", "https://maps.googleapis.com/", "https://maps.gstatic.com/", "https://montrealspots.s3.us-east-2.amazonaws.com/"],
             fontSrc: ["'self'", 'https:', 'data:'],
           },
         },
