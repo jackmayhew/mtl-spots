@@ -2995,6 +2995,12 @@ html.dark .panel__controls .panel__button.active {
   display: none;
 }
 
+@media only screen and (min-width: 1800px) {
+  .main__preview video {
+    height: unset;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .desktop__video {
     display: none;
