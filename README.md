@@ -6,7 +6,6 @@
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-* [Setup](#setup)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
 * [Final Thoughts](#final-thoughts)
@@ -49,33 +48,12 @@ Spot page:
 
 Saved spots:
 - Users can "save" spots while viewing them
-- Since there is no user authentication, I store the spot ID in localStorage, call the api to return all spots, and then filter the saved spots on the front-end
+- Since there is no user authentication, spot ID is stored in localStorage, then call the api to return all spots, and then filter the saved spots on the front-end
 
 Map page:
 - Simple page with google map component
 - Render all saved spots with lat/lng coordinates
 - Category tabs to filter spots
-
-
-## Setup
-
-First, install dependencies:
-
-```bash
-npm install
-# or
-yarn install
-```
-
-Then, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
 
 
 ## Project Status
@@ -86,7 +64,8 @@ Project is: _complete_
 ## Room for Improvement
 
 Room for improvement:
-- Design (color schemes, fonts etc.)
+- Design (color schemes, fonts etc)
+- Map markers flicker on drag - known issue with google-map-react (https://github.com/google-map-react/google-map-react/issues/1117)
 
 To do:
 - Add french translation option
