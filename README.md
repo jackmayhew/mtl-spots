@@ -48,7 +48,7 @@ Spot page:
 
 Saved spots:
 - Users can "save" spots while viewing them
-- Since there is no user authentication, I store the spot ID in localStorage, call the api to return all spots, and then filter the saved spots on the front-end
+- Since there is no user authentication, spot ID is stored in localStorage, then call the api to return all spots, and then filter the saved spots on the front-end
 
 Map page:
 - Simple page with google map component
@@ -64,7 +64,8 @@ Project is: _complete_
 ## Room for Improvement
 
 Room for improvement:
-- Design (color schemes, fonts etc.)
+- Design (color schemes, fonts etc)
+- Map markers flicker on drag - known issue with google-map-react (https://github.com/google-map-react/google-map-react/issues/1117)
 
 To do:
 - Add french translation option
