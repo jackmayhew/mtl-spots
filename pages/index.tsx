@@ -79,7 +79,7 @@ function Home({ spots }) {
       <div className="section work">
         <div className="work__center center">
           <div className="work__head">
-            <h2 className="work__title h2">How it works</h2>
+            <h2 className="work__title h2">How it workss</h2>
             <div className="work__info info">share, find &amp; skate</div>
           </div>
           <div className="work__body">
