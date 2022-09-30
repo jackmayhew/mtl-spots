@@ -130,6 +130,7 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
       setCount(3);
       setMapSpots([]);
       setSpotID(spot._id);
+      setError("")
     });
   }, []);
 
@@ -450,15 +451,11 @@ export async function getServerSideProps({ query }) {
   const res = await fetch(`${server}/api/spots/category/${spotID}`);
   const data = await res.json();
 
-  // const res2 = await fetch(`${server}/api/spots/comments?spot=${spotID}`);
-  // const data2 = await res2.json();
-
   return {
     props: {
       spot: data.data,
       relatedSpots: data.related,
       category: data.data.category,
-      // comments: data2.comment
       comments: data.comments,
     },
   };
