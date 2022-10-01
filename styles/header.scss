@@ -526,6 +526,9 @@ html.dark .swtich__wrap {
   font-weight: 700;
   color: #777e90;
   transition: all 0.2s;
+  svg {
+    pointer-events: none;
+  }
 }
 .header__link .icon {
   margin-right: 12px;

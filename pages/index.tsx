@@ -80,7 +80,7 @@ function Home({ spots }) {
         <div className="work__center center">
           <div className="work__head">
             <h2 className="work__title h2">How it works</h2>
-            <div className="work__info info">share, find &amp; skate</div>
+            <div className="work__info info">find, share &amp; skate</div>
           </div>
           <div className="work__body">
             <div className="work__line"></div>
@@ -89,18 +89,18 @@ function Home({ spots }) {
                 <div className="work__preview">
                   <img className="some-icon" src="spot1.jpeg" alt="Work" />
                 </div>
-                <div className="work__subtitle">Share</div>
+                <div className="work__subtitle">find</div>
                 <p className="work__content">
-                  share spots with other skaters in montreal
+                  browse, search or use our map to find spots
                 </p>
               </div>
               <div className="work__item">
                 <div className="work__preview">
                   <img className="some-icon" src="spot2.jpeg" alt="Work" />
                 </div>
-                <div className="work__subtitle">Find</div>
+                <div className="work__subtitle">share</div>
                 <div className="work__content">
-                  browse, search or use our map to find spots
+                share spots with other skaters in montreal
                 </div>
               </div>
               <div className="work__item">
@@ -126,7 +126,7 @@ function Home({ spots }) {
                     <h1 className="description__title h2">ready to start?</h1>
                     <div className="description__text">
                       <div className="work__info info">
-                        Start sharing &amp; finding spots
+                        Start finding &amp; sharing spots
                       </div>
                     </div>
 
