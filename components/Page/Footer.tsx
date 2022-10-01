@@ -1,6 +1,7 @@
 import React from "react";
 import ThemeChanger from "./Theme";
 import Link from "next/link";
+import { FiInstagram } from "react-icons/fi";
 
 function Footer() {
   return (
@@ -8,18 +9,22 @@ function Footer() {
       <div className="footer__center center">
         <div className="footer__row">
           <div className="footer__col">
-            <a className="footer__logo" href="index.html">
-              <img
-                className="some-icon"
-                src="/logo.png"
-                alt="Fleet"
-              />
-            </a>
-            <div className="footer__theme">
+            <Link href="/">
+              <a className="footer__logo">
+                <img
+                  className="some-icon"
+                  src="/logo.png"
+                  alt="mtlspots logo"
+                />
+              </a>
+            </Link>
+            <a target="_blank" rel="noopener" href="https://www.instagram.com/mtl_spots/" className="footer__ig"><FiInstagram size={18} /><span>mtl_spots</span></a>
+
+            {/* <div className="footer__theme">
               <div className="footer__switch">
                 <ThemeChanger />
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="footer__col">
             <div className="footer__menu">
@@ -43,10 +48,6 @@ function Footer() {
               </Link>
             </div>
           </div>
-          {/* <div className="footer__col">
-            <div className="footer__info">Find Us On Instagram</div>
-            <FiInstagram size={24} className="icon icon-home" />
-          </div> */}
         </div>
         <div className="footer__bottom">
           <div className="footer__copyright">
@@ -55,6 +56,7 @@ function Footer() {
               href="https://www.jackmayhew.com/"
               target="_blank"
               rel="noopener"
+              className="built__by"
             >
               Jack
             </a>

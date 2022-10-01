@@ -33,11 +33,7 @@ function NavBar() {
       <div className="header__center center">
         <Link href="/">
           <a className="header__logo" onClick={() => handleMobileMenuLogo()}>
-            <img
-              className="some-icon"
-              src="/logo.png"
-              alt="Fleet"
-            />
+            <img className="some-icon" src="/logo.png" alt="mtlspots logo" />
           </a>
         </Link>
 
