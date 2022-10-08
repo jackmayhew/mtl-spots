@@ -48,7 +48,7 @@ Spot page:
 
 Saved spots:
 - Users can "save" spots while viewing them
-- Since there is no user authentication, spot ID is stored in localStorage, then call the api to return all spots, and then filter the saved spots on the front-end
+- Since there's no user authentication, localStorage is used to store users saved spots
 
 Map page:
 - Simple page with google map component
