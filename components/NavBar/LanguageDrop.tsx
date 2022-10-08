@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import listenForOutsideClick from "../../utils/Listen";
 import { FiGlobe } from "react-icons/fi";
 
-const LanguageDrop = ({ language, setLanguage, languageHandle }) => {
+const LanguageDrop = ({ language, languageHandle }) => {
   const menuRef = useRef(null);
   const [listening, setListening] = useState(false);
   const [isOpen, setIsOpen] = useState(false);

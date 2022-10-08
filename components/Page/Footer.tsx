@@ -1,5 +1,4 @@
 import React from "react";
-import ThemeChanger from "./Theme";
 import Link from "next/link";
 import { FiInstagram } from "react-icons/fi";
 

@@ -37,6 +37,19 @@
 .header__logo img {
   width: 106px;
 }
+
+@media only screen and (max-width: 767px) {
+  .header__logo img {
+    width: 95px;
+  }
+}
+
+@media only screen and (max-width: 474px) {
+  .header__logo img {
+    width: 90px;
+  }
+}
+
 .header__wrapper {
   display: flex;
   align-items: center;
