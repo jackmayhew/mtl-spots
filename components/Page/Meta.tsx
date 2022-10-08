@@ -7,6 +7,7 @@ function Meta({ keywords, description, titles, img, metaTitle }) {
       <meta charSet="UTF-8" />
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
       <meta name="keywords" content={keywords} />
       <meta name="language" content="English" />
       <meta property="og:title" content={metaTitle} />
@@ -14,8 +15,8 @@ function Meta({ keywords, description, titles, img, metaTitle }) {
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:card" content="summary" />
-      {/* <link rel="icon" type="image/png" href={img} /> */}
-      {/* <link rel="apple-touch-icon" href={img} /> */}
+      <link rel="icon" type="image/png" href={img} />
+      <link rel="apple-touch-icon" href={img} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={description} />
@@ -34,7 +35,7 @@ function Meta({ keywords, description, titles, img, metaTitle }) {
 Meta.defaultProps = {
   keywords: "skateboarding, montreal, quebec",
   description: "find and share skate spots in montreal",
-  img: "https://i.ibb.co/Jy9srLm/n590yq77mplvhduf6fpz937taf3mc6rz.jpg",
+  img: "icon.svg",
   metaTitle: "mtlspots",
 };
 
