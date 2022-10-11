@@ -5,7 +5,7 @@ import "../styles/app.scss";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <UserProvider>
+    <UserProvider loginUrl="/foo/api/auth/login" profileUrl="/foo/api/auth/me">
       <ThemeProvider attribute="class" defaultTheme="light">
         <Layout titles={Component.title}>
           <Component {...pageProps} />

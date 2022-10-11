@@ -37,6 +37,7 @@ function Home({ spots }) {
               muted
               playsInline
               className="hero__vid"
+              id="vid"
             ></video>
           </div>
           <div className="panel panel_stays-category">
