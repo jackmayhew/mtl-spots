@@ -13,8 +13,9 @@
 
 
 ## General Information
-- Finding places to skateboard can be a challenge. MTL Spots is meant to give local skateboarders a platform to share spots with eachother
-- I decided against user authentication for this project, as it will be used by a fairly small/niche community, and I don't want to potentially lose any users by forcing them to sign up (Project uses Auth0, but only so I can have an admin system for myself to delete spots/comments if needed)
+- MTL Spots is built to give local skateboarders in Montreal a platform to share skate spots with eachother
+- I decided against user authentication for this project, as it will be used by a fairly small/niche community, and I don't want to potentially lose any users by forcing them to sign up
+
 
 ## Technologies Used
 - Next.js
@@ -33,10 +34,10 @@ Share page:
 - Users share spots by filling out the form
 - Users set spot location by clicking google map component (google-map-react)
 - Info gets saved to MongoDB, and images get uploaded to S3
-- Considered using a library for the form + form validation (formik w/ yup), but decided against it as the form is relatively small and I wanted to avoid any unnecessary dependencies
+- I considered using a library for the form + validation (formik w/ yup), but decided against it as the form is relatively small and I wanted to avoid any unnecessary dependencies
 
 Find page:
-- API call to render all spots
+- Call API to render all spots
 - Drop down select to filter categories
 - Search bar to search by title or category
 - Image optimization done with Imgix
@@ -51,7 +52,7 @@ Saved spots:
 - Since there's no user authentication, localStorage is used to store users saved spots
 
 Map page:
-- Simple page with google map component
+- Simple page with google maps component
 - Render all saved spots with lat/lng coordinates
 - Category tabs to filter spots
 
@@ -72,9 +73,8 @@ To do:
 
 
 ## Final Thoughts
-- Next.js with TypeScript is awesome
-- Looking back, I wish I had used a SQL database, as I've already worked with MongoDB in the past
-- I regret not translating the website during development, since it will be a huge job to go back and do all at once 
+- Next.js with TypeScript is amazing
+- I regret not using using a SQL database, as I've already worked with MongoDB in the past
 - I had a lot of fun building this project, and I'm proud of the final product!
 
 
