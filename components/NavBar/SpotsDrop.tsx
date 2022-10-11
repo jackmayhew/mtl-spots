@@ -44,8 +44,8 @@ const SpotsDrop = () => {
             <Link href="/spots">
               <a
                 className={
-                  router.asPath === "/spots" ||
-                  router.asPath.includes("/spots?category=")
+                  router.asPath.toLocaleLowerCase() === "/spots" ||
+                  router.asPath.toLocaleLowerCase().includes("/spots?category=")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -56,7 +56,7 @@ const SpotsDrop = () => {
             <Link href="/spots/stairs">
               <a
                 className={
-                  router.asPath.includes("/spots/stairs")
+                  router.asPath.toLocaleLowerCase().includes("stairs")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -67,7 +67,7 @@ const SpotsDrop = () => {
             <Link href="/spots/rails">
               <a
                 className={
-                  router.asPath.includes("/spots/rails")
+                  router.asPath.toLocaleLowerCase().includes("/spots/rails")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -78,7 +78,7 @@ const SpotsDrop = () => {
             <Link href="/spots/ledges">
               <a
                 className={
-                  router.asPath.includes("/spots/ledges")
+                  router.asPath.toLocaleLowerCase().includes("/spots/ledges")
                     ? "header__link active"
                     : "header__link"
                 }
@@ -89,18 +89,18 @@ const SpotsDrop = () => {
             <Link href="/spots/gaps">
               <a
                 className={
-                  router.asPath.includes("/spots/gaps")
+                  router.asPath.toLocaleLowerCase().includes("gaps")
                     ? "header__link active"
                     : "header__link"
                 }
               >
-                Gaps
+                gaps
               </a>
             </Link>
             <Link href="/spots/skate parks">
               <a
                 className={
-                  router.asPath.includes("/spots/skate")
+                  router.asPath.toLocaleLowerCase().includes("/spots/skate")
                     ? "header__link active"
                     : "header__link"
                 }

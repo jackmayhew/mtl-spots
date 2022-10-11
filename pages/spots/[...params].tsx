@@ -19,13 +19,9 @@ function SingleSpot({ spot, relatedSpots, category, comments }) {
   useEffect(listenForOutsideClick(listening, setListening, menuRef, setIsOpen));
 
   const router = useRouter();
-
   const url = `mtlspots.ca/spots/${spot.category}/${spot._id}`;
-
   const refStyle = useRef(null);
-
   const [value, copy] = useCopyToClipboard();
-
   const [savedSpot, setSavedSpot] = useState("");
 
   // get savedSpot string from localStorage
