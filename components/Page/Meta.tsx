@@ -34,7 +34,7 @@ function Meta({ keywords, description, titles, img, metaTitle }) {
 Meta.defaultProps = {
   keywords: "skateboarding, montreal, quebec",
   description: "find and share skate spots in montreal",
-  img: "https://mtlspots.ca/public/icon.svg",
+  img: "https://mtlspots.ca/icon.svg",
   metaTitle: "mtlspots",
 };
 
