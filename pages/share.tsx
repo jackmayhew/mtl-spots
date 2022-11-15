@@ -603,7 +603,7 @@ function Share() {
                 <FiX className="icon icon-close" />
               </button>
               <div className="upload__subtitle">Preview</div>
-              <a className="card" href="stays-product.html">
+              <a className="card">
                 <div className="card__preview">
                   <img
                     src={filePreview ? `${filePreview}` : "defaultSpot.jpeg"}
